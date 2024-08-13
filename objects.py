@@ -1,231 +1,7 @@
-strength = "strength"
-dexterity = "dexterity"
-constitution = "constitution"
-intelligence = "intelligence"
-wisdom = "wisdom"
-charisma = "charisma"
-core_abilities = [strength, dexterity, constitution, intelligence, wisdom, charisma]
-
-athletics = "athletics"
-acrobatics = "acrobatics"
-sleight_of_hand = "sleight of hand"
-stealth = "stealth"
-arcana = "arcana"
-history = "history"
-investigation = "investigation"
-nature = "nature"
-religion = "religion"
-animal_handling = "animal handling"
-insight = "insight"
-medicine = "medicine"
-perception = "percption"
-survival = "survival"
-deception = "deception"
-intimidation = "intimidation"
-performance = "performance"
-persuasion = "persuasion"
-
-skill_list = [
-    athletics, 
-    acrobatics, 
-    sleight_of_hand, 
-    stealth, 
-    arcana, 
-    history, 
-    investigation, 
-    nature, 
-    religion, 
-    animal_handling, 
-    insight, 
-    medicine, 
-    perception, 
-    survival, 
-    deception, 
-    intimidation, 
-    performance, 
-    persuasion]
-
-skill_core_stat = {athletics: strength, 
-    acrobatics: dexterity, 
-    sleight_of_hand: dexterity, 
-    stealth: dexterity, 
-    arcana: intelligence, 
-    history: intelligence, 
-    investigation: intelligence, 
-    nature: intelligence, 
-    religion: intelligence, 
-    animal_handling: wisdom, 
-    insight: wisdom, 
-    medicine: wisdom, 
-    perception: wisdom, 
-    survival: wisdom, 
-    deception: charisma, 
-    intimidation: charisma, 
-    performance: charisma, 
-    persuasion: charisma}
-
-light_armor = "light armor"
-medium_armor = "medium armor"
-heavy_armor = "heavy armor"
-shield = "shields"
-
-club = "club"
-dagger = "dagger"
-greatclub = "greatclub"
-handaxe = "handaxe"
-javelin = "javelin"
-light_hammer = "light hammer"
-mace = "mace"
-quarterstaff = "quarterstaff"
-sickle = "sickle"
-spear = "spear"
-unarmed_strike = "unarmed strike"
-crossbow_light = "light crossbow"
-dart = "dart"
-shortbow = "short bow"
-sling = "sling"
-simple_weapons = [club,
-    dagger,
-    greatclub,
-    handaxe,
-    javelin,
-    light_hammer,
-    mace,
-    quarterstaff,
-    sickle,
-    spear,
-    unarmed_strike,
-    crossbow_light,
-    dart,
-    shortbow,
-    sling]
-battleaxe = "battle axe"
-flail = "flail"
-glaive = "glaive"
-greataxe = "great axe"
-greatsword = "great sword"
-halberd = "halberd"
-lance = "lance"
-longsword = "long sword"
-maul = "maul"
-morningstar = "morning star"
-pike = "pike"
-rapier = "rapier"
-scimitar = "scimitar"
-shortsword = "short sword"
-trident = "trident"
-war_pick = "war pick"
-warhammer = "warhammer"
-whip = "whip"
-blowgun = "blow gun"
-crossbow_hand = "hand crossbow"
-crossbow_heavy = "heavy crossbow"
-longbow = "long bow"
-net = "net"
-martial_weapons = [
-    battleaxe,
-    flail,
-    glaive,
-    greataxe,
-    greatsword,
-    halberd,
-    lance,
-    longsword,
-    maul,
-    morningstar,
-    pike,
-    rapier,
-    scimitar,
-    shortsword,
-    trident,
-    war_pick,
-    warhammer,
-    whip,
-    blowgun,
-    crossbow_hand,
-    crossbow_heavy,
-    longbow,
-    net,]
-
-proficiencies = [light_armor, medium_armor, heavy_armor, shield] + simple_weapons + martial_weapons
-
-
-damage_type_acid = "acid damage"
-damage_type_bludgeon = "bludgeoning damage"
-damage_type_cold = "cold damage"
-damage_type_fire = "fire damage"
-damage_type_force = "force damage"
-damage_type_lightning = "lightning damage"
-damage_type_necrotic = "necrotic damage"
-damage_type_piercing = "piercing damage"
-damage_type_poison = "poison damage"
-damage_type_psychic = "psychic damage"
-damage_type_radiant = "radiant damage"
-damage_type_slashing = "slashing damage"
-damage_type_thunder = "thunder damage"
-damage_types = [
-    damage_type_acid,
-    damage_type_bludgeon, 
-    damage_type_cold, 
-    damage_type_fire, 
-    damage_type_force, 
-    damage_type_lightning, 
-    damage_type_necrotic, 
-    damage_type_piercing,
-    damage_type_poison,
-    damage_type_psychic,
-    damage_type_radiant,
-    damage_type_slashing,
-    damage_type_thunder
-    ]
-
-saving_throw_proficiencies = {ability: False for ability in core_abilities}
-proficiency_dict = {item: False for item in skill_list + proficiencies}
-damage_resistances = {damage_type: False for damage_type in damage_types}
-
-dwarf = "dwarf"
-elf = "elf"
-halfling = "halfling"
-human = "human"
-dragonborn = "dragonborn"
-gnome = "gnome"
-half_elf = "half elf"
-half_orc = "half orc"
-tiefling = "tiefling"
-list_of_races = [
-    dwarf,
-    elf,
-    halfling,
-    human,
-    dragonborn,
-    gnome,
-    half_elf,
-    half_orc,
-    tiefling
-]
-hill_dwarf = "hill dwarf"
-mountain_dwarf = "mountain dwarf"
-high_elf = "high elf"
-wood_elf = "wood elf"
-drow_elf= "drow elf"
-lightfoot_halfling = "lightfoot halfling"
-stout_halfling = "stout halfling"
-forest_gnome = "forest gnome"
-rock_gnome = "rock nome"
-list_of_subraces = [
-    hill_dwarf,
-    mountain_dwarf,
-    high_elf,
-    wood_elf,
-    drow_elf,
-    lightfoot_halfling,
-    stout_halfling,
-    forest_gnome,
-    rock_gnome
-]
+from database import *
 
 class Character:
-    def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
+    def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10):
         self.name = name
         self.race = None
         self.sub_race = None
@@ -240,9 +16,11 @@ class Character:
         self.int = intelligence
         self.wis = wisdom
         self.charisma = charisma
+        self.ac = ac
         self.proficiencies = proficiency_dict.copy()
         self.saving_throws = saving_throw_proficiencies.copy()
         self.damage_resistance = damage_resistances.copy()
+        self.equipment = []
 
     def get_ability_mod(self, ability):
         if ability == strength:
@@ -369,6 +147,35 @@ class Character:
             self.sub_race == rock_gnome
             self.con += 1
 
+    def choose_background(self, background):
+        if background == background_acolyte:
+            self.gain_proficiency([insight, religion])
+        if background == background_charlatan:
+            self.gain_proficiency([deception, sleight_of_hand])
+        if background == background_criminal:
+            self.gain_proficiency([deception, stealth])
+        if background == background_entertainer:
+            self.gain_proficiency([acrobatics, performance])
+        if background == background_folk_hero:
+            self.gain_proficiency([animal_handling, survival])
+        if background == background_guild_artisan:
+            self.gain_proficiency([insight, persuasion])
+        if background == background_hermit:
+            self.gain_proficiency([medicine, religion])
+        if background == background_noble:
+            self.gain_proficiency([history, persuasion])
+        if background == background_outlander:
+            self.gain_proficiency([athletics, survival])
+        if background == background_sage:
+            self.gain_proficiency([arcana, history])
+        if background == background_sailor:
+            self.gain_proficiency([athletics, perception])
+        if background == background_soldier:
+            self.gain_proficiency([athletics, intimidation])
+        if background == background_urchin:
+            self.gain_proficiency([sleight_of_hand, stealth])
+
+# begin defining the child object 'class'(Character)
 
 class Barbarian(Character):
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
@@ -381,6 +188,8 @@ class Barbarian(Character):
     def choose_race(self, race):
         pass
     def choose_subrace(self, sub_race):
+        pass
+    def choose_background(self, background):
         pass
 
 class Bard(Character):
@@ -398,6 +207,8 @@ class Bard(Character):
         pass
     def choose_subrace(self, sub_race):
         pass
+    def choose_background(self, background):
+        pass
 
 class Cleric(Character):
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
@@ -413,6 +224,8 @@ class Cleric(Character):
     def choose_race(self, race):
         pass
     def choose_subrace(self, sub_race):
+        pass
+    def choose_background(self, background):
         pass
 
 class Druid(Character):
@@ -430,6 +243,8 @@ class Druid(Character):
         pass
     def choose_subrace(self, sub_race):
         pass
+    def choose_background(self, background):
+        pass
 
 class Fighter(Character):
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
@@ -442,6 +257,8 @@ class Fighter(Character):
     def choose_race(self, race):
         pass
     def choose_subrace(self, sub_race):
+        pass
+    def choose_background(self, background):
         pass
 
 class Paladin(Character):
@@ -456,6 +273,8 @@ class Paladin(Character):
         pass
     def choose_subrace(self, sub_race):
         pass
+    def choose_background(self, background):
+        pass
 
 class Ranger(Character):
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
@@ -469,6 +288,8 @@ class Ranger(Character):
         pass
     def choose_subrace(self, sub_race):
         pass
+    def choose_background(self, background):
+        pass
 
 class Rogue(Character):
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
@@ -481,6 +302,8 @@ class Rogue(Character):
     def choose_race(self, race):
         pass
     def choose_subrace(self, sub_race):
+        pass
+    def choose_background(self, background):
         pass
 
 class Sorcerer(Character):
@@ -498,6 +321,8 @@ class Sorcerer(Character):
         pass
     def choose_subrace(self, sub_race):
         pass
+    def choose_background(self, background):
+        pass
 
 class Warlock(Character):
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8):
@@ -513,6 +338,8 @@ class Warlock(Character):
     def choose_race(self, race):
         pass
     def choose_subrace(self, sub_race):
+        pass
+    def choose_background(self, background):
         pass
 
 class Wizard(Character):
@@ -530,3 +357,34 @@ class Wizard(Character):
         pass
     def choose_subrace(self, sub_race):
         pass
+    def choose_background(self, background):
+        pass
+
+# begin the weapons class
+
+class MeleeWeapon:
+    def __init__(self, name, damage_die, damage_type, bonus_attribute, properties):
+        self.name = name
+        self.damage_die = damage_die
+        self.damage_type = damage_type
+        self.bonus_attribute = bonus_attribute
+        self.properties = properties
+
+class RangedWeapon(MeleeWeapon):
+    def __init__(self, name, damage_die, damage_type, bonus_attribute, properties, range):
+        super().__init__(name, damage_die, damage_type, bonus_attribute, properties)
+        self.range = range
+
+def create_melee_weapons(melee_stat_dict):
+    melee_weapons = []
+    for weapon in melee_stat_dict:
+        weapon_object = MeleeWeapon(weapon, melee_stat_dict[weapon][damage_die], melee_stat_dict[weapon][damage_type], melee_stat_dict[weapon][bonus_attribute], melee_stat_dict[weapon][properties])
+        melee_weapons.append(weapon_object)
+    return melee_weapons
+
+def create_ranged_weapons(ranged_stat_dict):
+    ranged_weapons = []
+    for weapon in ranged_stat_dict:
+        weapon_object = RangedWeapon(weapon, ranged_stat_dict[weapon][damage_die], ranged_stat_dict[weapon][damage_type], ranged_stat_dict[weapon][bonus_attribute], ranged_stat_dict[weapon][properties], ranged_stat_dict[weapon][range])
+        ranged_weapons.append(weapon_object)
+    return ranged_weapons
