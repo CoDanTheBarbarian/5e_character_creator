@@ -428,6 +428,20 @@ def create_ranged_weapons(ranged_stat_dict):
         ranged_weapons.append(weapon_object)
     return ranged_weapons
 
+def create_thrown_weapons(thrown_stat_dict):
+    thrown_weapons = []
+    for weapon in thrown_stat_dict:
+        weapon_object = RangedWeapon(
+            weapon,
+            thrown_stat_dict[weapon][damage_die], 
+            thrown_stat_dict[weapon][damage_type], 
+            thrown_stat_dict[weapon][bonus_attribute], 
+            thrown_stat_dict[weapon][properties], 
+            thrown_stat_dict[weapon][range]
+        )
+        thrown_weapons.append(weapon_object)
+    return thrown_weapons
+
 def create_versatile_ranged_weapons(versatile_ranged_stat_dict):
     versatile_ranged_weapons = []
     for weapon in versatile_ranged_stat_dict:

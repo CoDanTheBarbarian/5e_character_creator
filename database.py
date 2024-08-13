@@ -128,9 +128,11 @@ skill_list = [
     deception, 
     intimidation, 
     performance, 
-    persuasion]
+    persuasion
+    ]
 
-skill_core_stat = {athletics: strength, 
+skill_core_stat = {
+    athletics: strength, 
     acrobatics: dexterity, 
     sleight_of_hand: dexterity, 
     stealth: dexterity, 
@@ -147,7 +149,8 @@ skill_core_stat = {athletics: strength,
     deception: charisma, 
     intimidation: charisma, 
     performance: charisma, 
-    persuasion: charisma}
+    persuasion: charisma
+    }
 
 # damage types
 
@@ -164,6 +167,7 @@ damage_type_psychic = "psychic damage"
 damage_type_radiant = "radiant damage"
 damage_type_slashing = "slashing damage"
 damage_type_thunder = "thunder damage"
+
 damage_types = [
     damage_type_acid,
     damage_type_bludgeon, 
@@ -206,7 +210,8 @@ dart = "dart"
 shortbow = "short bow"
 sling = "sling"
 
-simple_weapons = [club,
+simple_weapons = [
+    club,
     dagger,
     greatclub,
     handaxe,
@@ -220,7 +225,8 @@ simple_weapons = [club,
     crossbow_light,
     dart,
     shortbow,
-    sling]
+    sling
+    ]
 
 battleaxe = "battle axe"
 flail = "flail"
@@ -482,8 +488,6 @@ thrown_weapon_stats = {
     properties: [light, thrown],
     range: (20, 60)},
 }
-
-# you still need to split these between versatile weapons and versatile & thrown weapons
 
 versatile_damage_die = "d"
 
