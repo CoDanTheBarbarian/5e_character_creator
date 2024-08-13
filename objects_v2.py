@@ -1,4 +1,5 @@
-from database import *
+from clean_database_v2 import *
+from weapon_and_armor_database import *
 
 class Character:
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10):
@@ -17,38 +18,33 @@ class Character:
         self.wis = wisdom
         self.charisma = charisma
         self.ac = ac
-        self.proficiencies = proficiency_dict.copy()
-        self.saving_throws = saving_throw_proficiencies.copy()
+        self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
-        self.equipment = []
+        self.inventory = []
+        self.equipped_items = []
 
     def get_ability_mod(self, ability):
         ability = getattr(self, ability)
-        return (ability // 2) -5    
+        return (ability // 2) -5
+    
+    def get_core_ability(self, skill):
+        pass
     
     def gain_proficiency(self, prof_list):
         for prof in prof_list:
             self.proficiencies[prof] = True
 
-    def gain_saving_throw(self, ability_list):
-        for ability in ability_list:
-            self.saving_throws[ability] = True
-
     def gain_damage_resistance(self, damage_type):
         self.damage_resistance[damage_type] = True
-
 
     def get_skill_bonus(self, skill):
         if self.proficiencies[skill] == True:
             return self.proficiency_bonus + self.get_ability_mod(skill_core_stat[skill])
         return self.get_ability_mod(skill_core_stat[skill])
     
-    def get_saving_throw_mod(self, ability):
-        if self.saving_throws[ability] == True:
-            return self.proficiency_bonus + self.get_ability_mod(ability)
-        return self.get_ability_mod(ability)
-    
-    def choose_race(self, race):
+
+
+    def choose_race_buffs(self, race):
         if race == dwarf:
             self.race = dwarf
             self.speed = 25
@@ -354,26 +350,27 @@ class Wizard(Character):
 # need to write methods that properly handle the tuple 'damage_die' and 'versatile_damage_die' to account for multiple dice
 
 class MeleeWeapon:
-    def __init__(self, name, damage_die, damage_type, bonus_attribute, properties):
+    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties):
         self.name = name
+        self.weapon_type = weapon_type
         self.damage_die = damage_die
         self.damage_type = damage_type
         self.bonus_attribute = bonus_attribute
         self.properties = properties
 
 class VersatileMeleeWeapon(MeleeWeapon):
-    def __init__(self, name, damage_die, damage_type, bonus_attribute, properties, versatile_damage_die):
-        super().__init__(name, damage_die, damage_type, bonus_attribute, properties)
+    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, versatile_damage_die):
+        super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties)
         self.two_handed_damage_die = versatile_damage_die
 
 class RangedWeapon(MeleeWeapon):
-    def __init__(self, name, damage_die, damage_type, bonus_attribute, properties, range):
-        super().__init__(name, damage_die, damage_type, bonus_attribute, properties)
+    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range):
+        super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties)
         self.range = range
 
 class VersatileRangedWeapon(RangedWeapon):
-    def __init__(self, name, damage_die, damage_type, bonus_attribute, properties, range, versatile_damage_die):
-        super().__init__(name, damage_die, damage_type, bonus_attribute, properties, range)
+    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range, versatile_damage_die):
+        super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range)
         self.two_handed_damage_die = versatile_damage_die
 
 def create_melee_weapons(melee_stat_dict):

@@ -1,172 +1,137 @@
-# races
+# Races and associated Sub Races
 
-dwarf = "dwarf"
-elf = "elf"
-halfling = "halfling"
-human = "human"
-dragonborn = "dragonborn"
-gnome = "gnome"
-half_elf = "half elf"
-half_orc = "half orc"
-tiefling = "tiefling"
-
-list_of_races = [
-    dwarf,
-    elf,
-    halfling,
-    human,
-    dragonborn,
-    gnome,
-    half_elf,
-    half_orc,
-    tiefling
-]
-
-#sub-races
-  
-hill_dwarf = "hill dwarf"
-mountain_dwarf = "mountain dwarf"
-high_elf = "high elf"
-wood_elf = "wood elf"
-drow_elf= "drow elf"
-lightfoot_halfling = "lightfoot halfling"
-stout_halfling = "stout halfling"
-forest_gnome = "forest gnome"
-rock_gnome = "rock gnome"
-
-list_of_subraces = [
-    hill_dwarf,
-    mountain_dwarf,
-    high_elf,
-    wood_elf,
-    drow_elf,
-    lightfoot_halfling,
-    stout_halfling,
-    forest_gnome,
-    rock_gnome
-]
+races = {
+    "Dwarf": 
+            ["Hill Dwarf", "Mountain Dwarf"],
+    "Elf": 
+            ["High Elf", "Wood Elf", "Dark Elf"], 
+    "Halfling": 
+            ["Lightfoot Halfling", "Stout Halfling"],
+    "Human": 
+            [],
+    "Dragonborn":
+            ["Black", "Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"],
+    "Gnome":
+        ["Forest Gnome", "Rock Gnome"],
+    "Half ELf":
+        [],
+    "Half Orc":
+        [],
+    "Tiefling":
+        []
+}
 
 #backgrounds
 
-background_acolyte = "acolyte"
-background_charlatan = "charlatan"
-background_criminal = "criminal"
-background_entertainer = "entertainer"
-background_folk_hero = "folk hero"
-background_guild_artisan = "guild artisan"
-background_hermit = "hermit"
-background_noble = "noble"
-background_outlander = "outlander"
-background_sage = "sage"
-background_sailor = "sailor"
-background_soldier = "soldier"
-background_urchin = "urchin"
+backgrounds = {
+    "Acolyte Background": "Acolyte",
+    "Charlatan Background": "Charlatan",
+    "Criminal Background": "Criminal",
+    "Entertainer Background": "Entertainer",
+    "Folk Hero Background": "Folk Hero",
+    "Guild Artisan Background": "Guild Artisan",
+    "Hermit Background": "Hermit",
+    "Noble Background": "Noble",
+    "Outlander Background": "Outlander",
+    "Sage Background": "Sage",
+    "Sailor Background": "Sailor",
+    "Soldier Background": "Soldier",
+    "Urchin Background": "Urchin"
+}
 
-backgrounds = [
-    background_acolyte,
-    background_charlatan,
-    background_criminal,
-    background_entertainer,
-    background_folk_hero,
-    background_guild_artisan,
-    background_hermit,
-    background_noble,
-    background_outlander,
-    background_sage,
-    background_sailor,
-    background_soldier,
-    background_urchin
-    ]
+# Core Abilities and associated Skills
 
-# core abilities
-
-strength = "strength"
-dexterity = "dexterity"
-constitution = "constitution"
-intelligence = "intelligence"
-wisdom = "wisdom"
-charisma = "charisma"
-
-core_abilities = [strength, dexterity, constitution, intelligence, wisdom, charisma]
-
-# skills
-
-athletics = "athletics"
-acrobatics = "acrobatics"
-sleight_of_hand = "sleight of hand"
-stealth = "stealth"
-arcana = "arcana"
-history = "history"
-investigation = "investigation"
-nature = "nature"
-religion = "religion"
-animal_handling = "animal handling"
-insight = "insight"
-medicine = "medicine"
-perception = "percption"
-survival = "survival"
-deception = "deception"
-intimidation = "intimidation"
-performance = "performance"
-persuasion = "persuasion"
-
-skill_list = [
-    athletics, 
-    acrobatics, 
-    sleight_of_hand, 
-    stealth, 
-    arcana, 
-    history, 
-    investigation, 
-    nature, 
-    religion, 
-    animal_handling, 
-    insight, 
-    medicine, 
-    perception, 
-    survival, 
-    deception, 
-    intimidation, 
-    performance, 
-    persuasion
-    ]
-
-skill_core_stat = {
-    athletics: strength, 
-    acrobatics: dexterity, 
-    sleight_of_hand: dexterity, 
-    stealth: dexterity, 
-    arcana: intelligence, 
-    history: intelligence, 
-    investigation: intelligence, 
-    nature: intelligence, 
-    religion: intelligence, 
-    animal_handling: wisdom, 
-    insight: wisdom, 
-    medicine: wisdom, 
-    perception: wisdom, 
-    survival: wisdom, 
-    deception: charisma, 
-    intimidation: charisma, 
-    performance: charisma, 
-    persuasion: charisma
+cores_and_skills = {
+    "Strength": 
+        ["Saving Throw", "Athletics"],
+    "Dexterity":
+        ["Saving Throw", "Acrobatics", "Sleight of Hand", "Stealth"],
+    "Constitution":
+        ["Saving Throw"],
+    "Intelligence":
+        ["Saving Throw", "Arcana", "History", "Investigation", "Nature", "Religion"],
+    "Wisdom":
+        ["Saving Throw", "Animal Handling", "Insight", "Medicine", "Perception", "Survival"],
+    "Charisma":
+        ["Saving Throw", "Deception", "Intimidation", "Performance", "Persausion"]
+}
+proficiency_status = {
+    'athletics': False, 
+    'acrobatics': False, 
+    'sleight of hand': False, 
+    'stealth': False, 
+    'arcana': False, 
+    'history': False, 
+    'investigation': False, 
+    'nature': False, 
+    'religion': False, 
+    'animal handling': False, 
+    'insight': False, 
+    'medicine': False, 
+    'percption': False, 
+    'survival': False, 
+    'deception': False, 
+    'intimidation': False, 
+    'performance': False, 
+    'persuasion': False, 
+    'light armor': False, 
+    'medium armor': False, 
+    'heavy armor': False, 
+    'shield': False, 
+    'club': False, 
+    'dagger': False, 
+    'greatclub': False, 
+    'handaxe': False, 
+    'javelin': False, 
+    'light hammer': False, 
+    'mace': False, 
+    'quarterstaff': False, 
+    'sickle': False, 
+    'spear': False, 
+    'unarmed strike': False, 
+    'light crossbow': False, 
+    'dart': False, 
+    'short bow': False, 
+    'sling': False, 
+    'battle axe': False, 
+    'flail': False, 
+    'glaive': False, 
+    'great axe': False, 
+    'great sword': False, 
+    'halberd': False, 
+    'lance': False, 
+    'long sword': False, 
+    'maul': False, 
+    'morning star': False, 
+    'pike': False, 
+    'rapier': False, 
+    'scimitar': False, 
+    'short sword': False, 
+    'trident': False, 
+    'war pick': False, 
+    'warhammer': False, 
+    'whip': False, 
+    'blow gun': False, 
+    'hand crossbow': False, 
+    'heavy crossbow': False, 
+    'long bow': False, 
+    'net': False
     }
-
 # damage types
 
-damage_type_acid = "acid"
-damage_type_bludgeon = "bludgeoning"
-damage_type_cold = "cold"
-damage_type_fire = "fire"
-damage_type_force = "force"
-damage_type_lightning = "lightning"
-damage_type_necrotic = "necrotic"
-damage_type_piercing = "piercing"
-damage_type_poison = "poison"
-damage_type_psychic = "psychic"
-damage_type_radiant = "radiant"
-damage_type_slashing = "slashing"
-damage_type_thunder = "thunder"
+damage_type_acid = "acid damage"
+damage_type_bludgeon = "bludgeoning damage"
+damage_type_cold = "cold damage"
+damage_type_fire = "fire damage"
+damage_type_force = "force damage"
+damage_type_lightning = "lightning damage"
+damage_type_necrotic = "necrotic damage"
+damage_type_piercing = "piercing damage"
+damage_type_poison = "poison damage"
+damage_type_psychic = "psychic damage"
+damage_type_radiant = "radiant damage"
+damage_type_slashing = "slashing damage"
+damage_type_thunder = "thunder damage"
 
 damage_types = [
     damage_type_acid,
@@ -191,8 +156,8 @@ medium_armor = "medium armor"
 heavy_armor = "heavy armor"
 shield = "shield"
 
-simple_weapon = "simple"
-martial_weapon = "martial"
+simple_weapon = "simple weapon"
+martial_weapon = "martial weapon"
 
 club = "club"
 dagger = "dagger"
@@ -280,17 +245,17 @@ martial_weapons = [
 
 # weapon properties
 
-ammunition = "ammunition"
-finesse = "finesse"
-heavy = "heavy"
-light = "light"
-loading = "loading"
-ranged = "ranged"
-reach = "reach"
-special = "special:"
-thrown = "thrown"
-two_handed = "two handed"
-versatile = "versatile"
+ammunition = "Ammunition: requires ammo to use, one ammo per use."
+finesse = "Finesse: choose whether to use strength or dex modifier for attack and damage rolls"
+heavy = "Heavy: small and tiny creatures have disacvantage on attack rolls"
+light = "Light: ideal for two weapon fighting"
+loading = "Loading: you can fire only one piece of ammo when you use an action, bonus action or reaction, regardless of how many attacks you have."
+ranged = "Ranged: ranged weapon, with normal and long range. When attacking beyond normal range you have disadvantage"
+reach = "Reach: add 5 feet to your reach while using this weapon"
+special = "Special:"
+thrown = "Thrown: throw this weapon for a ranged attack, using same modifier as a melee attack with this weapon."
+two_handed = "Two Handed: requires two hands to wield"
+versatile = "Versatile: can be used with one or two hands, rolling a different damage die for each option"
 
 weapon_properties = [
     ammunition,
@@ -308,117 +273,98 @@ weapon_properties = [
 
 # create weapon dictionary where each key is a weapon each weapons value is a dictionary of weapon attributes
 
-damage_die = "damage die"
-damage_type = "damage type"
-bonus_attribute = "bonus attribute"
+damage_die = "d"
+damage_type = "damage"
+bonus_attribute = "+"
 properties = "weapon properties"
-weapon_type = "weapon type"
 
 melee_weapon_stats = {
-    club: {weapon_type: simple_weapon,
-           damage_die: (4,),
-           damage_type: damage_type_bludgeon,
-           bonus_attribute: strength,
-           properties: [light]},
+    club: {damage_die: (4,),
+    damage_type: damage_type_bludgeon,
+    bonus_attribute: strength,
+    properties: [light]},
     
-    greatclub: {weapon_type: simple_weapon,
-                damage_die: (8,),
+    greatclub: {damage_die: (8,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: [two_handed]},
     
-    mace: {weapon_type: simple_weapon,
-           damage_die: (6,),
+    mace: {damage_die: (6,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: []},
     
-    sickle: {weapon_type: simple_weapon,
-             damage_die: (4,),
+    sickle: {damage_die: (4,),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [light]},
     
-    flail: {weapon_type: martial_weapon,
-            damage_die: (8,),
+    flail: {damage_die: (8,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: []},
     
-    glaive: {weapon_type: martial_weapon,
-             damage_die: (10,),
+    glaive: {damage_die: (10,),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [heavy, reach, two_handed]},
     
-    greataxe: {weapon_type: martial_weapon,
-               damage_die: (12,),
+    greataxe: {damage_die: (12,),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [heavy, two_handed]},
     
-    greatsword: {weapon_type: martial_weapon,
-                 damage_die: (6, 6),
+    greatsword: {damage_die: (6, 6),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [heavy, two_handed]},
     
-    halberd: {weapon_type: martial_weapon,
-              damage_die: (10,),
+    halberd: {damage_die: (10,),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [heavy, reach, two_handed]},
     
-    lance: {weapon_type: martial_weapon,
-            damage_die: (12,),
+    lance: {damage_die: (12,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: [reach, special]},
     
-    maul: {weapon_type: martial_weapon,
-           damage_die: (6, 6),
+    maul: {damage_die: (6, 6),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: [heavy, two_handed]},
     
-    morningstar: {weapon_type: martial_weapon,
-                  damage_die: (8,),
+    morningstar: {damage_die: (8,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: []},
     
-    pike: {weapon_type: martial_weapon,
-           damage_die: (10,),
+    pike: {damage_die: (10,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: [heavy, reach, two_handed]},
 
-    rapier: {weapon_type: martial_weapon,
-             damage_die: (8,),
+    rapier: {damage_die: (8,),
     damage_type: damage_type_piercing,
     bonus_attribute: (strength, dexterity),
     properties: [finesse]},
 
-    scimitar: {weapon_type: martial_weapon,
-               damage_die: (6,),
+    scimitar: {damage_die: (6,),
     damage_type: damage_type_slashing,
     bonus_attribute: (strength, dexterity),
     properties: [finesse, light]},
 
-    shortsword: {weapon_type: martial_weapon,
-                 damage_die: (6,),
+    shortsword: {damage_die: (6,),
     damage_type: damage_type_piercing,
     bonus_attribute: (strength, dexterity),
     properties: [finesse, light]},
 
-    war_pick: {weapon_type: martial_weapon,
-               damage_die: (8,),
+    war_pick: {damage_die: (8,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: []},
 
-    whip: {weapon_type: martial_weapon,
-           damage_die: (4,),
+    whip: {damage_die: (4,),
     damage_type: damage_type_slashing,
     bonus_attribute: (strength, dexterity),
     properties: [finesse, reach]},
@@ -427,64 +373,55 @@ melee_weapon_stats = {
 range = "range"
 
 ranged_weapon_stats = {
-    crossbow_light: {weapon_type: simple_weapon,
-                     damage_die: (8,),
+    crossbow_light: {damage_die: (8,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged, loading, two_handed],
     range: (80, 320)},
 
-    dart: {weapon_type: simple_weapon,
-           damage_die: (4,),
+    dart: {damage_die: (4,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [finesse, thrown],
     range: (20, 60)},
 
-    shortbow: {weapon_type: simple_weapon,
-               damage_die: (6,),
+    shortbow: {damage_die: (6,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged, two_handed],
     range: (80, 320)},
 
-    sling: {weapon_type: simple_weapon,
-            damage_die: (4,),
+    sling: {damage_die: (4,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged],
     range: (80, 320)},
 
-    blowgun: {weapon_type: martial_weapon,
-              damage_die: (1,),
+    blowgun: {damage_die: (1,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged, loading],
     range: (25, 100)},
 
-    crossbow_hand: {weapon_type: martial_weapon,
-                    damage_die: (6,),
+    crossbow_hand: {damage_die: (6,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged, light, loading],
     range: (30, 120)},
 
-    crossbow_heavy: {weapon_type: martial_weapon,
-                     damage_die: (10,),
+    crossbow_heavy: {damage_die: (10,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged, heavy, loading, two_handed],
     range: (100, 400)},
 
-    longbow: {weapon_type: martial_weapon,
-              damage_die: (8,),
+    longbow: {damage_die: (8,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [ammunition, ranged, heavy, two_handed],
     range: (150, 600)},
 
-    net: {weapon_type: martial_weapon,
-          damage_die: (8,),
+    net: {damage_die: (8,),
     damage_type: damage_type_piercing,
     bonus_attribute: dexterity,
     properties: [special, thrown],
@@ -492,61 +429,53 @@ ranged_weapon_stats = {
 }
 
 thrown_weapon_stats = {
-    dagger: {weapon_type: simple_weapon,
-             damage_die: (4,),
+    dagger: {damage_die: (4,),
     damage_type: damage_type_piercing,
     bonus_attribute: (strength, dexterity),
     properties: [finesse, light, thrown],
     range: (20, 60)},
     
-    handaxe: {weapon_type: simple_weapon,
-              damage_die: (6,),
+    handaxe: {damage_die: (6,),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [light, thrown],
     range: (20, 60)},
 
-    javelin: {weapon_type: simple_weapon,
-              damage_die: (6,),
+    javelin: {damage_die: (6,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: [thrown],
     range: (30, 120)},
 
-    light_hammer: {weapon_type: simple_weapon,
-                   damage_die: (4,),
+    light_hammer: {damage_die: (4,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: [light, thrown],
     range: (20, 60)},
 }
 
-versatile_damage_die = "two handed damage die"
+versatile_damage_die = "d"
 
 versatile_melee_weapon_stats = {
-    quarterstaff: {weapon_type: simple_weapon,
-                   damage_die: (6,),
+    quarterstaff: {damage_die: (6,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: [versatile],
     versatile_damage_die: (8,)},
 
-    battleaxe: {weapon_type: martial_weapon,
-                damage_die: (8,),
+    battleaxe: {damage_die: (8,),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [versatile],
     versatile_damage_die: (10,)},
 
-    longsword: {weapon_type: martial_weapon,
-                damage_die: (8, ),
+    longsword: {damage_die: (8, ),
     damage_type: damage_type_slashing,
     bonus_attribute: strength,
     properties: [versatile],
     versatile_damage_die: (10,)},
 
-    warhammer: {weapon_type: martial_weapon,
-                damage_die: (8,),
+    warhammer: {damage_die: (8,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: [versatile],
@@ -554,16 +483,14 @@ versatile_melee_weapon_stats = {
 }
 
 versatile_ranged_weapon_stats = {
-    trident: {weapon_type: martial_weapon,
-              damage_die: (6,),
+    trident: {damage_die: (6,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: [thrown, versatile],
     range: (20, 60),
     versatile_damage_die: (8,)},
 
-    spear: {weapon_type: simple_weapon,
-            damage_die: (6,),
+    spear: {damage_die: (6,),
     damage_type: damage_type_piercing,
     bonus_attribute: strength,
     properties: [thrown, versatile],
@@ -577,5 +504,3 @@ proficiencies = [light_armor, medium_armor, heavy_armor, shield] + simple_weapon
 saving_throw_proficiencies = {ability: False for ability in core_abilities}
 proficiency_dict = {item: False for item in skill_list + proficiencies}
 damage_resistances = {damage_type: False for damage_type in damage_types}
-
-print(damage_resistances)
