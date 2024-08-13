@@ -185,7 +185,7 @@ damage_types = [
 light_armor = "light armor"
 medium_armor = "medium armor"
 heavy_armor = "heavy armor"
-shield = "shields"
+shield = "shield"
 
 simple_weapon = "simple weapon"
 martial_weapon = "martial weapon"
@@ -284,7 +284,7 @@ reach = "Reach: add 5 feet to your reach while using this weapon"
 special = "Special:"
 thrown = "Thrown: throw this weapon for a ranged attack, using same modifier as a melee attack with this weapon."
 two_handed = "Two Handed: requires two hands to wield"
-versatile = "Versatile: can be used with one or two hands, rolling a different die for each option"
+versatile = "Versatile: can be used with one or two hands, rolling a different damage die for each option"
 
 weapon_properties = [
     ammunition,
@@ -486,21 +486,8 @@ thrown_weapon_stats = {
 # you still need to split these between versatile weapons and versatile & thrown weapons
 
 versatile_damage_die = "d"
-versatile_weapon_stats = {
-    trident: {damage_die: (6,),
-    damage_type: damage_type_piercing,
-    bonus_attribute: strength,
-    properties: [thrown, versatile],
-    range: (20, 60),
-    versatile_damage_die: (8,)},
 
-    spear: {damage_die: (6,),
-    damage_type: damage_type_piercing,
-    bonus_attribute: strength,
-    properties: [thrown, versatile],
-    range: (20, 60),
-    versatile_damage_die: (8,)},
-
+versatile_melee_weapon_stats = {
     quarterstaff: {damage_die: (6,),
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
@@ -523,7 +510,23 @@ versatile_weapon_stats = {
     damage_type: damage_type_bludgeon,
     bonus_attribute: strength,
     properties: [versatile],
-    versatile_damage_die: (10,)},
+    versatile_damage_die: (10,)}
+}
+
+versatile_ranged_weapon_stats = {
+    trident: {damage_die: (6,),
+    damage_type: damage_type_piercing,
+    bonus_attribute: strength,
+    properties: [thrown, versatile],
+    range: (20, 60),
+    versatile_damage_die: (8,)},
+
+    spear: {damage_die: (6,),
+    damage_type: damage_type_piercing,
+    bonus_attribute: strength,
+    properties: [thrown, versatile],
+    range: (20, 60),
+    versatile_damage_die: (8,)}
 }
 
 # creates iterables to insert into certain arguments for character class
