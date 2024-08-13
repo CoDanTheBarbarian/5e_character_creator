@@ -1,4 +1,4 @@
-from clean_database_v2 import *
+from stat_database import *
 from weapon_and_armor_database import *
 
 class Character:
