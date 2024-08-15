@@ -1,5 +1,9 @@
 from stat_database import *
 
+def get_background_profs(background):
+    profs = backgrounds[background]
+    return profs
+
 class Character:
     def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10):
         self.name = name
@@ -24,6 +28,11 @@ class Character:
         self.equipped_items = []
         self.spell_slots = []
         self.spell_list = []
+
+    def apply_background_bonus(self):
+        background = self.background
+        bonus = get_background_profs(background)
+        self.gain_proficiency(bonus)
 
     def get_ability_mod(self, ability):
         ability = getattr(self, ability)

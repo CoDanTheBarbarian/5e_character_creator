@@ -74,7 +74,9 @@ proficiency_status = {
     'light armor': False, 
     'medium armor': False, 
     'heavy armor': False, 
-    'shield': False, 
+    'shield': False,
+    'simple weapons': False,
+    "martial weapons": False, 
     'club': False, 
     'dagger': False, 
     'greatclub': False, 
@@ -118,20 +120,19 @@ proficiency_status = {
 # The dictionary of possible background choices
 
 backgrounds = {
-    "background": 
-    ["acolyte", 
-     "charlatan", 
-     "criminal", 
-     "entertainer", 
-     "folk hero",
-     "guild artisan",
-     "hermit",
-     "noble",
-     "outlander",
-     "sage",
-     "sailor",
-     "soldier",
-     "urchin"] 
+    "acolyte": ["insight", "religion"],
+    "charlatan": ["deception", "sleight_of_hand"],
+    "criminal": ["deception", "stealth"],
+    "entertainer": ["acrobatics", "performance"],
+    "folk hero": ["animal handling", "survival"],
+    "guild artisan": ["insight", "persuasion"],
+    "hermit": ["medicine", "religion"],
+    "noble": ["history", "persuasion"],
+    "outlander": ["athletics", "survival"],
+    "sage": ["arcana", "history"],
+    "sailor": ["athletics", "perception"],
+    "soldier": ["athletics", "intimidation"],
+    "urchin": ["sleight of hand", "stealth"]
 }
 
 # The dictionary of possible damage types
