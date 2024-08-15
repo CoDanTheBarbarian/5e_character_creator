@@ -170,4 +170,3 @@ damage_resistances = {
     'slashing': False, 
     'thunder': False
     }
-    

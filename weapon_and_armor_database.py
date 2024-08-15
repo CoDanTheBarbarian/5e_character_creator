@@ -213,6 +213,8 @@ veratile_ranged_weapon_stats = {
               'weapon properties': ['thrown', 'versatile'], 
               'range': (20, 60), 'two handed damage die': (8,)}}
 
+# separate class from weapons
+
 armor_stats = {
     "padded": {"armor type": "light",
                "ac": 11,

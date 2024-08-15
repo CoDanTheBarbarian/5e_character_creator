@@ -1,49 +1,3 @@
-from stat_database import *
-from weapon_and_armor_database import *
-
-class Character:
-    def __init__(self, name, level=1, xp=0, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10):
-        self.name = name
-        self.race = None
-        self.sub_race = None
-        self.speed = 0
-        self.hp = 0
-        self.proficiency_bonus = 2
-        self.level = level
-        self.xp = xp
-        self.strength = strength
-        self.dex = dexterity
-        self.con = constitution
-        self.int = intelligence
-        self.wis = wisdom
-        self.charisma = charisma
-        self.ac = ac
-        self.proficiencies = proficiency_status.copy()
-        self.damage_resistance = damage_resistances.copy()
-        self.inventory = []
-        self.equipped_items = []
-
-    def get_ability_mod(self, ability):
-        ability = getattr(self, ability)
-        return (ability // 2) -5
-    
-    def get_core_ability(self, skill):
-        return skills_core_stat[skill]
-    
-    def gain_proficiency(self, prof_list):
-        for prof in prof_list:
-            self.proficiencies[prof] = True
-
-    def gain_damage_resistance(self, damage_type):
-        self.damage_resistance[damage_type] = True
-
-    def get_skill_bonus(self, skill):
-        skill_ability = self.get_core_ability(skill)
-        if self.proficiencies[skill] == True:
-            return self.proficiency_bonus + self.get_ability_mod(skill_ability)
-        return self.get_ability_mod(skill_ability)
-            
-    
 class MeleeWeapon:
     def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties):
         self.name = name
@@ -52,6 +6,10 @@ class MeleeWeapon:
         self.damage_type = damage_type
         self.bonus_attribute = bonus_attribute
         self.properties = properties
+
+    def get_attribute(self, attributes):
+        value = list(map(getattr(self, attribute), attributes))
+        print(value)
 
 def create_melee_weapons(melee_stat_dict):
     melee_weapons = []
@@ -127,3 +85,28 @@ def create_versatile_ranged_weapons(versatile_ranged_stat_dict):
             )
         versatile_ranged_weapons.append(weapon_object)
     return versatile_ranged_weapons
+
+class Armor:
+    def __init__(self, name, armor_type, ac, dex_mod, dex_max, stealth_dis, strength_min):
+        self.name = name
+        self.armor_type = armor_type
+        self.ac = ac
+        self.dex_mod = dex_mod
+        self.dex_max = dex_max
+        self.stealth_disad = stealth_dis
+        self.strength_minimum = strength_min
+
+def create_armor(armor_stats_dict):
+    armor_list = []
+    for armor in armor_stats_dict:
+        armor_object = Armor(
+            armor,
+            armor_stats_dict[armor]["armor type"],
+            armor_stats_dict[armor]["ac"],
+            armor_stats_dict[armor]["dex mod"],
+            armor_stats_dict[armor]["dex max"],
+            armor_stats_dict[armor]["stealth disadvantage"],
+            armor_stats_dict[armor]["strength requirement"]
+                             )
+        armor_list.append(armor_object)
+    return armor_list
