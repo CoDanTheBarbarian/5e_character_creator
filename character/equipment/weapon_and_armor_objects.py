@@ -1,3 +1,5 @@
+from weapon_and_armor_database import *
+
 class MeleeWeapon:
     def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties):
         self.name = name
@@ -6,81 +8,85 @@ class MeleeWeapon:
         self.damage_type = damage_type
         self.bonus_attribute = bonus_attribute
         self.properties = properties
+    
+    def __repr__(self) -> str:
+        return self.name
 
-def create_melee_weapons(melee_stat_dict):
-    melee_weapons = []
-    for weapon in melee_stat_dict:
-        weapon_object = MeleeWeapon(
-            weapon, 
-            melee_stat_dict[weapon]['weapon type'],
-            melee_stat_dict[weapon]['damage die'], 
-            melee_stat_dict[weapon]['damage type'], 
-            melee_stat_dict[weapon]["core attribute"], 
-            melee_stat_dict[weapon]["weapon properties"]
+def create_melee_weapon(weapon_name):
+    weapon_data = melee_weapon_stats[weapon_name]
+    weapon_object = MeleeWeapon(
+            weapon_name, 
+            weapon_data[weapon_type],
+            weapon_data[damage_die], 
+            weapon_data[damage_type], 
+            weapon_data[core_attribute], 
+            weapon_data[weapon_properties]
             )
-        melee_weapons.append(weapon_object)
-    return melee_weapons
+    return weapon_object
 
 class VersatileMeleeWeapon(MeleeWeapon):
     def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, versatile_damage_die):
         super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties)
         self.two_handed_damage_die = versatile_damage_die
 
-def create_versatile_melee_weapons(versatile_melee_stat_dict):
-    versatile_melee_weapons = []
-    for weapon in versatile_melee_stat_dict:
-        weapon_object = VersatileMeleeWeapon(
-            weapon, 
-            versatile_melee_stat_dict[weapon]['weapon type'],
-            versatile_melee_stat_dict[weapon]['damage die'], 
-            versatile_melee_stat_dict[weapon]['damage type'], 
-            versatile_melee_stat_dict[weapon]["core attribute"], 
-            versatile_melee_stat_dict[weapon]["weapon properties"],
-            versatile_melee_stat_dict[weapon]['two handed damage die']
+    def __repr__(self) -> str:
+        return self.name
+
+def create_versatile_melee_weapon(weapon_name):
+    weapon_data = versatile_melee_weapon_stats[weapon_name]
+    weapon_object= VersatileMeleeWeapon(
+            weapon_name, 
+            weapon_data[weapon_type],
+            weapon_data[damage_die], 
+            weapon_data[damage_type], 
+            weapon_data[core_attribute], 
+            weapon_data[weapon_properties],
+            weapon_data[versatile_die]
             )
-        versatile_melee_weapons.append(weapon_object)
-    return versatile_melee_weapons
+    return weapon_object
+    
 
 class RangedWeapon(MeleeWeapon):
     def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range):
         super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties)
         self.range = range
 
-def create_ranged_weapons(ranged_stat_dict):
-    ranged_weapons = []
-    for weapon in ranged_stat_dict:
-        weapon_object = RangedWeapon(
-            weapon, 
-            ranged_stat_dict[weapon]['weapon type'],
-            ranged_stat_dict[weapon]['damage die'], 
-            ranged_stat_dict[weapon]['damage type'], 
-            ranged_stat_dict[weapon]["core attribute"], 
-            ranged_stat_dict[weapon]["weapon properties"],
-            ranged_stat_dict[weapon]['range']
+    def __repr__(self) -> str:
+        return self.name
+
+def create_ranged_weapon(weapon_name):
+    weapon_data = ranged_weapon_stats[weapon_name]
+    weapon_object = RangedWeapon(
+            weapon_name, 
+            weapon_data[weapon_type],
+            weapon_data[damage_die], 
+            weapon_data[damage_type], 
+            weapon_data[core_attribute], 
+            weapon_data[weapon_properties]
             )
-        ranged_weapons.append(weapon_object)
-    return ranged_weapons
+    return weapon_object
 
 class VersatileRangedWeapon(RangedWeapon):
     def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range, versatile_damage_die):
         super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range)
         self.two_handed_damage_die = versatile_damage_die
 
-def create_versatile_ranged_weapons(versatile_ranged_stat_dict):
-    versatile_ranged_weapons = []
-    for weapon in versatile_ranged_stat_dict:
-        weapon_object = VersatileRangedWeapon(
-            weapon, 
-            versatile_ranged_stat_dict[weapon]['weapon type'],
-            versatile_ranged_stat_dict[weapon]['damage die'], 
-            versatile_ranged_stat_dict[weapon]['damage type'], 
-            versatile_ranged_stat_dict[weapon]["core attribute"], 
-            versatile_ranged_stat_dict[weapon]["weapon properties"],
-            versatile_ranged_stat_dict[weapon]['range'],
-            versatile_ranged_stat_dict[weapon]['two handed damage die']
+    def __repr__(self) -> str:
+        return self.name
+
+def create_versatile_ranged_weapon(weapon_name):
+    weapon_data = veratile_ranged_weapon_stats[weapon_name]
+    weapon_object = VersatileRangedWeapon(
+            weapon_name, 
+            weapon_data[weapon_type],
+            weapon_data[damage_die], 
+            weapon_data[damage_type], 
+            weapon_data[core_attribute], 
+            weapon_data[weapon_properties],
+            weapon_data[range],
+            weapon_data[versatile_die]
             )
-        versatile_ranged_weapons.append(weapon_object)
-    return versatile_ranged_weapons
+    return weapon_object
 
 class Armor:
     def __init__(self, name, armor_type, ac, dex_mod, dex_max, stealth_penalty, strength_min):
@@ -92,17 +98,18 @@ class Armor:
         self.stealth_penalty = stealth_penalty
         self.strength_min = strength_min
 
-def create_armor(armor_stats_dict):
-    armor_list = []
-    for armor in armor_stats_dict:
-        armor_object = Armor(
-            armor,
-            armor_stats_dict[armor]["armor type"],
-            armor_stats_dict[armor]["ac"],
-            armor_stats_dict[armor]["dex mod"],
-            armor_stats_dict[armor]["dex max"],
-            armor_stats_dict[armor]["disadvantage on stealth"],
-            armor_stats_dict[armor]["strength requirement"]
+    def __repr__(self) -> str:
+        return self.name
+
+def create_armor(armor_name):
+    armor_data = armor_stats[armor_name]
+    armor_object = Armor(
+            armor_name,
+            armor_data[armor_type],
+            armor_data[ac],
+            armor_data[dex_mod],
+            armor_data[dex_max],
+            armor_data[stealth_penalty],
+            armor_data[strength_min]
                              )
-        armor_list.append(armor_object)
-    return armor_list
+    return armor_object

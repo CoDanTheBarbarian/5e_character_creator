@@ -25,6 +25,9 @@ class Character:
         self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []
+        self.weapon = []
+        self.armor = []
+        self.shield = []
         self.equipped_items = []
         self.spell_casting_ability = None
         self.spell_slots = spell_slots
@@ -33,6 +36,8 @@ class Character:
     # Universal attribute getter
 
     def get_attribute(self, attribute):
+        if getattr(self, attribute) == []:
+            return None
         return getattr(self, attribute)
 
     # Methods dealing with the 6 core stats and their associated abilities

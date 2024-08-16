@@ -1,8 +1,9 @@
-weapon_type = "weapon type"
-damage_die = "damage die"
-damage_type = "damage type"
-core_attribute = "core attribute"
-weapon_properties = "weapon properties"
+                                # below is what each of these keys is expecting for a value
+weapon_type = "weapon type"   # <-- a string 'simple' or 'martial'
+damage_die = "damage die"   # <-- a tuple containing the individual die rolls for damage (multiple values means multiple rolls)
+damage_type = "damage type"     # <-- a string representing damage type
+core_attribute = "core attribute"    # <-- a tuple containing which ability_mod gets added to attack rolls with this weapon (multiple values means use the one that's higher)
+weapon_properties = "weapon properties"     #  <-- a list of strings representing keys from the weapon properties dictionary
 
 melee_weapon_stats = {
     'club': {weapon_type: 'simple', 
@@ -97,14 +98,14 @@ melee_weapon_stats = {
              weapon_properties: ['finesse', 'reach']}
 }
 
-range = "rangege"
+range = "range"   # <-- a tuple pair of integers representing weapon range, first nummber is normal range, second is long range. 
 
-rangeged_weapon_stats = {
+ranged_weapon_stats = {
     'light crossbow': {weapon_type: 'simple', 
                        damage_die: (8,), 
                        damage_type: 'piercing', 
                        core_attribute: ('dexterity',), 
-                       weapon_properties: ['ammunition', 'rangeged', 'loading', 'two handed'], 
+                       weapon_properties: ['ammunition', 'ranged', 'loading', 'two handed'], 
                        range: (80, 320)}, 
     'dart': {weapon_type: 
              'simple', damage_die: (4,), 
@@ -116,37 +117,37 @@ rangeged_weapon_stats = {
                   damage_die: (6,), 
                   damage_type: 'piercing', 
                   core_attribute: ('dexterity',), 
-                  weapon_properties: ['ammunition', 'rangeged', 'two handed'], 
+                  weapon_properties: ['ammunition', 'ranged', 'two handed'], 
                   range: (80, 320)}, 
     'sling': {weapon_type: 'simple', 
               damage_die: (4,), 
               damage_type: 'bludgeoning', 
               core_attribute: ('dexterity',), 
-              weapon_properties: ['ammunition', 'rangeged'], 
+              weapon_properties: ['ammunition', 'ranged'], 
               range: (80, 320)}, 
     'blow gun': {weapon_type: 'martial', 
                  damage_die: (1,), 
                  damage_type: 'piercing', 
                  core_attribute: ('dexterity',), 
-                 weapon_properties: ['ammunition', 'rangeged', 'loading'], 
+                 weapon_properties: ['ammunition', 'ranged', 'loading'], 
                  range: (25, 100)}, 
     'hand crossbow': {weapon_type: 'martial', 
                       damage_die: (6,), 
                       damage_type: 'piercing', 
                       core_attribute: ('dexterity',), 
-                      weapon_properties: ['ammunition', 'rangeged', 'light', 'loading'], 
+                      weapon_properties: ['ammunition', 'ranged', 'light', 'loading'], 
                       range: (30, 120)}, 
     'heavy crossbow': {weapon_type: 'martial', 
                        damage_die: (10,), 
                        damage_type: 'piercing', 
                        core_attribute: ('dexterity',), 
-                       weapon_properties: ['ammunition', 'rangeged', 'heavy', 'loading', 'two handed'], 
+                       weapon_properties: ['ammunition', 'ranged', 'heavy', 'loading', 'two handed'], 
                        range: (100, 400)}, 
     'long bow': {weapon_type: 'martial', 
                  damage_die: (8,), 
                  damage_type: 'piercing', 
                  core_attribute: ('dexterity',), 
-                 weapon_properties: ['ammunition', 'rangeged', 'heavy', 'two handed'], 
+                 weapon_properties: ['ammunition', 'ranged', 'heavy', 'two handed'], 
                  range: (150, 600)}, 
     'net': {weapon_type: 'martial', 
             damage_die: (8,), 
@@ -209,7 +210,7 @@ versatile_melee_weapon_stats = {
                   versatile_die: (10,)}
     }
 
-veratile_rangeged_weapon_stats = {
+veratile_ranged_weapon_stats = {
     'trident': {weapon_type: 'martial', 
                 damage_die: (6,), 
                 damage_type: 'piercing', 
