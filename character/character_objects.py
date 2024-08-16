@@ -26,6 +26,7 @@ class Character:
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []
         self.equipped_items = []
+        self.spell_casting_ability = None
         self.spell_slots = {}
         self.spell_list = []
 
@@ -116,6 +117,23 @@ class Character:
                 self.ac += self.dex
 
     # Methods for applying race and subrace stats
+
+    def apply_race_bonus(self, race):
+        self.race = race.race
+        self.speed = race.speed
+        if race.stat_bonus:
+            for stat, bonus in race.stat_bonus:
+                self.increase_core_stat(stat, bonus)
+        if race.proficiencies:
+            for proficiency in race.proficiencies:
+                self.gain_proficiency(proficiency)
+        if race.resistances:
+            for resistance in race.resistances:
+                self.gain_damage_resistance(resistance)
+        if race.prof_choices:
+            self.gain_proficiency_choice(race.prof_choices[0], race.prof_choices[1])
+        if race.subraces:
+            self.apply_subrace_bonus(self.sub_race)
     
     def apply_subrace_bonus(self, subrace):
         self.sub_race = subrace.subrace
@@ -136,26 +154,17 @@ class Character:
             self.breath_size = subrace.breath_size
             self.breath_type = subrace.breath_type
 
+    # spells and spell list methods
 
-    def apply_race_bonus(self, race):
-        self.race = race.race
-        self.speed = race.speed
-        if race.stat_bonus:
-            for stat, bonus in race.stat_bonus:
-                self.increase_core_stat(stat, bonus)
-        if race.proficiencies:
-            for proficiency in race.proficiencies:
-                self.gain_proficiency(proficiency)
-        if race.resistances:
-            for resistance in race.resistances:
-                self.gain_damage_resistance(resistance)
-        if race.prof_choices:
-            self.gain_proficiency_choice(race.prof_choices[0], race.prof_choices[1])
-        if race.subraces:
-            choices = race.subraces
-            user_choice = "user choice", "function prompting a single choice", choices# some line of code that allows the user to choose from the 'choices' list
-            self.sub_race = user_choice
-            self.apply_subrace_bonus(user_choice)
+    def populate_spell_list(self, self_class):
+        self.spell_list = spell_list[self_class]
+
+    def spell_attack(self):
+        return self.proficiency_bonus + self.get_ability_mod(self.spell_casting_ability)
+    
+    def spell_save_dc(self):
+        return 8 + self.spell_attack()
+    
 
 
 

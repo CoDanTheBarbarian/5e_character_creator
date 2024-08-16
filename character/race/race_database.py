@@ -22,7 +22,7 @@ races = {
 race_stats = {
     "dwarf": {
         "speed": 25, 
-        "ability bonus": [("con", 2)],
+        "ability bonus": [("constitution", 2)],
         "proficiencies": ['battle axe', 'handaxe', "light hammer", "warhammer"],
         "resistances": ["poison"],
         "prof choices": [],
@@ -30,7 +30,7 @@ race_stats = {
         },
     "elf": {
         "speed": 30, 
-        "ability bonus": [("dex", 2)],
+        "ability bonus": [("dexterity", 2)],
         "proficiencies": ["perception"],
         "resistances": [],
         "prof choices": [],
@@ -38,7 +38,7 @@ race_stats = {
         }, 
     "halfling": {
         "speed": 25, 
-        "ability bonus": [("dex", 2)],
+        "ability bonus": [("dexterity", 2)],
         "proficiencies": [],
         "resistances": [],
         "prof choices": [],
@@ -46,7 +46,12 @@ race_stats = {
         },
     "human": {
         "speed": 30, 
-        "ability bonus": [("strength", 1), ("dex", 1), ("con", 1), ("int", 1), ("wis", 1), ("charisma", 1)],
+        "ability bonus": [("strength", 1), 
+                          ("dexterity", 1), 
+                          ("constitution", 1), 
+                          ("intelligence", 1), 
+                          ("wisdom", 1), 
+                          ("charisma", 1)],
         "proficiencies": [],
         "resistances": [],
         "prof choices": [],
@@ -61,7 +66,7 @@ race_stats = {
         "sub races": races["dragonborn"]},
     "gnome": {
         "speed": 25, 
-        "ability bonus": [("dex", 2)],
+        "ability bonus": [("dexterity", 2)],
         "proficiencies": [],
         "resistances": [],
         "prof choices": [],
@@ -96,7 +101,7 @@ race_stats = {
         },
     "half orc": {
         "speed": 30, 
-        "ability bonus": [("strength", 2), ("con", 1)],
+        "ability bonus": [("strength", 2), ("constitution", 1)],
         "proficiencies": [],
         "resistances": [],
         "prof choices": [],
@@ -104,7 +109,7 @@ race_stats = {
         },
     "tiefling": {
         "speed": 30, 
-        "ability bonus": [("int", 1), ("charisma", 2)],
+        "ability bonus": [("intelligence", 1), ("charisma", 2)],
         "proficiencies": [],
         "resistances": ["fire"],
         "prof choices": [],
@@ -114,7 +119,7 @@ race_stats = {
 
 sub_race_stats = {
     "hill dwarf": {
-        "stat bonus": [("wis", 1)],
+        "stat bonus": [("wisdom", 1)],
         "proficiencies": [],
         "resistances": [],
         "hp bonus": "hp += 1 * self.level",
@@ -128,14 +133,14 @@ sub_race_stats = {
         "speed bonus": None
         },
     "high elf": {
-        "stat bonus": [("int", 1)],
+        "stat bonus": [("intelligence", 1)],
         "proficiencies": ['long sword', "short sword", "long bow", "short bow"],
         "resistances": [],
         "hp bonus": None,
         "speed bonus": None
         },
     "wood elf": {
-        "stat bonus": [("wis", 1)],
+        "stat bonus": [("wisdom", 1)],
         "proficiencies": ['long sword', "short sword", "long bow", "short bow"],
         "resistances": [],
         "hp bonus": None,
@@ -263,14 +268,14 @@ sub_race_stats = {
         "breath type": "cold"
         },
     "forest gnome": {
-        "stat bonus": [("dex", 1)],
+        "stat bonus": [("dexterity", 1)],
         "proficiencies": [],
         "resistances": [],
         "hp bonus": None,
         "speed bonus": None
         },
     "rock gnome": {
-        "stat bonus": [("con", 1)],
+        "stat bonus": [("constitution", 1)],
         "proficiencies": [],
         "resistances": [],
         "hp bonus": None,
