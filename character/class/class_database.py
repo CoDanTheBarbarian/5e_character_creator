@@ -54,7 +54,7 @@ class_data = {
              'performance', 
              'persausion'], 
              3),
-        "class abilities": [],
+        "class abilities": ["spell casting", "bardic inspiration"],
         },
     "cleric": {
         "name": "cleric",
@@ -72,7 +72,7 @@ class_data = {
              "persuasion", 
              "religion"],
             2),
-        "class abilities": [],
+        "class abilities": ["spell casting", "divine domain"],
         },
     "druid": {
         "name": "druid",
@@ -103,7 +103,7 @@ class_data = {
              "survival"], 
              2
              ),
-        "class abilities": [],
+        "class abilities": ["spell casting", "druidic"],
         },
     "fighter": {
         "name": "fighter",
@@ -128,7 +128,7 @@ class_data = {
                 "survival"
             ], 2
         ),
-        "class abilities": [],
+        "class abilities": ["fighting style", "second wind"],
         },
     "monk": {
         "name": "monk",
@@ -171,7 +171,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": [],
+        "class abilities": ["spell casting", "divine sense", "lay on hands"],
         },
     "ranger": {
         "name": "ranger",
@@ -198,7 +198,7 @@ class_data = {
                 "survival"
             ], 3
         ),
-        "class abilities": [],
+        "class abilities": ["favored enemy", "natural explorer"],
         },
     "rogue": {
         "name": "rogue",
@@ -228,7 +228,7 @@ class_data = {
                 "stealth"
             ], 4
         ),
-        "class abilities": [],
+        "class abilities": ["expertise", "sneak attack", "thieves' cant"],
         },
     "sorcerer": {
         "name": "sorcerer",
@@ -251,7 +251,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": [],
+        "class abilities": ["spell casting", "sorcerous origin"],
         },
     "warlock": {
         "name": "warlock",
@@ -273,7 +273,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": [],
+        "class abilities": ["otherworldy patron", "pact magic"],
         },
     "wizard": {
         "name": "wizard",
@@ -296,6 +296,6 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": [],
+        "class abilities": ["spell casting", "arcane recovery"],
         }
     }
