@@ -1,3 +1,5 @@
+# still need to add 'class abilities' to every class other than barbarian
+
 class_data = {
     "barbarian": {
         "name": "barbarian",

@@ -14,6 +14,8 @@ class Barbarian(Class):
         super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities)
         self.rage = rage_charges
 
+# need to establish the unique arguments for each class and set up according inits
+
 class Bard(Class):
     def __init__(self, name, hit_die, proficiencies, prof_choice_list):
         super().__init__(name, hit_die, proficiencies, prof_choice_list)
