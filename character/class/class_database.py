@@ -1,10 +1,18 @@
+name = "name"
+hit_die = "hit_die"
+proficiencies = "proficiencies "
+proficiency_choices = "proficiency choice "
+class_abilities = "class abilities "
+equipment = "starting equipment"
+
+
 # still need to add 'class abilities' to every class other than barbarian
 
 class_data = {
     "barbarian": {
-        "name": "barbarian",
-        "hit die": 12,
-        "proficiencies": ["light armor", 
+        name: "barbarian",
+        hit_die: 12,
+        proficiencies: ["light armor", 
                           "medium armor", 
                           "heavy armor", 
                           "shield", 
@@ -12,7 +20,7 @@ class_data = {
                           "martial weapons", 
                           "strength",
                           "constitution"],
-        "proficiency choice": (
+        proficiency_choices: (
             ["animal handling", 
              "athletics", 
              "intimidation", 
@@ -20,14 +28,14 @@ class_data = {
              "perception", 
              "survival"],
                2),
-        "class abilities": ["rage", "unarmored defense"], # need to create a database for class abilities
-        "starting equipment": [],
+        class_abilities: ["rage", "unarmored defense"], # need to create a database for class abilities
+        equipment: [],
         "rage charges": 2
         },
     "bard": {
-        "name": "bard",
-        "hit die": 8,
-        "proficiencies": ["light armor", 
+        name: "bard",
+        hit_die: 8,
+        proficiencies: ["light armor", 
                           "simple weapons", 
                           "hand crossbow", 
                           "long sword", 
@@ -35,7 +43,7 @@ class_data = {
                           "short sword", 
                           "dexterity", 
                           "charisma"],
-        "proficiency choice": (
+        proficiency_choices: (
             ['athletics', 
              'acrobatics', 
              'sleight of hand', 
@@ -55,8 +63,8 @@ class_data = {
              'performance', 
              'persausion'], 
              3),
-        "class abilities": ["spell casting", "bardic inspiration"],
-        "starting equipment": [],
+        class_abilities: ["spell casting", "bardic inspiration"],
+        equipment: [],
         "spell casting ability": "charisma",
         "spell slots": {
             "cantrips": 4,
@@ -66,23 +74,23 @@ class_data = {
         "bardic die": 6
         },
     "cleric": {
-        "name": "cleric",
-        "hit die": 8,
-        "proficiencies": ["light armor", 
+        name: "cleric",
+        hit_die: 8,
+        proficiencies: ["light armor", 
                           "medium armor", 
                           "shield", 
                           "simple weapons", 
                           "wisdom", 
                           "charisma"],
-        "proficiency choice": (
+        proficiency_choices: (
             ["history", 
              "insight", 
              "medicine", 
              "persuasion", 
              "religion"],
             2),
-        "class abilities": ["spell casting", "divine domain"],
-        "starting equipment": [],
+        class_abilities: ["spell casting", "divine domain"],
+        equipment: [],
         "spell casting ability": "wisdom",
         "spell slots": {
             "cantrips": 3,
@@ -92,9 +100,9 @@ class_data = {
         "channel divinity charges": 0
         },
     "druid": {
-        "name": "druid",
-        "hit die": 8,
-        "proficiencies": ["light armor", 
+        name: "druid",
+        hit_die: 8,
+        proficiencies: ["light armor", 
                           "medium armor", 
                           "shield", 
                           "club", 
@@ -109,7 +117,7 @@ class_data = {
                           'spear', 
                           "intelligence", 
                           "wisdom"],
-        "proficiency choice": (
+        proficiency_choices: (
             ["arcana", 
              "animal handling", 
              "insight", 
@@ -120,8 +128,8 @@ class_data = {
              "survival"], 
              2
              ),
-        "class abilities": ["spell casting", "druidic"],
-        "starting equipment": [],
+        class_abilities: ["spell casting", "druidic"],
+        equipment: [],
         "spell casting ability": "charisma",
         "spell slots": {
             "cantrips": 2,
@@ -129,9 +137,9 @@ class_data = {
             },
         },
     "fighter": {
-        "name": "fighter",
-        "hit die": 10,
-        "proficiencies": ["light armor", 
+        name: "fighter",
+        hit_die: 10,
+        proficiencies: ["light armor", 
                           "medium armor", 
                           'heavy armor', 
                           'shield', 
@@ -139,7 +147,7 @@ class_data = {
                           'martial_weapons', 
                           'strength', 
                           'constitution'],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "acrobatics", 
                 "animal handling", 
@@ -151,18 +159,18 @@ class_data = {
                 "survival"
             ], 2
         ),
-        "class abilities": ["fighting style", "second wind"],
-        "starting equipment": [],
+        class_abilities: ["fighting style", "second wind"],
+        equipment: [],
         "fighting style": ["list of fighting styles"]
         },
     "monk": {
-        "name": "monk",
-        "hit die": 8,
-        "proficiencies": ["simple weapons", 
+        name: "monk",
+        hit_die: 8,
+        proficiencies: ["simple weapons", 
                           "short sword", 
                           "strength",
                           "dexterity"],
-        "proficiency choice": (
+        proficiency_choices: (
             ["acrobatics", 
              "athletics", 
              "history", 
@@ -170,14 +178,14 @@ class_data = {
              "religion", 
              "stealth"],
                2),
-        "class abilities": ["unarmored defense", "martial arts"],
-        "starting equipment": [],
+        class_abilities: ["unarmored defense", "martial arts"],
+        equipment: [],
         "ki points": 0
         },
     "paladin": {
-        "name": "paladin",
-        "hit die": 10,
-        "proficiencies": [
+        name: "paladin",
+        hit_die: 10,
+        proficiencies: [
             "light armor", 
             "medium armor", 
             "heavy armor", 
@@ -187,7 +195,7 @@ class_data = {
             "wisdom", 
             "charisma"
         ],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "athletics", 
                 "insight", 
@@ -197,16 +205,16 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": ["spell casting", "divine sense", "lay on hands"],
-        "starting equipment": [],
+        class_abilities: ["spell casting", "divine sense", "lay on hands"],
+        equipment: [],
         "spell casting ability": "charisma",
         "spell slots": {},
         "lay on hands": "level x 5"
         },
     "ranger": {
-        "name": "ranger",
-        "hit die": 10,
-        "proficiencies": [
+        name: "ranger",
+        hit_die: 10,
+        proficiencies: [
             "light armor", 
             "medium armor", 
             "heavy armor", 
@@ -216,7 +224,7 @@ class_data = {
             'strength', 
             'dexterity'
         ],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "animal handling", 
                 "athletics", 
@@ -228,13 +236,13 @@ class_data = {
                 "survival"
             ], 3
         ),
-        "class abilities": ["favored enemy", "natural explorer"],
-        "starting equipment": [],
+        class_abilities: ["favored enemy", "natural explorer"],
+        equipment: [],
         },
     "rogue": {
-        "name": "rogue",
-        "hit die": 8,
-        "proficiencies": [
+        name: "rogue",
+        hit_die: 8,
+        proficiencies: [
             "light armor", 
             "hand crossbow", 
             "long sword", 
@@ -244,7 +252,7 @@ class_data = {
             "dexterity", 
             "intelligence"
         ],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "acrobatics", 
                 "athletics", 
@@ -259,8 +267,8 @@ class_data = {
                 "stealth"
             ], 4
         ),
-        "class abilities": ["expertise", "sneak attack", "thieves' cant"],
-        "starting equipment": [],
+        class_abilities: ["expertise", "sneak attack", "thieves' cant"],
+        equipment: [],
         "spell casting ability": "charisma",
         "spell slots": {
             "cantrips": 4,
@@ -269,9 +277,9 @@ class_data = {
         "sneak attack die": 6
         },
     "sorcerer": {
-        "name": "sorcerer",
-        "hit die": 6,
-        "proficiencies": [
+        name: "sorcerer",
+        hit_die: 6,
+        proficiencies: [
             'dagger', 
             'dart', 
             'sling', 
@@ -280,7 +288,7 @@ class_data = {
             'constitution', 
             'charisma'
         ],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "deception", 
                 "insight", 
@@ -289,8 +297,8 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": ["spell casting", "sorcerous origin"],
-        "starting equipment": [],
+        class_abilities: ["spell casting", "sorcerous origin"],
+        equipment: [],
         "spell casting ability": "charisma",
         "spell slots": {
             "cantrips": 4,
@@ -300,15 +308,15 @@ class_data = {
         "origin": ["draconic", "wild magic"]
         },
     "warlock": {
-        "name": "warlock",
-        "hit die": 8,
-        "proficiencies": [
+        name: "warlock",
+        hit_die: 8,
+        proficiencies: [
             'light_armor', 
             'simple weapons', 
             'wisdom', 
             'charisma'
         ],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "arcana", 
                 "deception", 
@@ -319,8 +327,8 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": ["otherworldy patron", "pact magic"],
-        "starting equipment": [],
+        class_abilities: ["otherworldy patron", "pact magic"],
+        equipment: [],
         "spell casting ability": "charisma",
         "spell slots": {
             "cantrips": 2,
@@ -330,9 +338,9 @@ class_data = {
         "patron": ["list of patrons"]
         },
     "wizard": {
-        "name": "wizard",
-        "hit die": 6,
-        "proficiencies": [
+        name: "wizard",
+        hit_die: 6,
+        proficiencies: [
             'dagger', 
             'dart', 
             'sling', 
@@ -341,7 +349,7 @@ class_data = {
             'intelligence', 
             'wisdom'
         ],
-        "proficiency choice": (
+        proficiency_choices: (
             [
                 "history", 
                 "insight", 
@@ -350,8 +358,8 @@ class_data = {
                 "religion"
             ], 2
         ),
-        "class abilities": ["spell casting", "arcane recovery"],
-        "starting equipment": [],
+        class_abilities: ["spell casting", "arcane recovery"],
+        equipment: [],
         "spell casting ability": "intelligence",
         "spell slots": {
             "cantrips": 3,

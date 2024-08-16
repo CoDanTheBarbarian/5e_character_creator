@@ -83,14 +83,14 @@ def create_versatile_ranged_weapons(versatile_ranged_stat_dict):
     return versatile_ranged_weapons
 
 class Armor:
-    def __init__(self, name, armor_type, ac, dex_mod, dex_max, stealth_dis, strength_min):
+    def __init__(self, name, armor_type, ac, dex_mod, dex_max, stealth_penalty, strength_min):
         self.name = name
         self.armor_type = armor_type
         self.ac = ac
         self.dex_mod = dex_mod
         self.dex_max = dex_max
-        self.stealth_disad = stealth_dis
-        self.strength_minimum = strength_min
+        self.stealth_penalty = stealth_penalty
+        self.strength_min = strength_min
 
 def create_armor(armor_stats_dict):
     armor_list = []

@@ -18,66 +18,72 @@ races = {
     "tiefling":
         []
 }
+speed = "speed"
+ability_bonus = "ability bonus"
+proficiencies = "proficiencies"
+resistances = "resistances"
+prof_choices = "proficiency choices"
+sub_races = "sub races"
 
 race_stats = {
     "dwarf": {
-        "speed": 25, 
-        "ability bonus": [("constitution", 2)],
-        "proficiencies": ['battle axe', 'handaxe', "light hammer", "warhammer"],
-        "resistances": ["poison"],
-        "prof choices": [],
-        "sub races": races["dwarf"]
+        speed: 25, 
+        ability_bonus: [("constitution", 2)],
+        proficiencies: ['battle axe', 'handaxe', "light hammer", "warhammer"],
+        resistances: ["poison"],
+        prof_choices: [],
+        sub_races: races["dwarf"]
         },
     "elf": {
-        "speed": 30, 
-        "ability bonus": [("dexterity", 2)],
-        "proficiencies": ["perception"],
-        "resistances": [],
-        "prof choices": [],
-        "sub races": races["elf"]
+        speed: 30, 
+        ability_bonus: [("dexterity", 2)],
+        proficiencies: ["perception"],
+        resistances: [],
+        prof_choices: [],
+        sub_races: races["elf"]
         }, 
     "halfling": {
-        "speed": 25, 
-        "ability bonus": [("dexterity", 2)],
-        "proficiencies": [],
-        "resistances": [],
-        "prof choices": [],
-        "sub races": races["halfling"]
+        speed: 25, 
+        ability_bonus: [("dexterity", 2)],
+        proficiencies: [],
+        resistances: [],
+        prof_choices: [],
+        sub_races: races["halfling"]
         },
     "human": {
-        "speed": 30, 
-        "ability bonus": [("strength", 1), 
+        speed: 30, 
+        ability_bonus: [("strength", 1), 
                           ("dexterity", 1), 
                           ("constitution", 1), 
                           ("intelligence", 1), 
                           ("wisdom", 1), 
                           ("charisma", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "prof choices": [],
-        "sub races": races["human"]
+        proficiencies: [],
+        resistances: [],
+        prof_choices: [],
+        sub_races: races["human"]
         },
     "dragonborn": {
-        "speed": 30, 
-        "ability bonus": [("strength", 2), ("charisma", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "prof choices": [],
-        "sub races": races["dragonborn"]},
+        speed: 30, 
+        ability_bonus: [("strength", 2), ("charisma", 1)],
+        proficiencies: [],
+        resistances: [],
+        prof_choices: [],
+        sub_races: races["dragonborn"]},
     "gnome": {
-        "speed": 25, 
-        "ability bonus": [("dexterity", 2)],
-        "proficiencies": [],
-        "resistances": [],
-        "prof choices": [],
-        "sub races": races["halfling"]
+        speed: 25, 
+        ability_bonus: [("dexterity", 2)],
+        proficiencies: [],
+        resistances: [],
+        prof_choices: [],
+        sub_races: races["halfling"]
         },
     "half elf": {
-        "speed": 30, 
-        "ability bonus": [("charisma", 2)],
-        "proficiencies": [],
-        "resistances": [],
-        "prof choices": [
+        speed: 30, 
+        ability_bonus: [("charisma", 2)],
+        proficiencies: [],
+        resistances: [],
+        prof_choices: [
             (
             ['athletics', 
             'acrobatics', 
@@ -97,189 +103,195 @@ race_stats = {
             'intimidation', 
             'performance', 
             'persausion'], 2)],
-        "sub races": races["half elf"]
+        sub_races: races["half elf"]
         },
     "half orc": {
-        "speed": 30, 
-        "ability bonus": [("strength", 2), ("constitution", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "prof choices": [],
-        "sub races": races["half orc"]
+        speed: 30, 
+        ability_bonus: [("strength", 2), ("constitution", 1)],
+        proficiencies: [],
+        resistances: [],
+        prof_choices: [],
+        sub_races: races["half orc"]
         },
     "tiefling": {
-        "speed": 30, 
-        "ability bonus": [("intelligence", 1), ("charisma", 2)],
-        "proficiencies": [],
-        "resistances": ["fire"],
-        "prof choices": [],
-        "sub races": races["tiefling"]
+        speed: 30, 
+        ability_bonus: [("intelligence", 1), ("charisma", 2)],
+        proficiencies: [],
+        resistances: ["fire"],
+        prof_choices: [],
+        sub_races: races["tiefling"]
         }
 }
 
+hp_bonus = "hp bonus"
+speed_bonus = "speed bonus"
+breath_shape = "breath shape"
+breath_size = "breath size"
+breath_type = "damage type"
+
 sub_race_stats = {
     "hill dwarf": {
-        "stat bonus": [("wisdom", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "hp bonus": "hp += 1 * self.level",
-        "speed bonus": None
+        ability_bonus: [("wisdom", 1)],
+        proficiencies: [],
+        resistances: [],
+        hp_bonus: "hp += 1 * self.level",
+        speed_bonus: None
         },
     "mountain dwarf": {
-        "stat bonus": [("strength", 2)],
-        "proficiencies": ['light armor', 'medium armor'],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("strength", 2)],
+        proficiencies: ['light armor', 'medium armor'],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
         },
     "high elf": {
-        "stat bonus": [("intelligence", 1)],
-        "proficiencies": ['long sword', "short sword", "long bow", "short bow"],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("intelligence", 1)],
+        proficiencies: ['long sword', "short sword", "long bow", "short bow"],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
         },
     "wood elf": {
-        "stat bonus": [("wisdom", 1)],
-        "proficiencies": ['long sword', "short sword", "long bow", "short bow"],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": 5
+        ability_bonus: [("wisdom", 1)],
+        proficiencies: ['long sword', "short sword", "long bow", "short bow"],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: 5
         },
     "dark elf": {
-        "stat bonus": [("charisma", 1)],
-        "proficiencies": ['rapier', "short sword", "hand crossbow"],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("charisma", 1)],
+        proficiencies: ['rapier', "short sword", "hand crossbow"],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
         },
     "lightfoot halfling": {
-        "stat bonus": [("charisma", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("charisma", 1)],
+        proficiencies: [],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
         },
     "stout halfling": {
-        "stat bonus": [("charisma", 1)],
-        "proficiencies": [],
-        "resistances": ["poison"],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("charisma", 1)],
+        proficiencies: [],
+        resistances: ["poison"],
+        hp_bonus: None,
+        speed_bonus: None
         },
     "black": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["acid"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "line",
-        "breath size": (5, 30),
-        "breath type": "acid"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["acid"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "line",
+        breath_size: (5, 30),
+        breath_type: "acid"
         },
     "blue": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["lightning"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "line",
-        "breath size": (5, 30),
-        "breath type": "lightning"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["lightning"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "line",
+        breath_size: (5, 30),
+        breath_type: "lightning"
         },
     "brass": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["fire"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "line",
-        "breath size": (5, 30),
-        "breath type": "fire"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["fire"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "line",
+        breath_size: (5, 30),
+        breath_type: "fire"
         },
     "bronze": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["lightning"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "line",
-        "breath size": (5, 30),
-        "breath type": "lightning"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["lightning"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "line",
+        breath_size: (5, 30),
+        breath_type: "lightning"
         },
     "copper": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["acid"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "line",
-        "breath size": (5, 30),
-        "breath type": "acid"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["acid"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "line",
+        breath_size: (5, 30),
+        breath_type: "acid"
         },
     "gold": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["fire"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "cone",
-        "breath size": (15,),
-        "breath type": "fire"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["fire"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "cone",
+        breath_size: (15,),
+        breath_type: "fire"
         },
     "green": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["poison"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "cone",
-        "breath size": (15,),
-        "breath type": "poison"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["poison"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "cone",
+        breath_size: (15,),
+        breath_type: "poison"
         },
     "red": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["fire"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "cone",
-        "breath size": (15,),
-        "breath type": "fire"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["fire"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "cone",
+        breath_size: (15,),
+        breath_type: "fire"
         },
     "silver": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["cold"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "cone",
-        "breath size": (15,),
-        "breath type": "cold"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["cold"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "cone",
+        breath_size: (15,),
+        breath_type: "cold"
         },
     "white": {
-        "stat bonus": [],
-        "proficiencies": [],
-        "resistances": ["cold"],
-        "hp bonus": None,
-        "speed bonus": None,
-        "breath shape": "cone",
-        "breath size": (15,),
-        "breath type": "cold"
+        ability_bonus: [],
+        proficiencies: [],
+        resistances: ["cold"],
+        hp_bonus: None,
+        speed_bonus: None,
+        breath_shape: "cone",
+        breath_size: (15,),
+        breath_type: "cold"
         },
     "forest gnome": {
-        "stat bonus": [("dexterity", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("dexterity", 1)],
+        proficiencies: [],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
         },
     "rock gnome": {
-        "stat bonus": [("constitution", 1)],
-        "proficiencies": [],
-        "resistances": [],
-        "hp bonus": None,
-        "speed bonus": None
+        ability_bonus: [("constitution", 1)],
+        proficiencies: [],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
         }
 }
 

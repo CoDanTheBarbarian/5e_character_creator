@@ -111,6 +111,9 @@ class Character:
         self.inventory.remove(object)
 
     def equip_armor(self, armor):
+        if armor.strenth_min:
+            if self.get_ability_mod("strength") < armor.strength_min:
+                raise Exception("Strength too low to equip")
         self.inventory.remove(armor)
         self.equipped_items.append(armor)
         self.ac = armor.ac
