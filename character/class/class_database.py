@@ -22,7 +22,7 @@ class_data = {
                2),
         "class abilities": ["rage", "unarmored defense"], # need to create a database for class abilities
         "rage charges": 2
-    },
+        },
     "bard": {
         "name": "bard",
         "hit die": 8,
@@ -55,7 +55,7 @@ class_data = {
              'persausion'], 
              3),
         "class abilities": [],
-    },
+        },
     "cleric": {
         "name": "cleric",
         "hit die": 8,
@@ -73,7 +73,7 @@ class_data = {
              "religion"],
             2),
         "class abilities": [],
-    },
+        },
     "druid": {
         "name": "druid",
         "hit die": 8,
@@ -104,7 +104,7 @@ class_data = {
              2
              ),
         "class abilities": [],
-    },
+        },
     "fighter": {
         "name": "fighter",
         "hit die": 10,
@@ -129,7 +129,25 @@ class_data = {
             ], 2
         ),
         "class abilities": [],
-    },
+        },
+    "monk": {
+        "name": "monk",
+        "hit die": 8,
+        "proficiencies": ["simple weapons", 
+                          "short sword", 
+                          "strength",
+                          "dexterity"],
+        "proficiency choice": (
+            ["acrobatics", 
+             "athletics", 
+             "history", 
+             "insight", 
+             "religion", 
+             "stealth"],
+               2),
+        "class abilities": ["unarmored defense", "martial arts"],
+        "ki points": 0
+        },
     "paladin": {
         "name": "paladin",
         "hit die": 10,
@@ -154,7 +172,7 @@ class_data = {
             ], 2
         ),
         "class abilities": [],
-    },
+        },
     "ranger": {
         "name": "ranger",
         "hit die": 10,
@@ -181,7 +199,7 @@ class_data = {
             ], 3
         ),
         "class abilities": [],
-    },
+        },
     "rogue": {
         "name": "rogue",
         "hit die": 8,
@@ -211,7 +229,7 @@ class_data = {
             ], 4
         ),
         "class abilities": [],
-    },
+        },
     "sorcerer": {
         "name": "sorcerer",
         "hit die": 6,
@@ -234,7 +252,7 @@ class_data = {
             ], 2
         ),
         "class abilities": [],
-    },
+        },
     "warlock": {
         "name": "warlock",
         "hit die": 8,
@@ -256,7 +274,7 @@ class_data = {
             ], 2
         ),
         "class abilities": [],
-    },
+        },
     "wizard": {
         "name": "wizard",
         "hit die": 6,
@@ -279,5 +297,5 @@ class_data = {
             ], 2
         ),
         "class abilities": [],
-    }
+        }
     }

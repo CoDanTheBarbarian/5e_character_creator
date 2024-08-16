@@ -171,3 +171,35 @@ damage_resistances = {
     'slashing': False, 
     'thunder': False
     }
+
+# spell slot dictionary
+
+spell_slots = {
+    "cantrips": int,
+    "level 1": int,
+    "level 2": int,
+    "level 3": int,
+    "level 4": int,
+    "level 5": int,
+    "level 6": int,
+    "level 7": int,
+    "level 8": int,
+    "level 9": int,
+}
+
+# class specific spell lists
+
+spell_list = {
+    "barbarian": [],
+    "bard": [],
+    "cleric": [],
+    "druid": [],
+    "fighter": [],
+    "paladin": [],
+    "ranger": [],
+    "rogue": [],
+    "sorcerer": [],
+    "warlock": [],
+    "wizard": [],
+}
+
