@@ -21,6 +21,7 @@ class_data = {
              "survival"],
                2),
         "class abilities": ["rage", "unarmored defense"], # need to create a database for class abilities
+        "starting equipment": [],
         "rage charges": 2
         },
     "bard": {
@@ -55,6 +56,7 @@ class_data = {
              'persausion'], 
              3),
         "class abilities": ["spell casting", "bardic inspiration"],
+        "starting equipment": [],
         },
     "cleric": {
         "name": "cleric",
@@ -73,6 +75,7 @@ class_data = {
              "religion"],
             2),
         "class abilities": ["spell casting", "divine domain"],
+        "starting equipment": [],
         },
     "druid": {
         "name": "druid",
@@ -104,6 +107,7 @@ class_data = {
              2
              ),
         "class abilities": ["spell casting", "druidic"],
+        "starting equipment": [],
         },
     "fighter": {
         "name": "fighter",
@@ -129,6 +133,7 @@ class_data = {
             ], 2
         ),
         "class abilities": ["fighting style", "second wind"],
+        "starting equipment": [],
         },
     "monk": {
         "name": "monk",
@@ -146,6 +151,7 @@ class_data = {
              "stealth"],
                2),
         "class abilities": ["unarmored defense", "martial arts"],
+        "starting equipment": [],
         "ki points": 0
         },
     "paladin": {
@@ -172,6 +178,7 @@ class_data = {
             ], 2
         ),
         "class abilities": ["spell casting", "divine sense", "lay on hands"],
+        "starting equipment": [],
         },
     "ranger": {
         "name": "ranger",
@@ -199,6 +206,7 @@ class_data = {
             ], 3
         ),
         "class abilities": ["favored enemy", "natural explorer"],
+        "starting equipment": [],
         },
     "rogue": {
         "name": "rogue",
@@ -229,6 +237,7 @@ class_data = {
             ], 4
         ),
         "class abilities": ["expertise", "sneak attack", "thieves' cant"],
+        "starting equipment": [],
         },
     "sorcerer": {
         "name": "sorcerer",
@@ -252,6 +261,7 @@ class_data = {
             ], 2
         ),
         "class abilities": ["spell casting", "sorcerous origin"],
+        "starting equipment": [],
         },
     "warlock": {
         "name": "warlock",
@@ -274,6 +284,7 @@ class_data = {
             ], 2
         ),
         "class abilities": ["otherworldy patron", "pact magic"],
+        "starting equipment": [],
         },
     "wizard": {
         "name": "wizard",
@@ -297,5 +308,6 @@ class_data = {
             ], 2
         ),
         "class abilities": ["spell casting", "arcane recovery"],
+        "starting equipment": [],
         }
     }

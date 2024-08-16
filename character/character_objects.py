@@ -21,7 +21,7 @@ class Character:
         self.int = intelligence
         self.wis = wisdom
         self.charisma = charisma
-        self.ac = ac
+        self.ac = ac + self.get_ability_mod("dexterity")
         self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []
