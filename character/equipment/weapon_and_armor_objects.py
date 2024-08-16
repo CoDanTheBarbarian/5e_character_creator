@@ -15,8 +15,8 @@ def create_melee_weapons(melee_stat_dict):
             melee_stat_dict[weapon]['weapon type'],
             melee_stat_dict[weapon]['damage die'], 
             melee_stat_dict[weapon]['damage type'], 
-            melee_stat_dict[weapon]['bonus attribute'], 
-            melee_stat_dict[weapon]['properties']
+            melee_stat_dict[weapon]["core attribute"], 
+            melee_stat_dict[weapon]["weapon properties"]
             )
         melee_weapons.append(weapon_object)
     return melee_weapons
@@ -34,8 +34,8 @@ def create_versatile_melee_weapons(versatile_melee_stat_dict):
             versatile_melee_stat_dict[weapon]['weapon type'],
             versatile_melee_stat_dict[weapon]['damage die'], 
             versatile_melee_stat_dict[weapon]['damage type'], 
-            versatile_melee_stat_dict[weapon]['bonus attribute'], 
-            versatile_melee_stat_dict[weapon]['properties'],
+            versatile_melee_stat_dict[weapon]["core attribute"], 
+            versatile_melee_stat_dict[weapon]["weapon properties"],
             versatile_melee_stat_dict[weapon]['two handed damage die']
             )
         versatile_melee_weapons.append(weapon_object)
@@ -54,8 +54,8 @@ def create_ranged_weapons(ranged_stat_dict):
             ranged_stat_dict[weapon]['weapon type'],
             ranged_stat_dict[weapon]['damage die'], 
             ranged_stat_dict[weapon]['damage type'], 
-            ranged_stat_dict[weapon]['bonus attribute'], 
-            ranged_stat_dict[weapon]['properties'],
+            ranged_stat_dict[weapon]["core attribute"], 
+            ranged_stat_dict[weapon]["weapon properties"],
             ranged_stat_dict[weapon]['range']
             )
         ranged_weapons.append(weapon_object)
@@ -74,8 +74,8 @@ def create_versatile_ranged_weapons(versatile_ranged_stat_dict):
             versatile_ranged_stat_dict[weapon]['weapon type'],
             versatile_ranged_stat_dict[weapon]['damage die'], 
             versatile_ranged_stat_dict[weapon]['damage type'], 
-            versatile_ranged_stat_dict[weapon]['bonus attribute'], 
-            versatile_ranged_stat_dict[weapon]['properties'],
+            versatile_ranged_stat_dict[weapon]["core attribute"], 
+            versatile_ranged_stat_dict[weapon]["weapon properties"],
             versatile_ranged_stat_dict[weapon]['range'],
             versatile_ranged_stat_dict[weapon]['two handed damage die']
             )
@@ -101,7 +101,7 @@ def create_armor(armor_stats_dict):
             armor_stats_dict[armor]["ac"],
             armor_stats_dict[armor]["dex mod"],
             armor_stats_dict[armor]["dex max"],
-            armor_stats_dict[armor]["stealth disadvantage"],
+            armor_stats_dict[armor]["disadvantage on stealth"],
             armor_stats_dict[armor]["strength requirement"]
                              )
         armor_list.append(armor_object)
