@@ -27,7 +27,7 @@ class Character:
         self.inventory = []
         self.equipped_items = []
         self.spell_casting_ability = None
-        self.spell_slots = {}
+        self.spell_slots = spell_slots
         self.spell_list = []
 
     # Universal attribute getter

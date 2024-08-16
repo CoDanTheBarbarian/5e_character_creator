@@ -175,16 +175,16 @@ damage_resistances = {
 # spell slot dictionary
 
 spell_slots = {
-    "cantrips": int,
-    "level 1": int,
-    "level 2": int,
-    "level 3": int,
-    "level 4": int,
-    "level 5": int,
-    "level 6": int,
-    "level 7": int,
-    "level 8": int,
-    "level 9": int,
+    "cantrips": 0,
+    "level 1": 0,
+    "level 2": 0,
+    "level 3": 0,
+    "level 4": 0,
+    "level 5": 0,
+    "level 6": 0,
+    "level 7": 0,
+    "level 8": 0,
+    "level 9": 0,
 }
 
 # class specific spell lists

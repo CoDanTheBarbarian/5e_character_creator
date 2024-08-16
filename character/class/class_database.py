@@ -57,6 +57,13 @@ class_data = {
              3),
         "class abilities": ["spell casting", "bardic inspiration"],
         "starting equipment": [],
+        "spell casting ability": "charisma",
+        "spell slots": {
+            "cantrips": 4,
+            "level 1": 2
+            },
+        "spells known": 4,
+        "bardic die": 6
         },
     "cleric": {
         "name": "cleric",
@@ -76,6 +83,13 @@ class_data = {
             2),
         "class abilities": ["spell casting", "divine domain"],
         "starting equipment": [],
+        "spell casting ability": "wisdom",
+        "spell slots": {
+            "cantrips": 3,
+            "level 1": 2
+            },
+        "domain": ["list of domains"],
+        "channel divinity charges": 0
         },
     "druid": {
         "name": "druid",
@@ -108,6 +122,11 @@ class_data = {
              ),
         "class abilities": ["spell casting", "druidic"],
         "starting equipment": [],
+        "spell casting ability": "charisma",
+        "spell slots": {
+            "cantrips": 2,
+            "level 1": 2
+            },
         },
     "fighter": {
         "name": "fighter",
@@ -134,6 +153,7 @@ class_data = {
         ),
         "class abilities": ["fighting style", "second wind"],
         "starting equipment": [],
+        "fighting style": ["list of fighting styles"]
         },
     "monk": {
         "name": "monk",
@@ -179,6 +199,9 @@ class_data = {
         ),
         "class abilities": ["spell casting", "divine sense", "lay on hands"],
         "starting equipment": [],
+        "spell casting ability": "charisma",
+        "spell slots": {},
+        "lay on hands": "level x 5"
         },
     "ranger": {
         "name": "ranger",
@@ -238,6 +261,12 @@ class_data = {
         ),
         "class abilities": ["expertise", "sneak attack", "thieves' cant"],
         "starting equipment": [],
+        "spell casting ability": "charisma",
+        "spell slots": {
+            "cantrips": 4,
+            "level 1": 2
+            },
+        "sneak attack die": 6
         },
     "sorcerer": {
         "name": "sorcerer",
@@ -262,6 +291,13 @@ class_data = {
         ),
         "class abilities": ["spell casting", "sorcerous origin"],
         "starting equipment": [],
+        "spell casting ability": "charisma",
+        "spell slots": {
+            "cantrips": 4,
+            "level 1": 2
+            },
+        "spells known": 2,
+        "origin": ["draconic", "wild magic"]
         },
     "warlock": {
         "name": "warlock",
@@ -285,6 +321,13 @@ class_data = {
         ),
         "class abilities": ["otherworldy patron", "pact magic"],
         "starting equipment": [],
+        "spell casting ability": "charisma",
+        "spell slots": {
+            "cantrips": 2,
+            "level 1": 2
+            },
+        "spells known": 2,
+        "patron": ["list of patrons"]
         },
     "wizard": {
         "name": "wizard",
@@ -309,5 +352,10 @@ class_data = {
         ),
         "class abilities": ["spell casting", "arcane recovery"],
         "starting equipment": [],
+        "spell casting ability": "intelligence",
+        "spell slots": {
+            "cantrips": 3,
+            "level 1": 2
+            },
         }
     }
