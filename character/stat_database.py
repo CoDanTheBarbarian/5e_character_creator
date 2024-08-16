@@ -121,7 +121,7 @@ proficiency_status = {
 
 backgrounds = {
     "acolyte": ["insight", "religion"],
-    "charlatan": ["deception", "sleight_of_hand"],
+    "charlatan": ["deception", "sleight of hand"],
     "criminal": ["deception", "stealth"],
     "entertainer": ["acrobatics", "performance"],
     "folk hero": ["animal handling", "survival"],
@@ -202,4 +202,48 @@ spell_list = {
     "warlock": [],
     "wizard": [],
 }
+
+# list of simple and martial weapons
+
+simple_weapons = ['simple weapons', 
+                  'club', 
+                  'dagger', 
+                  'greatclub', 
+                  'handaxe', 
+                  'javelin', 
+                  'light hammer', 
+                  'mace', 
+                  'quarterstaff', 
+                  'sickle', 
+                  'spear', 
+                  'unarmed strike', 
+                  'light crossbow', 
+                  'dart', 
+                  'short bow', 
+                  'sling']
+
+martial_weapons = ['martial weapons', 
+                   'battle axe', 
+                   'flail', 
+                   'glaive', 
+                   'great axe', 
+                   'great sword', 
+                   'halberd', 
+                   'lance', 
+                   'long sword', 
+                   'maul', 
+                   'morning star', 
+                   'pike', 
+                   'rapier', 
+                   'scimitar', 
+                   'short sword', 
+                   'trident', 
+                   'war pick', 
+                   'warhammer', 
+                   'whip', 
+                   'blow gun', 
+                   'hand crossbow', 
+                   'heavy crossbow', 
+                   'long bow', 
+                   'net']
 

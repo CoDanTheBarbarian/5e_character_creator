@@ -33,8 +33,7 @@ class Character:
     # Universal attribute getter
 
     def get_attribute(self, attribute):
-        attr = getattr(self, attribute)
-        print(attr)
+        return getattr(self, attribute)
 
     # Methods dealing with the 6 core stats and their associated abilities
 
@@ -91,7 +90,14 @@ class Character:
 
     def gain_proficiency(self, prof_list):
         for prof in prof_list:
-            self.proficiencies[prof] = True
+            if prof == "simple weapons":
+                for i in simple_weapons:
+                    self.proficiencies[i] = True
+            elif prof == "martial weapons":
+                for j in martial_weapons:
+                    self.proficiencies[j] = True
+            else:
+                self.proficiencies[prof] = True
 
     def gain_proficiency_choice(self, options_list, number_of_choices):
         pass

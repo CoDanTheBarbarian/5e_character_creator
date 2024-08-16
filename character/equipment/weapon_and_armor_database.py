@@ -282,7 +282,7 @@ armor_stats = {
                "dex max": None,
                "stealth disadvantage": True,
                "strength requirement": 15},
-    "splint": {"armor type": "heavy",
+    "plate": {"armor type": "heavy",
                "ac": 18,
                "dex mod": False,
                "dex max": None,

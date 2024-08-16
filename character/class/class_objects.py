@@ -45,21 +45,18 @@ class Monk(Class):
         self.ki = ki_points
 
 class Paladin(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, lay_on_hands_charges):
+    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
         super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
-        self.lay_on_hands = lay_on_hands_charges
 
 class Ranger(Class):
     def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
         super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
 
 class Rogue(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, sneak_attack_die):
+    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment,sneak_attack_die):
         super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
         self.sneak_attack_die = sneak_attack_die
 
 class Sorcerer(Class):
@@ -79,8 +76,7 @@ class Warlock(Class):
         self.patron = patron
 
 class Wizard(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known):
+    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
         super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
-        self.spells_known = spells_known

@@ -7,10 +7,6 @@ class MeleeWeapon:
         self.bonus_attribute = bonus_attribute
         self.properties = properties
 
-    def get_attribute(self, attributes):
-        value = list(map(getattr(self, attribute), attributes))
-        print(value)
-
 def create_melee_weapons(melee_stat_dict):
     melee_weapons = []
     for weapon in melee_stat_dict:
@@ -73,7 +69,7 @@ class VersatileRangedWeapon(RangedWeapon):
 def create_versatile_ranged_weapons(versatile_ranged_stat_dict):
     versatile_ranged_weapons = []
     for weapon in versatile_ranged_stat_dict:
-        weapon_object = RangedWeapon(
+        weapon_object = VersatileRangedWeapon(
             weapon, 
             versatile_ranged_stat_dict[weapon]['weapon type'],
             versatile_ranged_stat_dict[weapon]['damage die'], 
