@@ -5,6 +5,7 @@ damage_type = "damage type"     # <-- a string representing damage type
 core_attribute = "core attribute"    # <-- a tuple containing which ability_mod gets added to attack rolls with this weapon (multiple values means use the one that's higher)
 weapon_properties = "weapon properties"     #  <-- a list of strings representing keys from the weapon properties dictionary
 
+
 melee_weapon_stats = {
     'club': {weapon_type: 'simple', 
              damage_die: (4,), 
@@ -228,12 +229,12 @@ veratile_ranged_weapon_stats = {
 
 # separate class from weapons
 
-armor_type = "armor type"
-ac = "ac"
-dex_mod = "dex mod"
-dex_max = "dex max"
-stealth_penalty = "disadvantage on stealth"
-strength_min = "strength requirement"
+armor_type = "armor type"  # <-- a string 'light' 'medium' or 'heavy'
+ac = "ac"  # <-- integer representing the base ac of the armor
+dex_mod = "dex mod"  #  <-- boolean True if armor allows to add dex to ac, False if it does not
+dex_max = "dex max"  # <-- None if there is no max to dex bonus to ac, integer if there is.
+stealth_penalty = "disadvantage on stealth"  # <-- boolean True if the armor imposes disadvantage on stealth rolls, False if not.
+strength_min = "strength requirement"  # <-- None if there is no strength minimum, integer if there is.
 
 armor_stats = {
     "padded": {armor_type: "light",

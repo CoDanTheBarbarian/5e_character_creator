@@ -9,6 +9,9 @@ class MeleeWeapon:
         self.bonus_attribute = bonus_attribute
         self.properties = properties
     
+    def get_weapon_damage_mod(self):
+        return self.bonus_attribute
+    
     def __repr__(self) -> str:
         return self.name
 

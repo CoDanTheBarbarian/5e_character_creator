@@ -1,12 +1,12 @@
-name = "name"
-hit_die = "hit_die"
-proficiencies = "proficiencies "
-proficiency_choices = "proficiency choice "
-class_abilities = "class abilities "
-equipment = "starting equipment"
-
-
-# still need to add 'class abilities' to every class other than barbarian
+name = "name"  # <-- string
+hit_die = "hit_die"  # <-- integer
+proficiencies = "proficiencies "  # <-- list of strings
+proficiency_choices = "proficiency choice "  # <-- tuple containing a list of choices and an integer (the number of choices)
+class_abilities = "class abilities "  # <-- list of strings pointing to an as of yet unmade class ability database.
+equipment = "starting equipment"  # <-- list of strings pointing to weapons and armor database.
+spell_casting_ability = "spell casting ability"  # <-- string (one of the six core stats)
+spell_slots = "spell slots"  # <-- dictionary with updated values for the character self.spell_slots dictionary
+spells_known = "spells known"  # <-- integer, the number of spells to choose from the spell list
 
 class_data = {
     "barbarian": {
@@ -65,12 +65,12 @@ class_data = {
              3),
         class_abilities: ["spell casting", "bardic inspiration"],
         equipment: [],
-        "spell casting ability": "charisma",
-        "spell slots": {
+        spell_casting_ability: "charisma",
+        spell_slots: {
             "cantrips": 4,
             "level 1": 2
             },
-        "spells known": 4,
+        spells_known: 4,
         "bardic die": 6
         },
     "cleric": {
@@ -91,8 +91,8 @@ class_data = {
             2),
         class_abilities: ["spell casting", "divine domain"],
         equipment: [],
-        "spell casting ability": "wisdom",
-        "spell slots": {
+        spell_casting_ability: "wisdom",
+        spell_slots: {
             "cantrips": 3,
             "level 1": 2
             },
@@ -130,8 +130,8 @@ class_data = {
              ),
         class_abilities: ["spell casting", "druidic"],
         equipment: [],
-        "spell casting ability": "charisma",
-        "spell slots": {
+        spell_casting_ability: "charisma",
+        spell_slots: {
             "cantrips": 2,
             "level 1": 2
             },
@@ -207,8 +207,8 @@ class_data = {
         ),
         class_abilities: ["spell casting", "divine sense", "lay on hands"],
         equipment: [],
-        "spell casting ability": "charisma",
-        "spell slots": {},
+        spell_casting_ability: "charisma",
+        spell_slots: {},
         "lay on hands": "level x 5"
         },
     "ranger": {
@@ -269,8 +269,8 @@ class_data = {
         ),
         class_abilities: ["expertise", "sneak attack", "thieves' cant"],
         equipment: [],
-        "spell casting ability": "charisma",
-        "spell slots": {
+        spell_casting_ability: "charisma",
+        spell_slots: {
             "cantrips": 4,
             "level 1": 2
             },
@@ -299,12 +299,12 @@ class_data = {
         ),
         class_abilities: ["spell casting", "sorcerous origin"],
         equipment: [],
-        "spell casting ability": "charisma",
-        "spell slots": {
+        spell_casting_ability: "charisma",
+        spell_slots: {
             "cantrips": 4,
             "level 1": 2
             },
-        "spells known": 2,
+        spells_known: 2,
         "origin": ["draconic", "wild magic"]
         },
     "warlock": {
@@ -329,12 +329,12 @@ class_data = {
         ),
         class_abilities: ["otherworldy patron", "pact magic"],
         equipment: [],
-        "spell casting ability": "charisma",
-        "spell slots": {
+        spell_casting_ability: "charisma",
+        spell_slots: {
             "cantrips": 2,
             "level 1": 2
             },
-        "spells known": 2,
+        spells_known: 2,
         "patron": ["list of patrons"]
         },
     "wizard": {
@@ -360,8 +360,8 @@ class_data = {
         ),
         class_abilities: ["spell casting", "arcane recovery"],
         equipment: [],
-        "spell casting ability": "intelligence",
-        "spell slots": {
+        spell_casting_ability: "intelligence",
+        spell_slots: {
             "cantrips": 3,
             "level 1": 2
             },

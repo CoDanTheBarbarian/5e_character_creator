@@ -25,9 +25,9 @@ class Character:
         self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []
-        self.weapon = []
-        self.armor = []
-        self.shield = []
+        self.weapon = None
+        self.armor = None
+        self.shield = None
         self.equipped_items = []
         self.spell_casting_ability = None
         self.spell_slots = spell_slots
@@ -86,8 +86,7 @@ class Character:
     # Methods dealing with proficiency dictionaries, i.e. 'self.proficiencies' and 'self.damage_resistance'
 
     def apply_background_bonus(self):
-        background = self.background
-        bonus = get_background_profs(background)
+        bonus = get_background_profs(self.background)
         self.gain_proficiency(bonus)
 
     def gain_damage_resistance(self, damage_type):
@@ -129,6 +128,18 @@ class Character:
                 if self.dex > armor.dex_max:
                     self.ac += armor.dex_max
                 self.ac += self.dex
+
+    def equip_shield(self, shield):
+        if self.weapon:
+            if "two handed" in self.weapon.properties and "versatile" not in self.weapons.properties:
+                raise Exception("Can not equip shield while wielding a two handed weapon.")
+        self.shield = shield
+
+    def equip_weapon(self, weapon):
+        if self.weapon:
+            unequipped_weapon = self.weapon.pop()
+            self.inventory.append(unequipped_weapon)
+        self.weapon.append(weapon)
 
     # Methods for applying race and subrace stats
 
