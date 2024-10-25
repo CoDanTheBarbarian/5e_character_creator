@@ -1,23 +1,34 @@
+dwarf = "dwarf"
+elf = "elf"
+halfling = "halfling"
+human = "human"
+dragonborn = "dragonborn"
+gnome = "gnome"
+half_elf = "half elf"
+half_orc = "half orc"
+tiefling = "tiefling"
+
 races = {
-    "dwarf": 
+    dwarf: 
             ["hill dwarf", "mountain dwarf"],
-    "elf": 
+    elf: 
             ["high elf", "wood elf", "dark elf"], 
-    "halfling": 
+    halfling: 
             ["lightfoot halfling", "stout halfling"],
-    "human": 
+    human: 
             [],
-    "dragonborn":
+    dragonborn:
             ["black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"],
-    "gnome":
+    gnome:
         ["forest gnome", "rock gnome"],
-    "half elf":
+    half_elf:
         [],
-    "half orc":
+    half_orc:
         [],
-    "tiefling":
+    tiefling:
         []
 }
+race = "race"
 speed = "speed"
 ability_bonus = "ability bonus"
 proficiencies = "proficiencies"
@@ -26,31 +37,35 @@ prof_choices = "proficiency choices"
 sub_races = "sub races"
 
 race_stats = {
-    "dwarf": {
+    dwarf: {
+        race: dwarf,
         speed: 25, 
         ability_bonus: [("constitution", 2)],
         proficiencies: ['battle axe', 'handaxe', "light hammer", "warhammer"],
         resistances: ["poison"],
         prof_choices: [],
-        sub_races: races["dwarf"]
+        sub_races: races[dwarf]
         },
-    "elf": {
+    elf: {
+        race: elf,
         speed: 30, 
         ability_bonus: [("dexterity", 2)],
         proficiencies: ["perception"],
         resistances: [],
         prof_choices: [],
-        sub_races: races["elf"]
+        sub_races: races[elf]
         }, 
-    "halfling": {
+    halfling: {
+        race: halfling,
         speed: 25, 
         ability_bonus: [("dexterity", 2)],
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races["halfling"]
+        sub_races: races[halfling]
         },
-    "human": {
+    human: {
+        race: human,
         speed: 30, 
         ability_bonus: [("strength", 1), 
                           ("dexterity", 1), 
@@ -61,24 +76,27 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races["human"]
+        sub_races: races[human]
         },
-    "dragonborn": {
+    dragonborn: {
+        race: dragonborn,
         speed: 30, 
         ability_bonus: [("strength", 2), ("charisma", 1)],
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races["dragonborn"]},
-    "gnome": {
+        sub_races: races[dragonborn]},
+    gnome: {
+        race: gnome,
         speed: 25, 
         ability_bonus: [("dexterity", 2)],
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races["halfling"]
+        sub_races: races[halfling]
         },
-    "half elf": {
+    half_elf: {
+        race: half_elf,
         speed: 30, 
         ability_bonus: [("charisma", 2)],
         proficiencies: [],
@@ -103,23 +121,25 @@ race_stats = {
             'intimidation', 
             'performance', 
             'persausion'], 2)],
-        sub_races: races["half elf"]
+        sub_races: races[half_elf]
         },
-    "half orc": {
+    half_orc: {
+        race: half_orc,
         speed: 30, 
         ability_bonus: [("strength", 2), ("constitution", 1)],
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races["half orc"]
+        sub_races: races[half_orc]
         },
-    "tiefling": {
+    tiefling: {
+        race: tiefling,
         speed: 30, 
         ability_bonus: [("intelligence", 1), ("charisma", 2)],
         proficiencies: [],
         resistances: ["fire"],
         prof_choices: [],
-        sub_races: races["tiefling"]
+        sub_races: races[tiefling]
         }
 }
 
