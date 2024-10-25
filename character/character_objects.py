@@ -1,4 +1,4 @@
-from stat_database import *
+from character.stat_database import *
 
 def get_background_profs(background):
     profs = backgrounds[background]
@@ -21,7 +21,7 @@ class Character:
         self.int = intelligence
         self.wis = wisdom
         self.charisma = charisma
-        self.ac = ac + self.get_ability_mod("dexterity")
+        self.ac = ac + self.get_ability_mod("dex")
         self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []

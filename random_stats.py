@@ -35,17 +35,21 @@ def get_random_stats():
     stat_6 = roll_stat()
     return [stat_1, stat_2, stat_3, stat_4, stat_5, stat_6]
 
+# numbers is a list of die numbers to handle cases where we roll more than one dice for a single result (i.e. multiple d6 for sneak attack damage)
 def roll_d(numbers):
+    result = 0
     for number in numbers:
         if number == 4:
-            return roll_d_4()
+            roll = roll_d_4()
         elif number == 6:
-            return roll_d_6()
+            roll = roll_d_6()
         elif number == 8:
-            return roll_d_8()
+            roll = roll_d_8()
         elif number == 10:
-            return roll_d_10()
+            roll = roll_d_10()
         elif number == 12:
-            return roll_d_12()
+            roll = roll_d_12()
         elif number == 20:
-            return roll_d_20()
+            roll = roll_d_20()
+        result += roll
+    return result
