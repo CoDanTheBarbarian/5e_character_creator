@@ -1,4 +1,5 @@
 from database.stat_database import *
+from database.race_subrace import *
 
 def get_background_profs(background):
     profs = backgrounds[background]
@@ -8,7 +9,7 @@ class Character:
     def __init__(self, name, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10, level=1, xp=0,):
         self.name = name
         self.race = None
-        self.sub_race = None
+        self.subrace = None
         self.background = None
         self.speed = 0
         self.hp = 0
@@ -16,12 +17,12 @@ class Character:
         self.level = level
         self.xp = xp
         self.strength = strength
-        self.dex = dexterity
-        self.con = constitution
-        self.int = intelligence
-        self.wis = wisdom
+        self.dexterity = dexterity
+        self.constitution = constitution
+        self.intelligence = intelligence
+        self.wisdom = wisdom
         self.charisma = charisma
-        self.ac = ac + self.get_ability_mod("dex")
+        self.ac = ac + self.dexterity
         self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []
@@ -32,6 +33,9 @@ class Character:
         self.spell_casting_ability = None
         self.spell_slots = spell_slots
         self.spell_list = []
+
+    def __repr__(self) -> str:
+        return self.name
 
     # Universal attribute getter
 
@@ -50,13 +54,13 @@ class Character:
         if core_stat == "strength":
             self.strength += number
         elif core_stat == "dexterity":
-            self.dex += number
+            self.dexterity += number
         elif core_stat == "constitution":
-            self.con += number
+            self.constitution += number
         elif core_stat == "intelligence":
-            self.int += number
+            self.intelligence += number
         elif core_stat == "wisdom":
-            self.wis += number
+            self.wisdom += number
         elif core_stat == "charisma":
             self.charisma += number
 
@@ -64,13 +68,13 @@ class Character:
         if core_stat == "strength":
             self.strength -= number
         elif core_stat == "dexterity":
-            self.dex -= number
+            self.dexterity -= number
         elif core_stat == "constitution":
-            self.con -= number
+            self.constitution -= number
         elif core_stat == "intelligence":
-            self.int -= number
+            self.intelligence -= number
         elif core_stat == "wisdom":
-            self.wis -= number
+            self.wisdom -= number
         elif core_stat == "charisma":
             self.charisma -= number
 
@@ -123,11 +127,11 @@ class Character:
         self.ac = armor.ac
         if armor.dex_mod:
             if armor.dex_max == None:
-                self.ac += self.dex
+                self.ac += self.dexterity
             else:
                 if self.dex > armor.dex_max:
                     self.ac += armor.dex_max
-                self.ac += self.dex
+                self.ac += self.dexterity
 
     def equip_shield(self, shield):
         if self.weapon:
@@ -150,29 +154,25 @@ class Character:
             for stat, bonus in race.stat_bonus:
                 self.increase_core_stat(stat, bonus)
         if race.proficiencies:
-            for proficiency in race.proficiencies:
-                self.gain_proficiency(proficiency)
+            self.gain_proficiency(race.proficiencies)
         if race.resistances:
             for resistance in race.resistances:
                 self.gain_damage_resistance(resistance)
         if race.prof_choices:
             self.gain_proficiency_choice(race.prof_choices[0], race.prof_choices[1])
-        if race.subraces:
-            self.apply_subrace_bonus(self.sub_race)
     
     def apply_subrace_bonus(self, subrace):
-        self.sub_race = subrace.subrace
+        self.subrace = subrace.subrace
         if subrace.stat_bonus:
             for stat, bonus in subrace.stat_bonus:
                 self.increase_core_stat(stat, bonus)
         if subrace.proficiencies:
-            for proficiency in subrace.proficiencies:
-                self.gain_proficiency(proficiency)
+            self.gain_proficiency(subrace.proficiencies)
         if subrace.resistances:
             for resistance in subrace.resistances:
                 self.gain_damage_resistance(resistance)
-        if subrace.prof_choices:
-            self.gain_proficiency_choice(subrace.prof_choices[0], subrace.prof_choices[1])
+        self.hp_bonus = subrace.hp_bonus
+        self.speed_bonus = subrace.speed_bonus
         if isinstance(subrace, DragonColor):
             self.color = subrace.subrace
             self.breath_shape = subrace.breath_shape
@@ -190,31 +190,3 @@ class Character:
     def spell_save_dc(self):
         return 8 + self.spell_attack()
     
-
-
-
-class Race:
-    def __init__(self, race, speed, stat_bonus, proficiencies, resistances, prof_choices, subraces):
-        self.race = race
-        self.speed = speed
-        self.stat_bonus = stat_bonus
-        self.proficiencies = proficiencies
-        self.resistance = resistances
-        self.prof_choices = prof_choices
-        self.subraces = subraces
-
-class SubRace:
-    def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus):
-        self.subrace = subrace
-        self.stat_bonus = stat_bonus
-        self.proficiencies = proficiencies
-        self.resistances = resistances
-        self.hp_bonus = hp_bonus
-        self.speed_bonus = speed_bonus
-
-class DragonColor(SubRace):
-    def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus, breath_shape, breath_size, breath_type):
-        super().__init__(subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus)
-        self.breath_shape = breath_shape
-        self.breath_size = breath_size
-        self.breath_type = breath_type

@@ -395,12 +395,12 @@ def create_subrace_object(input):
         stats[hp_bonus], 
         stats[speed_bonus])
 
-def get_subrace_input():
-    for i, subrace in enumerate(sub_race_stats.keys()):
+def get_subrace_input(list):
+    for i, subrace in enumerate(list):
         print(f"{i + 1}: {subrace}")
     while True:
         num = input("Choose a subrace: ")
-        for i, subrace in enumerate(sub_race_stats.keys()):
+        for i, subrace in enumerate(list):
             if num == str(i + 1):
                 return subrace
         else:
@@ -418,14 +418,3 @@ def create_dragoncolor_object(input):
         stats[breath_shape],
         stats[breath_size],
         stats[breath_type])
-
-def get_dragon_color_input():
-    for i, dragoncolor_name in enumerate(dragon_color_stats.keys()):
-        print(f"{i + 1}: {dragoncolor_name}")
-    while True:
-        num = input("Choose a dragonborn color: ")
-        for i, dragoncolor_name in enumerate(dragon_color_stats.keys()):
-            if num == str(i + 1):
-                return dragoncolor_name
-        else:
-            print("Invalid color choice. Please enter a valid number.")
