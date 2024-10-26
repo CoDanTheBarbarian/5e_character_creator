@@ -1,26 +1,3 @@
-# Races and associated Sub Races
-
-races = {
-    "dwarf": 
-            ["hill dwarf", "mountain dwarf"],
-    "elf": 
-            ["high elf", "wood elf", "dark elf"], 
-    "halfling": 
-            ["lightfoot halfling", "stout halfling"],
-    "human": 
-            [],
-    "dragonborn":
-            ["black", "blue", "brass", "bronze", "copper", "gold", "green", "red", "silver", "white"],
-    "gnome":
-        ["forest gnome", "rock gnome"],
-    "half elf":
-        [],
-    "half orc":
-        [],
-    "tiefling":
-        []
-}
-
 # Core Abilities and associated Skills
 
 skills_core_stat = {

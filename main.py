@@ -1,5 +1,5 @@
-from character.character_objects import *
-from character.race.race_database import *
+from character_objects import *
+from database.race_database import *
 from random_stats import *
 def parse_name(name):
     response = input("Character name: " + name + "\nConfirm? (y/n) ")

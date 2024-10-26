@@ -1,4 +1,4 @@
-from character.stat_database import *
+from database.stat_database import *
 
 def get_background_profs(background):
     profs = backgrounds[background]

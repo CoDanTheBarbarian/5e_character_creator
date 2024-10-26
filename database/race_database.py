@@ -148,9 +148,11 @@ speed_bonus = "speed bonus"
 breath_shape = "breath shape"
 breath_size = "breath size"
 breath_type = "damage type"
+sub_race = "sub race"
 
 sub_race_stats = {
     "hill dwarf": {
+        sub_race: "hill dwarf",
         ability_bonus: [("wisdom", 1)],
         proficiencies: [],
         resistances: [],
@@ -158,6 +160,7 @@ sub_race_stats = {
         speed_bonus: None
         },
     "mountain dwarf": {
+        sub_race: "mountain dwarf",
         ability_bonus: [("strength", 2)],
         proficiencies: ['light armor', 'medium armor'],
         resistances: [],
@@ -165,6 +168,7 @@ sub_race_stats = {
         speed_bonus: None
         },
     "high elf": {
+        sub_race: "high elf",
         ability_bonus: [("intelligence", 1)],
         proficiencies: ['long sword', "short sword", "long bow", "short bow"],
         resistances: [],
@@ -172,6 +176,7 @@ sub_race_stats = {
         speed_bonus: None
         },
     "wood elf": {
+        sub_race: "wood elf",
         ability_bonus: [("wisdom", 1)],
         proficiencies: ['long sword', "short sword", "long bow", "short bow"],
         resistances: [],
@@ -179,6 +184,7 @@ sub_race_stats = {
         speed_bonus: 5
         },
     "dark elf": {
+        sub_race: "dark elf",
         ability_bonus: [("charisma", 1)],
         proficiencies: ['rapier', "short sword", "hand crossbow"],
         resistances: [],
@@ -186,6 +192,7 @@ sub_race_stats = {
         speed_bonus: None
         },
     "lightfoot halfling": {
+        sub_race: "lightfoot halfling",
         ability_bonus: [("charisma", 1)],
         proficiencies: [],
         resistances: [],
@@ -193,13 +200,34 @@ sub_race_stats = {
         speed_bonus: None
         },
     "stout halfling": {
+        sub_race: "stout halfling",
         ability_bonus: [("charisma", 1)],
         proficiencies: [],
         resistances: ["poison"],
         hp_bonus: None,
         speed_bonus: None
         },
+    "forest gnome": {
+        sub_race: "forest gnome",
+        ability_bonus: [("dexterity", 1)],
+        proficiencies: [],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
+        },
+    "rock gnome": {
+        sub_race: "rock gnome",
+        ability_bonus: [("constitution", 1)],
+        proficiencies: [],
+        resistances: [],
+        hp_bonus: None,
+        speed_bonus: None
+        }
+}
+
+dragon_color_stats = {
     "black": {
+        sub_race: "black",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["acid"],
@@ -210,6 +238,7 @@ sub_race_stats = {
         breath_type: "acid"
         },
     "blue": {
+        sub_race: "blue",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["lightning"],
@@ -220,6 +249,7 @@ sub_race_stats = {
         breath_type: "lightning"
         },
     "brass": {
+        sub_race: "brass",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["fire"],
@@ -230,6 +260,7 @@ sub_race_stats = {
         breath_type: "fire"
         },
     "bronze": {
+        sub_race: "bronze",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["lightning"],
@@ -240,6 +271,7 @@ sub_race_stats = {
         breath_type: "lightning"
         },
     "copper": {
+        sub_race: "copper",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["acid"],
@@ -250,6 +282,7 @@ sub_race_stats = {
         breath_type: "acid"
         },
     "gold": {
+        sub_race: "gold",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["fire"],
@@ -260,6 +293,7 @@ sub_race_stats = {
         breath_type: "fire"
         },
     "green": {
+        sub_race: "green",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["poison"],
@@ -270,6 +304,7 @@ sub_race_stats = {
         breath_type: "poison"
         },
     "red": {
+        sub_race: "red",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["fire"],
@@ -280,6 +315,7 @@ sub_race_stats = {
         breath_type: "fire"
         },
     "silver": {
+        sub_race: "silver",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["cold"],
@@ -290,6 +326,7 @@ sub_race_stats = {
         breath_type: "cold"
         },
     "white": {
+        sub_race: "white",
         ability_bonus: [],
         proficiencies: [],
         resistances: ["cold"],
@@ -299,19 +336,96 @@ sub_race_stats = {
         breath_size: (15,),
         breath_type: "cold"
         },
-    "forest gnome": {
-        ability_bonus: [("dexterity", 1)],
-        proficiencies: [],
-        resistances: [],
-        hp_bonus: None,
-        speed_bonus: None
-        },
-    "rock gnome": {
-        ability_bonus: [("constitution", 1)],
-        proficiencies: [],
-        resistances: [],
-        hp_bonus: None,
-        speed_bonus: None
-        }
 }
+class Race:
+    def __init__(self, race, speed, stat_bonus, proficiencies, resistances, prof_choices, subraces):
+        self.race = race
+        self.speed = speed
+        self.stat_bonus = stat_bonus
+        self.proficiencies = proficiencies
+        self.resistances = resistances
+        self.prof_choices = prof_choices
+        self.subraces = subraces
 
+class SubRace:
+    def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus):
+        self.subrace = subrace
+        self.stat_bonus = stat_bonus
+        self.proficiencies = proficiencies
+        self.resistances = resistances
+        self.hp_bonus = hp_bonus
+        self.speed_bonus = speed_bonus
+
+class DragonColor(SubRace):
+    def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus, breath_shape, breath_size, breath_type):
+        super().__init__(subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus)
+        self.breath_shape = breath_shape
+        self.breath_size = breath_size
+        self.breath_type = breath_type
+
+def create_race_object(input):
+    stats = race_stats[input]
+    return Race(
+        stats[race], 
+        stats[speed], 
+        stats[ability_bonus], 
+        stats[proficiencies], 
+        stats[resistances], 
+        stats[prof_choices], 
+        stats[sub_races])
+
+def get_race_input():
+    for i, race in enumerate(races.keys()):
+        print(f"{i + 1}: {race}")
+    while True:
+        num = input("Choose a race: ")
+        for i, race in enumerate(races.keys()):
+            if num == str(i + 1):
+                return race
+        else:
+            print("Invalid race choice. Please enter a valid number.")
+
+def create_subrace_object(input):
+    stats = sub_race_stats[input]
+    return SubRace(
+        stats[sub_race],
+        stats[ability_bonus],
+        stats[proficiencies], 
+        stats[resistances],  
+        stats[hp_bonus], 
+        stats[speed_bonus])
+
+def get_subrace_input():
+    for i, subrace in enumerate(sub_race_stats.keys()):
+        print(f"{i + 1}: {subrace}")
+    while True:
+        num = input("Choose a subrace: ")
+        for i, subrace in enumerate(sub_race_stats.keys()):
+            if num == str(i + 1):
+                return subrace
+        else:
+            print("Invalid subrace choice. Please enter a valid number.")
+
+def create_dragoncolor_object(input):
+    stats = dragon_color_stats[input]
+    return DragonColor(
+        stats[sub_race],
+        stats[ability_bonus],
+        stats[proficiencies], 
+        stats[resistances],  
+        stats[hp_bonus], 
+        stats[speed_bonus],
+        stats[breath_shape],
+        stats[breath_size],
+        stats[breath_type])
+
+def get_dragon_color_input():
+    for i, dragoncolor_name in enumerate(dragon_color_stats.keys()):
+        print(f"{i + 1}: {dragoncolor_name}")
+    while True:
+        num = input("Choose a dragonborn color: ")
+        for i, dragoncolor_name in enumerate(dragon_color_stats.keys()):
+            if num == str(i + 1):
+                return dragoncolor_name
+        else:
+            print("Invalid color choice. Please enter a valid number.")
