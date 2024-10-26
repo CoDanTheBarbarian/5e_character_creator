@@ -45,6 +45,31 @@ class Character:
         return getattr(self, attribute)
 
     # Methods dealing with the 6 core stats and their associated abilities
+    def get_saving_throw(self, core_stat):
+        if core_stat == "strength":
+            if self.proficiencies["strength"] == True:
+                return self.get_ability_mod("strength") + self.proficiency_bonus
+            return self.get_ability_mod("strength")
+        elif core_stat == "dexterity":
+            if self.proficiencies["dexterity"] == True:
+                return self.get_ability_mod("dexterity") + self.proficiency_bonus
+            return self.get_ability_mod("dexterity")
+        elif core_stat == "constitution":
+            if self.proficiencies["constitution"] == True:
+                return self.get_ability_mod("constitution") + self.proficiency_bonus
+            return self.get_ability_mod("constitution")
+        elif core_stat == "intelligence":
+            if self.proficiencies["intelligence"] == True:
+                return self.get_ability_mod("intelligence") + self.proficiency_bonus
+            return self.get_ability_mod("intelligence")
+        elif core_stat == "wisdom":
+            if self.proficiencies["wisdom"] == True:
+                return self.get_ability_mod("wisdom") + self.proficiency_bonus
+            return self.get_ability_mod("wisdom")
+        elif core_stat == "charisma":
+            if self.proficiencies["charisma"] == True:
+                return self.get_ability_mod("charisma") + self.proficiency_bonus
+            return self.get_ability_mod("charisma")
 
     def get_ability_mod(self, ability):
         ability = getattr(self, ability)
