@@ -22,7 +22,7 @@ class Character:
         self.intelligence = intelligence
         self.wisdom = wisdom
         self.charisma = charisma
-        self.ac = ac + self.dexterity
+        self.ac = ac
         self.proficiencies = proficiency_status.copy()
         self.damage_resistance = damage_resistances.copy()
         self.inventory = []
@@ -37,20 +37,6 @@ class Character:
     def __repr__(self) -> str:
         return self.name
     
-    def assign_stat(self, stat, stat_num):
-        stat_map = {
-            "strength": "self.strength",
-            "dexterity": "self.dexterity",
-            "constitution": "self.constitution",
-            "intelligence": "self.intelligence",
-            "wisdom": "self.wisdom",
-            "charisma": "self.charisma"
-        }
-        setattr(self, stat_map[stat], stat_num)
-        print(f"{stat} set to {stat_num}")
-
-    '''
-    Original implementation of assign_stat()
     def assign_stat(self, stat, stat_num):
         if stat == "strength":
             self.strength = stat_num
@@ -70,7 +56,6 @@ class Character:
         elif stat == "charisma":
             self.charisma = stat_num
             print(f"{stat} set to {stat_num}")
-    '''
 
     # Universal attribute getter
 
@@ -167,7 +152,7 @@ class Character:
             else:
                 self.proficiencies[prof] = True
 
-    def gain_proficiency_choice(self, options_list, number_of_choices):
+    def gain_proficiency_choice(self, options, num_choices):
         pass
 
     # Methods dealing with inventory and equipping an item

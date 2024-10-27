@@ -381,7 +381,13 @@ def get_race_input():
         num = input("Choose a race: ")
         for i, race in enumerate(races.keys()):
             if num == str(i + 1):
-                return race
+                confirm = input(f"Is {race} correct? (y/n): ")
+                if confirm.lower() == "y":
+                    return race
+                elif confirm.lower() == "n":
+                    get_race_input()
+                else:
+                    print("Please enter y or n.")
         else:
             print("Invalid race choice. Please enter a valid number.")
 
@@ -402,7 +408,13 @@ def get_subrace_input(list):
         num = input("Choose a subrace: ")
         for i, subrace in enumerate(list):
             if num == str(i + 1):
-                return subrace
+                confirm = input(f"Is {subrace} correct? (y/n): ")
+                if confirm.lower() == "y":
+                    return subrace
+                elif confirm.lower() == "n":
+                    get_subrace_input(list)
+                else:
+                    print("Please enter y or n.")
         else:
             print("Invalid subrace choice. Please enter a valid number.")
 

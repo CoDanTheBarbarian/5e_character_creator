@@ -13,18 +13,18 @@ def parse_name(name):
         print("Please enter 'y' or 'n'")
         parse_name(name)
 
-def choose_stats(stats):
+def choose_stats():
+    stats = get_random_stats()
     print(f"You rolled: {stats}")
-    response = input("Would you like to roll again? If not, we'll keep these stats. (y/n) ")
+    response = input("Would you like to keep these stats? If not, we'll roll again. (y/n) ")
     if response == "y":
-        stats = get_random_stats()
-        choose_stats(stats)
+        print("With that out of the way, let's choose a race and class!")
+        print("We'll assign these stats to your character after choosing a race and class.")
+        return stats
     elif response == "n":
-        print("With stats out of the way, let's choose a race and class!")
-        print("We'll assign stats later.")
+        choose_stats()
     else:
         print("Please enter 'y' or 'n'")
-        choose_stats(stats)
 
 def assign_stats(c, stats):
     options = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
@@ -33,34 +33,27 @@ def assign_stats(c, stats):
         for i, stat in enumerate(stats):
             print(f"{i + 1}: {stat}")
         stat_num_index = int(input("Choose a stat to assign: "))
-        if stat_num_index > 0 and stat_num_index <= len(stats):
-            continue
-        else:
+        if stat_num_index < 1 or stat_num_index > len(stats):
             print("Invalid choice. Please enter a number from the list.")
-        print(f"Assigning {stat[i - 1]}")
-        print("Remaining unassigned core stats:")
-        for i, option in enumerate(options):
-            print(f"{i + 1}: {option}")
-        stat_index = input("Choose a core stat to assign: ")
-        if stat_index > 0 and stat_index <= len(options):
-            continue
         else:
-            print("Invalid choice. Please enter a number from the list.")
-        c.assign_stat(stats[stat_num_index - 1], options[stat_index - 1])
-        options.remove(options[stat_index - 1])
-        stats.remove(stats[stat_num_index - 1])
-
-    
-
+            print(f"Assigning: {stats[stat_num_index - 1]}")
+            print("Remaining unassigned core stats:")
+            for i, option in enumerate(options):
+                print(f"{i + 1}: {option}")
+            stat_index = int(input("Choose a core stat to assign to: "))
+            if stat_index < 1 or stat_index > len(options):
+                print("Invalid choice. Please enter a number from the list.")
+            else:
+                c.assign_stat(options[stat_index - 1], stats[stat_num_index - 1])
+                options.remove(options[stat_index - 1])
+                stats.remove(stats[stat_num_index - 1])
 
 def main():
     print("Welcome to my character creator. Let's make a new character!")
     name = input("First things first, what is your new character's name? ")
     parse_name(name)
     c = Character(name)
-    print("Before anything else, let's roll some random stats!")
-    stats = get_random_stats()
-    choose_stats(stats)
+    print("First things first, let's choose your race and class.")
     print("Choose your race:")
     race_choice = get_race_input()
     race_data = create_race_object(race_choice)
@@ -73,11 +66,14 @@ def main():
             sub_race_data = create_subrace_object(sub_race_choice)
     
     # grab a class and create a class object
-
-    # assign_stats(c, stats) <-- not functioning properly
+    print("Let's roll some random stats.")
+    stats = choose_stats()
+    print("Let's assign these stats to your character, one by one.")
+    assign_stats(c, stats)
     c.apply_race_bonus(race_data)
     if c.subrace != None:
         c.apply_subrace_bonus(sub_race_data)
+    # c.apply_class(class_data)
     print("Creating character sheet...")
     c_data = parse_character_sheet_data(c)
     fillpdfs.write_fillable_pdf(template_path, output_path + c.name + ".pdf", c_data)

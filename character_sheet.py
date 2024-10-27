@@ -986,8 +986,6 @@ def get_check_yes_value(checkbox):
     return checkbox_yes_values[checkbox]
 
 def parse_character_sheet_data(c):
-    print("Deception skill bonus:", c.get_skill_bonus("deception"))
-    print("Constitution ability mod:", c.get_ability_mod("constitution"))
     data = zeroed_data.copy()
     data['text_1lehv'] = c.name
     data['text_2doro'] = c.background

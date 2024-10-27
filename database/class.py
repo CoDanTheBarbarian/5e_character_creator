@@ -1,4 +1,4 @@
-name = "name"  # <-- string
+name = "class name"  # <-- string
 hit_die = "hit_die"  # <-- integer
 proficiencies = "proficiencies "  # <-- list of strings
 proficiency_choices = "proficiency choice "  # <-- tuple containing a list of choices and an integer (the number of choices)

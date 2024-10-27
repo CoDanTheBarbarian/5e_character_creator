@@ -130,3 +130,24 @@ def test_add_and_remove_from_inventory():
 
 def test_equip_and_unequip_items():
     pass
+
+def test_assign_stat():
+    c = Character("testing")
+    assert c.strength == 8
+    assert c.dexterity == 8
+    assert c.constitution == 8
+    assert c.intelligence == 8
+    assert c.wisdom == 8
+    assert c.charisma == 8
+    c.assign_stat("strength", 10)
+    assert c.strength == 10
+    c.assign_stat("dexterity", 12)
+    assert c.dexterity == 12
+    c.assign_stat("constitution", 14)
+    assert c.constitution == 14
+    c.assign_stat("intelligence", 16)
+    assert c.intelligence == 16
+    c.assign_stat("wisdom", 18)
+    assert c.wisdom == 18
+    c.assign_stat("charisma", 20)
+    assert c.charisma == 20
