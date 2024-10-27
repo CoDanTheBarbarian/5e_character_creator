@@ -984,8 +984,10 @@ zeroed_data = {
 
 def get_check_yes_value(checkbox):
     return checkbox_yes_values[checkbox]
-# function to populate a new data dictionary with the data from the character sheet
+
 def parse_character_sheet_data(c):
+    print("Deception skill bonus:", c.get_skill_bonus("deception"))
+    print("Constitution ability mod:", c.get_ability_mod("constitution"))
     data = zeroed_data.copy()
     data['text_1lehv'] = c.name
     data['text_2doro'] = c.background
@@ -1017,8 +1019,8 @@ def parse_character_sheet_data(c):
     data['text_32pbxr'] = c.get_skill_bonus("medicine")
     data['text_33tvee'] = c.get_skill_bonus("animal handling")
     data['text_34issc'] = c.get_skill_bonus("arcana")
-    data['text_35ncji'] = c.get_skill_bonus("athletics")
-    data['text_36mpnv'] = c.get_skill_bonus("deception")
+    data['text_36mpnv'] = c.get_skill_bonus("athletics")
+    data['text_37tgqo'] = c.get_skill_bonus("deception")
     data['text_38kvjm'] = c.get_skill_bonus("history") 
     data['text_39mmaz'] = c.get_skill_bonus("insight") 
     data['text_40vhrl'] = c.get_skill_bonus("intimidation") 
@@ -1037,7 +1039,7 @@ def parse_character_sheet_data(c):
     data['textarea_240ngth'] = None # feats
     data['textarea_245bjob'] = None # tool proficiencies
     data['textarea_246zssm'] = None # weapon proficiencies
-    data['text_247iukc'] = c.get_saving_throw("constitutution")
+    data['text_247iukc'] = c.get_saving_throw("constitution")
     data['text_248bhjr'] = c.get_saving_throw("charisma") 
     data['text_249radr'] = c.get_saving_throw("wisdom") 
     data['text_250qfah'] = c.get_saving_throw("dexterity")
@@ -1051,7 +1053,7 @@ def parse_character_sheet_data(c):
         data['checkbox_255fxix'] = get_check_yes_value('checkbox_255fxix')
     if c.proficiencies["dexterity"] == True:
         data['checkbox_256qosr'] = get_check_yes_value('checkbox_256qosr')
-    if c.proficiencies["constitution"] == True:
+    if c.proficiencies['constitution'] == True:
         data['checkbox_257yypo'] = get_check_yes_value('checkbox_257yypo')
     if c.proficiencies["charisma"] == True:
         data['checkbox_258nvba'] = get_check_yes_value('checkbox_258nvba')
@@ -1107,3 +1109,16 @@ def parse_character_sheet_data(c):
     return data
 
 # fillpdfs.write_fillable_pdfs(template_path, output_path + character_name + ".pdf", character_data)
+
+'''
+# mapping logic to enumerate the text fields
+field_map = {}
+fields = list(fillpdfs.get_form_fields(template_path).keys())
+for i, field in enumerate(fields):
+    if field.startswith("checkbox"):
+        field_map[field] = None
+    else:
+        field_map[field] = i
+print(field_map)
+fillpdfs.write_fillable_pdf(template_path, output_path, field_map)
+'''
