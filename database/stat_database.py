@@ -18,7 +18,7 @@ skills_core_stat = {
     "deception": "charisma",
     "intimidation": "charisma",
     "performance": "charisma",
-    "persausion": "charisma"
+    "persuasion": "charisma"
 }
 
 # The dictionary of possible proficiencies and their equivalent default status of False.
@@ -42,7 +42,7 @@ proficiency_status = {
     'animal handling': False, 
     'insight': False, 
     'medicine': False, 
-    'percption': False, 
+    'perception': False, 
     'survival': False, 
     'deception': False, 
     'intimidation': False, 

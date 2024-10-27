@@ -36,6 +36,41 @@ class Character:
 
     def __repr__(self) -> str:
         return self.name
+    
+    def assign_stat(self, stat, stat_num):
+        stat_map = {
+            "strength": "self.strength",
+            "dexterity": "self.dexterity",
+            "constitution": "self.constitution",
+            "intelligence": "self.intelligence",
+            "wisdom": "self.wisdom",
+            "charisma": "self.charisma"
+        }
+        setattr(self, stat_map[stat], stat_num)
+        print(f"{stat} set to {stat_num}")
+
+    '''
+    Original implementation of assign_stat()
+    def assign_stat(self, stat, stat_num):
+        if stat == "strength":
+            self.strength = stat_num
+            print(f"{stat} set to {stat_num}")
+        elif stat == "dexterity":
+            self.dexterity = stat_num
+            print(f"{stat} set to {stat_num}")
+        elif stat == "constitution":
+            self.constitution = stat_num
+            print(f"{stat} set to {stat_num}")
+        elif stat == "intelligence":
+            self.intelligence = stat_num
+            print(f"{stat} set to {stat_num}")
+        elif stat == "wisdom":
+            self.wisdom = stat_num
+            print(f"{stat} set to {stat_num}")
+        elif stat == "charisma":
+            self.charisma = stat_num
+            print(f"{stat} set to {stat_num}")
+    '''
 
     # Universal attribute getter
 
