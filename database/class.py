@@ -1,4 +1,4 @@
-name = "class name"  # <-- string
+class_name = "class name"  # <-- string
 hit_die = "hit_die"  # <-- integer
 proficiencies = "proficiencies "  # <-- list of strings
 proficiency_choices = "proficiency choice "  # <-- tuple containing a list of choices and an integer (the number of choices)
@@ -10,7 +10,7 @@ spells_known = "spells known"  # <-- integer, the number of spells to choose fro
 
 class_data = {
     "barbarian": {
-        name: "barbarian",
+        class_name: "barbarian",
         hit_die: 12,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -33,7 +33,7 @@ class_data = {
         "rage charges": 2
         },
     "bard": {
-        name: "bard",
+        class_name: "bard",
         hit_die: 8,
         proficiencies: ["light armor", 
                           "simple weapons", 
@@ -74,7 +74,7 @@ class_data = {
         "bardic die": 6
         },
     "cleric": {
-        name: "cleric",
+        class_name: "cleric",
         hit_die: 8,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -100,7 +100,7 @@ class_data = {
         "channel divinity charges": 0
         },
     "druid": {
-        name: "druid",
+        class_name: "druid",
         hit_die: 8,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -137,7 +137,7 @@ class_data = {
             },
         },
     "fighter": {
-        name: "fighter",
+        class_name: "fighter",
         hit_die: 10,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -164,7 +164,7 @@ class_data = {
         "fighting style": ["list of fighting styles"]
         },
     "monk": {
-        name: "monk",
+        class_name: "monk",
         hit_die: 8,
         proficiencies: ["simple weapons", 
                           "short sword", 
@@ -183,7 +183,7 @@ class_data = {
         "ki points": 0
         },
     "paladin": {
-        name: "paladin",
+        class_name: "paladin",
         hit_die: 10,
         proficiencies: [
             "light armor", 
@@ -212,7 +212,7 @@ class_data = {
         "lay on hands": "level x 5"
         },
     "ranger": {
-        name: "ranger",
+        class_name: "ranger",
         hit_die: 10,
         proficiencies: [
             "light armor", 
@@ -240,7 +240,7 @@ class_data = {
         equipment: [],
         },
     "rogue": {
-        name: "rogue",
+        class_name: "rogue",
         hit_die: 8,
         proficiencies: [
             "light armor", 
@@ -277,7 +277,7 @@ class_data = {
         "sneak attack die": 6
         },
     "sorcerer": {
-        name: "sorcerer",
+        class_name: "sorcerer",
         hit_die: 6,
         proficiencies: [
             'dagger', 
@@ -308,7 +308,7 @@ class_data = {
         "origin": ["draconic", "wild magic"]
         },
     "warlock": {
-        name: "warlock",
+        class_name: "warlock",
         hit_die: 8,
         proficiencies: [
             'light_armor', 
@@ -338,7 +338,7 @@ class_data = {
         "patron": ["list of patrons"]
         },
     "wizard": {
-        name: "wizard",
+        class_name: "wizard",
         hit_die: 6,
         proficiencies: [
             'dagger', 
@@ -369,8 +369,8 @@ class_data = {
     }
 
 class Class:
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
-        self.name = name
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
+        self.class_name = class_name
         self.hit_die = hit_die
         self.proficiencies = proficiencies
         self.prof_choice = prof_choice_list
@@ -378,75 +378,75 @@ class Class:
         self.starting_equipment = starting_equipment
 
 class Barbarian(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, rage_charges):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, rage_charges):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.rage = rage_charges
 
 class Bard(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, bardic_die):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, bardic_die):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
         self.bardic_die = bardic_die
 
 class Cleric(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, domain, channel_divinity_slots):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, domain, channel_divinity_slots):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.domain = domain
         self.channel = channel_divinity_slots
 
 class Druid(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
 
 class Fighter(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, fighting_style):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, fighting_style):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.fighting_style = fighting_style
 
 class Monk(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, ki_points):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, ki_points):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.ki = ki_points
 
 class Paladin(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
 
 class Ranger(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
 
 class Rogue(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment,sneak_attack_die):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment,sneak_attack_die):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.sneak_attack_die = sneak_attack_die
 
 class Sorcerer(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, origin):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, origin):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
         self.origin = origin
 
 class Warlock(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, patron):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, patron):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
         self.patron = patron
 
 class Wizard(Class):
-    def __init__(self, name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
-        super().__init__(name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots

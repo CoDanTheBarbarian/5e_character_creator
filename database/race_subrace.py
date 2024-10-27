@@ -374,22 +374,7 @@ def create_race_object(input):
         stats[prof_choices], 
         stats[sub_races])
 
-def get_race_input():
-    for i, race in enumerate(races.keys()):
-        print(f"{i + 1}: {race}")
-    while True:
-        num = input("Choose a race: ")
-        for i, race in enumerate(races.keys()):
-            if num == str(i + 1):
-                confirm = input(f"Is {race} correct? (y/n): ")
-                if confirm.lower() == "y":
-                    return race
-                elif confirm.lower() == "n":
-                    get_race_input()
-                else:
-                    print("Please enter y or n.")
-        else:
-            print("Invalid race choice. Please enter a valid number.")
+
 
 def create_subrace_object(input):
     stats = sub_race_stats[input]
@@ -400,23 +385,6 @@ def create_subrace_object(input):
         stats[resistances],  
         stats[hp_bonus], 
         stats[speed_bonus])
-
-def get_subrace_input(list):
-    for i, subrace in enumerate(list):
-        print(f"{i + 1}: {subrace}")
-    while True:
-        num = input("Choose a subrace: ")
-        for i, subrace in enumerate(list):
-            if num == str(i + 1):
-                confirm = input(f"Is {subrace} correct? (y/n): ")
-                if confirm.lower() == "y":
-                    return subrace
-                elif confirm.lower() == "n":
-                    get_subrace_input(list)
-                else:
-                    print("Please enter y or n.")
-        else:
-            print("Invalid subrace choice. Please enter a valid number.")
 
 def create_dragoncolor_object(input):
     stats = dragon_color_stats[input]

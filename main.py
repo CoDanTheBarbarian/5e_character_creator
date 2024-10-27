@@ -2,51 +2,7 @@ from character import *
 from database.race_subrace import *
 from random_stats import *
 from character_sheet import *
-def parse_name(name):
-    response = input("Character name: " + name + "\nConfirm? (y/n) ")
-    if response == "n":
-        name = input("What is your new character's name? ")
-        parse_name(name)
-    elif response == "y":
-        print(f"Excellent! Marking {name} to your character sheet.")
-    else:
-        print("Please enter 'y' or 'n'")
-        parse_name(name)
-
-def choose_stats():
-    stats = get_random_stats()
-    print(f"You rolled: {stats}")
-    response = input("Would you like to keep these stats? If not, we'll roll again. (y/n) ")
-    if response == "y":
-        print("With that out of the way, let's choose a race and class!")
-        print("We'll assign these stats to your character after choosing a race and class.")
-        return stats
-    elif response == "n":
-        choose_stats()
-    else:
-        print("Please enter 'y' or 'n'")
-
-def assign_stats(c, stats):
-    options = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
-    while len(options) > 0:
-        print("Your stats are:")
-        for i, stat in enumerate(stats):
-            print(f"{i + 1}: {stat}")
-        stat_num_index = int(input("Choose a stat to assign: "))
-        if stat_num_index < 1 or stat_num_index > len(stats):
-            print("Invalid choice. Please enter a number from the list.")
-        else:
-            print(f"Assigning: {stats[stat_num_index - 1]}")
-            print("Remaining unassigned core stats:")
-            for i, option in enumerate(options):
-                print(f"{i + 1}: {option}")
-            stat_index = int(input("Choose a core stat to assign to: "))
-            if stat_index < 1 or stat_index > len(options):
-                print("Invalid choice. Please enter a number from the list.")
-            else:
-                c.assign_stat(options[stat_index - 1], stats[stat_num_index - 1])
-                options.remove(options[stat_index - 1])
-                stats.remove(stats[stat_num_index - 1])
+from cli import *
 
 def main():
     print("Welcome to my character creator. Let's make a new character!")
