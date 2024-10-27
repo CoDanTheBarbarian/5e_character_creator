@@ -2,7 +2,7 @@ from fillpdf import fillpdfs
 import os
 
 template_path = "/root/workspace/github.com/CoDanTheBarbarian/5e_character_creator/pdf/Character_Sheet_Template.pdf"
-output_path = "/root/workspace/github.com/CoDanTheBarbarian/5e_character_creator/pdf/"
+output_path = "/root/workspace/github.com/CoDanTheBarbarian/5e_character_creator/pdf/character_pdfs/"
 
 fields_key = {
           'text_1lehv': "name", 

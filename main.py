@@ -1,7 +1,7 @@
 from character import *
 from database.race_subrace import *
 from random_stats import *
-from pdf.character_sheet import *
+from character_sheet import *
 def parse_name(name):
     response = input("Character name: " + name + "\nConfirm? (y/n) ")
     if response == "n":
