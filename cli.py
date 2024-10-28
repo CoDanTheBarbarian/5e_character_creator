@@ -1,5 +1,6 @@
 from random_stats import *
 from database.race_subrace import *
+from database.c_class import *
 
 def parse_name(name):
     response = input("Character name: " + name + "\nConfirm? (y/n) ")
@@ -18,7 +19,7 @@ def confirm_choice(choice_description, callback):
         if response.lower() == "y":
             return True
         elif response.lower() == "n":
-            callback()  # Re-run the callback if choice is denied
+            return False  # Return False to indicate a "no" confirmation
         else:
             print("Please enter 'y' or 'n'.")
 
@@ -50,7 +51,21 @@ def get_subrace_input(list):
         return select_subrace()
     return select_subrace()
 
-def roll_stats():
+def get_class_input():
+    for i, c in enumerate(class_data.keys()):
+        print(f"{i + 1}: {c}")
+    def select_class():
+        num = input("Choose a class: ")
+        if num.isdigit() and 1 <= int(num) <= len(class_data):
+            c = list(class_data.keys())[int(num) - 1]
+            if confirm_choice(f"Is {c} correct?", select_class):
+                return c
+        else:
+            print("Invalid class choice. Please enter a valid number.")
+        return select_class()
+    return select_class()
+
+def choose_stats():
     while True:
         stats = get_random_stats()
         if confirm_choice(f"You rolled: {stats}\nWould you like to keep these stats? If not, we'll roll again.", lambda: None):

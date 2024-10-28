@@ -1,5 +1,7 @@
 from database.stat_database import *
 from database.race_subrace import *
+from cli import *
+
 
 def get_background_profs(background):
     profs = backgrounds[background]
@@ -10,9 +12,13 @@ class Character:
         self.name = name
         self.race = None
         self.subrace = None
+        self.c_class = None
+        self.subclass = None
+        self.class_info = []
         self.background = None
         self.speed = 0
         self.hp = 0
+        self.hit_die = 0
         self.proficiency_bonus = 2
         self.level = level
         self.xp = xp
@@ -31,7 +37,7 @@ class Character:
         self.shield = None
         self.equipped_items = []
         self.spell_casting_ability = None
-        self.spell_slots = spell_slots
+        self.spell_slots = spell_slots_dict.copy()
         self.spell_list = []
 
     def __repr__(self) -> str:
@@ -201,7 +207,8 @@ class Character:
             for resistance in race.resistances:
                 self.gain_damage_resistance(resistance)
         if race.prof_choices:
-            self.gain_proficiency_choice(race.prof_choices[0], race.prof_choices[1])
+            print("Looks like you have some options for skill proficiencies to gain from your race.")
+            gain_proficiency_choices(self, race.prof_choices[0], race.prof_choices[1])
     
     def apply_subrace_bonus(self, subrace):
         self.subrace = subrace.subrace
@@ -221,14 +228,52 @@ class Character:
             self.breath_size = subrace.breath_size
             self.breath_type = subrace.breath_type
 
+    # Methods for applying class stats
+
+    def apply_class(self, class_data):
+        self.c_class = class_data.class_name
+        self.hit_die = class_data.hit_die
+        if class_data.proficiencies:
+            self.gain_proficiency(class_data.proficiencies)
+        if class_data.prof_choice:
+            print("Looks like you have some options for skill proficiencies to gain from your class.")
+            gain_proficiency_choices(self, class_data.prof_choice[0], class_data.prof_choice[1])
+        self.class_info = class_data.class_abilities
+        self.inventory = class_data.starting_equipment # needs to be adjusted after this info is populated in each class
+        if class_data.spell_casting_ability:
+            self.spell_casting_ability = class_data.spell_casting_ability
+        if class_data.spell_slots:
+            for spell_type in class_data.spell_slots:
+                self.spell_slots[spell_type] = class_data.spell_slots[spell_type]
+        if class_data.spells_known:
+            self.spells_known = class_data.spells_known
+        if class_data.class_name == "barbarian":
+            self.class_info.append(f"Rage charges: {class_data.rage_charges}")
+        if class_data.class_name == "bard":
+            self.class_info.append(f"{bardic_die}: {class_data.bardic_die}")
+        if class_data.class_name == "cleric":
+            self.class_info.append(f"Divine domain: {class_data.divine_domain}")
+            self.class_info.append(f"Channel divinity charges: {class_data.channel_divinity_charges}")
+        if class_data.class_name == "fighter":
+            self.class_info.append(f"Fighting style: {class_data.fighting_style}")
+        if class_data.class_name == "monk":
+            self.class_info.append(f"Ki points: {class_data.ki_points}")
+        if class_data.class_name == "paladin":
+            self.class_info.append(f"Lay on hands charges: {class_data.lay_on_hands_charges}")
+        if class_data.class_name == "rogue":
+            self.class_info.append(f"Sneak attack die: {class_data.sneak_attack_die}")
+        if class_data.class_name == "warlock":
+            self.class_info.append(f"Patron: {class_data.patron}")
+
+
     # spells and spell list methods
 
     def populate_spell_list(self, self_class):
         self.spell_list = spell_list[self_class]
 
-    def spell_attack(self):
+    def spell_attack_bonus(self):
         return self.proficiency_bonus + self.get_ability_mod(self.spell_casting_ability)
     
     def spell_save_dc(self):
-        return 8 + self.spell_attack()
+        return 8 + self.spell_attack_bonus()
     

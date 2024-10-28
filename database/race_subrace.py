@@ -101,7 +101,7 @@ race_stats = {
         ability_bonus: [("charisma", 2)],
         proficiencies: [],
         resistances: [],
-        prof_choices: [
+        prof_choices:
             (
             ['athletics', 
             'acrobatics', 
@@ -120,7 +120,7 @@ race_stats = {
             'deception', 
             'intimidation', 
             'performance', 
-            'persausion'], 2)],
+            'persausion'], 2),
         sub_races: races[half_elf]
         },
     half_orc: {

@@ -151,7 +151,7 @@ damage_resistances = {
 
 # spell slot dictionary
 
-spell_slots = {
+spell_slots_dict = {
     "cantrips": 0,
     "level 1": 0,
     "level 2": 0,

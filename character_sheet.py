@@ -989,14 +989,14 @@ def parse_character_sheet_data(c):
     data = zeroed_data.copy()
     data['text_1lehv'] = c.name
     data['text_2doro'] = c.background
-    data['text_3jvjj'] = None # character.class
+    data['text_3jvjj'] = c.c_class
     data['text_4htxk'] = c.race
-    data['text_5fclu'] = None # character.subclass
+    data['text_5fclu'] = c.subclass
     data['text_6mtop'] = c.level
     data['text_7bcgp'] = c.xp
     data['text_8lyot'] = c.ac
     data['text_11gboc'] = c.hp
-    data['text_12mirk'] = None # c.hit_die
+    data['text_12mirk'] = f"1 d{c.hit_die}"
     data['text_14bhlv'] = c.get_ability_mod("dexterity")
     data['text_15vogh'] = c.speed
     data['text_17tqcv'] = c.get_skill_bonus("perception")
@@ -1031,12 +1031,12 @@ def parse_character_sheet_data(c):
     data['text_48wwut'] = c.get_skill_bonus("sleight of hand") 
     data['text_49ztsd'] = c.get_skill_bonus("stealth") 
     data['text_50fkah'] = c.get_skill_bonus("survival")
-    data['textarea_237vdig'] = None # class features box 1
+    data['textarea_237vdig'] = None # class features box 1 c.class_info
     data['textarea_238rkrv'] = None # class features box 2
-    data['textarea_239zoqi'] = None # race traits
+    data['textarea_239zoqi'] = None # race traits <-- need to add this info to each race data
     data['textarea_240ngth'] = None # feats
     data['textarea_245bjob'] = None # tool proficiencies
-    data['textarea_246zssm'] = None # weapon proficiencies
+    data['textarea_246zssm'] = None # weapon proficiencies <-- need to write a function to pull this info from the character sheet
     data['text_247iukc'] = c.get_saving_throw("constitution")
     data['text_248bhjr'] = c.get_saving_throw("charisma") 
     data['text_249radr'] = c.get_saving_throw("wisdom") 
@@ -1099,10 +1099,11 @@ def parse_character_sheet_data(c):
         data['checkbox_279kstn'] = get_check_yes_value('checkbox_279kstn')
     if c.proficiencies["shield"] == True:
         data['checkbox_280mvjc'] = get_check_yes_value('checkbox_280mvjc')
-    data['text_51soru'] = None #spellcasting modifier
-    data['text_52xzcj'] = None #spell save dc
-    data['text_53trsa'] = None #spell attack bonus
-    data['textarea_244f'] = c.inventory
+    if c.spell_casting_ability != None:
+        data['text_51soru'] = c.get_ability_mod(c.spell_casting_ability)
+        data['text_52xzcj'] = c.spell_save_dc()
+        data['text_53trsa'] = c.spell_attack_bonus()
+    data['textarea_244f'] = None # c.inventory # <-- need to write a function to cat this from the c.inventory list
 
     return data
 
