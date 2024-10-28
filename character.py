@@ -152,9 +152,6 @@ class Character:
             else:
                 self.proficiencies[prof] = True
 
-    def gain_proficiency_choice(self, options, num_choices):
-        pass
-
     # Methods dealing with inventory and equipping an item
     
     def add_to_inventory(self, object):

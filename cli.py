@@ -18,7 +18,7 @@ def confirm_choice(choice_description, callback):
         if response.lower() == "y":
             return True
         elif response.lower() == "n":
-            return callback()  # Re-run the callback if choice is denied
+            callback()  # Re-run the callback if choice is denied
         else:
             print("Please enter 'y' or 'n'.")
 
@@ -50,7 +50,7 @@ def get_subrace_input(list):
         return select_subrace()
     return select_subrace()
 
-def choose_stats():
+def roll_stats():
     while True:
         stats = get_random_stats()
         if confirm_choice(f"You rolled: {stats}\nWould you like to keep these stats? If not, we'll roll again.", lambda: None):
@@ -78,3 +78,32 @@ def assign_stats(c, stats):
                 c.assign_stat(options[stat_index - 1], stats[stat_num_index - 1])
                 options.remove(options[stat_index - 1])
                 stats.remove(stats[stat_num_index - 1])
+
+def gain_proficiency_choices(c, list, num_choices):
+    options_left = list[:]  # create a copy of the list
+    choices = []
+    choices_left = num_choices
+
+    while choices_left > 0:
+        for i, option in enumerate(options_left):
+            print(f"{i + 1}: {option}")
+        print(f"You have {choices_left} choices left.")
+        choice_num = int(input("Choose a skill: "))
+        if choice_num < 1 or choice_num > len(options_left):
+            print("Invalid choice. Please enter a number from the list.")
+        else:
+            print(f"Chosen skill: {options_left[choice_num - 1]}")
+            choices.append(options_left[choice_num - 1])
+            options_left.pop(choice_num - 1)  # remove chosen option from list
+            choices_left -= 1
+
+    while choices_left == 0:
+        print(f"You have chosen: {', '.join(choices)}")
+        confirm = input("Confirm? (y/n) ")
+        if confirm.lower() == "y":
+            c.gain_proficiency(choices)
+            break
+        elif confirm.lower() == "n":
+            gain_proficiency_choices(c, list, num_choices)
+        else:
+            print("Please enter 'y' or 'n'.")

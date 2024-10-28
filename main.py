@@ -13,6 +13,9 @@ def main():
     print("Choose your race:")
     race_choice = get_race_input()
     race_data = create_race_object(race_choice)
+    if race_data.prof_choices != []:
+        print("Looks like you have some options for skill proficiencies to gain.")
+        gain_proficiency_choices(c, race_data.prof_choices[0][0], race_data.prof_choices[0][1])
     if len(race_data.subraces) > 0:
         print("Looks like you have some options for a subrace.")
         sub_race_choice = get_subrace_input(race_data.subraces)
@@ -23,7 +26,7 @@ def main():
     
     # grab a class and create a class object
     print("Let's roll some random stats.")
-    stats = choose_stats()
+    stats = roll_stats()
     print("Let's assign these stats to your character, one by one.")
     assign_stats(c, stats)
     c.apply_race_bonus(race_data)
