@@ -386,6 +386,9 @@ class Class:
         self.prof_choice = prof_choice_list
         self.class_abilities = class_abilities
         self.starting_equipment = starting_equipment
+        self.spell_casting_ability = None
+        self.spell_slots = None
+        self.spells_known = None
 
 class Barbarian(Class):
     def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, rage_charges):
@@ -498,10 +501,11 @@ def create_monk(data):
     )
 
 class Paladin(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, lay_on_hands):
         super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
+        self.lay_on_hands = lay_on_hands
 
 def create_paladin(data):
     return Paladin(
@@ -512,7 +516,8 @@ def create_paladin(data):
         data[class_abilities],
         data[equipment],
         data[spell_casting_ability],
-        data[spell_slots]
+        data[spell_slots],
+        data[lay_on_hands]
     )
 
 class Ranger(Class):

@@ -1,8 +1,9 @@
 from fillpdf import fillpdfs
 import os
 
-template_path = "/root/workspace/github.com/CoDanTheBarbarian/5e_character_creator/pdf/Character_Sheet_Template.pdf"
-output_path = "/root/workspace/github.com/CoDanTheBarbarian/5e_character_creator/pdf/character_pdfs/"
+base_dir = os.path.dirname(__file__)
+template_path = os.path.join(base_dir, "pdf", "Character_Sheet_Template.pdf")
+output_path = os.path.join(base_dir, "pdf", "character_pdfs/")
 
 fields_key = {
           'text_1lehv': "name", 
@@ -1031,7 +1032,7 @@ def parse_character_sheet_data(c):
     data['text_48wwut'] = c.get_skill_bonus("sleight of hand") 
     data['text_49ztsd'] = c.get_skill_bonus("stealth") 
     data['text_50fkah'] = c.get_skill_bonus("survival")
-    data['textarea_237vdig'] = None # class features box 1 c.class_info
+    data['textarea_237vdig'] = None # class features box 1 c.class_info <-- need to write a function to cat this from c.class_info list
     data['textarea_238rkrv'] = None # class features box 2
     data['textarea_239zoqi'] = None # race traits <-- need to add this info to each race data
     data['textarea_240ngth'] = None # feats

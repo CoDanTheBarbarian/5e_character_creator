@@ -36,7 +36,7 @@ def main():
     print("Creating character sheet...")
     c_data = parse_character_sheet_data(c)
     fillpdfs.write_fillable_pdf(template_path, output_path + c.name + ".pdf", c_data)
-    print("Character sheet created! Check your output folder for the PDF. It will be titled the name of your character.")
+    print(f"Character sheet created! Your character sheet is located in {output_path}.")
     
 
 if __name__ == "__main__":

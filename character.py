@@ -11,6 +11,7 @@ class Character:
     def __init__(self, name, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10, level=1, xp=0,):
         self.name = name
         self.race = None
+        self.race_info = []
         self.subrace = None
         self.c_class = None
         self.subclass = None
@@ -224,9 +225,9 @@ class Character:
         self.speed_bonus = subrace.speed_bonus
         if isinstance(subrace, DragonColor):
             self.color = subrace.subrace
-            self.breath_shape = subrace.breath_shape
-            self.breath_size = subrace.breath_size
-            self.breath_type = subrace.breath_type
+            self.race_info.append(subrace.breath_shape)
+            self.race_info.append(subrace.breath_size)
+            self.race_info.append(subrace.breath_type)
 
     # Methods for applying class stats
 
@@ -259,7 +260,7 @@ class Character:
         if class_data.class_name == "monk":
             self.class_info.append(f"Ki points: {class_data.ki_points}")
         if class_data.class_name == "paladin":
-            self.class_info.append(f"Lay on hands charges: {class_data.lay_on_hands_charges}")
+            self.class_info.append(f"Lay on hands charges: {class_data.lay_on_hands}")
         if class_data.class_name == "rogue":
             self.class_info.append(f"Sneak attack die: {class_data.sneak_attack_die}")
         if class_data.class_name == "warlock":
