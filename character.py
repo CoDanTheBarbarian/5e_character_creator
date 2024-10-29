@@ -140,8 +140,17 @@ class Character:
         return self.get_ability_mod(skill_ability)
 
     # Methods dealing with proficiency dictionaries, i.e. 'self.proficiencies' and 'self.damage_resistance'
-
-    def apply_background_bonus(self):
+    def get_weapon_proficiencies(self):
+        prof = []
+        for sw in simple_weapons:
+            if self.proficiencies[sw] == True:
+                prof.append(sw)
+        for mw in martial_weapons:
+            if self.proficiencies[mw] == True:
+                prof.append(mw)
+        return prof
+    def apply_background(self, background):
+        self.background = background
         bonus = get_background_profs(self.background)
         self.gain_proficiency(bonus)
 
@@ -225,9 +234,9 @@ class Character:
         self.speed_bonus = subrace.speed_bonus
         if isinstance(subrace, DragonColor):
             self.color = subrace.subrace
-            self.race_info.append(subrace.breath_shape)
-            self.race_info.append(subrace.breath_size)
-            self.race_info.append(subrace.breath_type)
+            self.race_info.append(f"Breath shape: {subrace.breath_shape}")
+            self.race_info.append(f"Breath size: {subrace.breath_size}")
+            self.race_info.append(f"Breath type: {subrace.breath_type}")
 
     # Methods for applying class stats
 
@@ -249,11 +258,11 @@ class Character:
         if class_data.spells_known:
             self.spells_known = class_data.spells_known
         if class_data.class_name == "barbarian":
-            self.class_info.append(f"Rage charges: {class_data.rage_charges}")
+            self.class_info.append(f"Rage charges: {class_data.rage}")
         if class_data.class_name == "bard":
             self.class_info.append(f"{bardic_die}: {class_data.bardic_die}")
         if class_data.class_name == "cleric":
-            self.class_info.append(f"Divine domain: {class_data.divine_domain}")
+            self.class_info.append(f"Divine domain: {class_data.domain}")
             self.class_info.append(f"Channel divinity charges: {class_data.channel_divinity_charges}")
         if class_data.class_name == "fighter":
             self.class_info.append(f"Fighting style: {class_data.fighting_style}")
@@ -262,7 +271,9 @@ class Character:
         if class_data.class_name == "paladin":
             self.class_info.append(f"Lay on hands charges: {class_data.lay_on_hands}")
         if class_data.class_name == "rogue":
-            self.class_info.append(f"Sneak attack die: {class_data.sneak_attack_die}")
+            self.class_info.append(f"Sneak attack die: {class_data.sneak_attack}")
+        if class_data.class_name == "sorcerer":
+            self.class_info.append(f"Sorcerous origin: {class_data.origin}")
         if class_data.class_name == "warlock":
             self.class_info.append(f"Patron: {class_data.patron}")
 
