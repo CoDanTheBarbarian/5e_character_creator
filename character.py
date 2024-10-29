@@ -222,6 +222,7 @@ class Character:
             gain_proficiency_choices(self, race.prof_choices[0], race.prof_choices[1])
     
     def apply_subrace_bonus(self, subrace):
+        self.subrace = subrace.subrace
         if subrace.stat_bonus:
             for stat, bonus in subrace.stat_bonus:
                 self.increase_core_stat(stat, bonus)
