@@ -16,6 +16,7 @@ class Character:
         self.c_class = None
         self.subclass = None
         self.class_info = []
+        self.class_abilities = {}
         self.background = None
         self.speed = 0
         self.hp = 0
@@ -221,7 +222,6 @@ class Character:
             gain_proficiency_choices(self, race.prof_choices[0], race.prof_choices[1])
     
     def apply_subrace_bonus(self, subrace):
-        self.subrace = subrace.subrace
         if subrace.stat_bonus:
             for stat, bonus in subrace.stat_bonus:
                 self.increase_core_stat(stat, bonus)
@@ -232,8 +232,7 @@ class Character:
                 self.gain_damage_resistance(resistance)
         self.hp_bonus = subrace.hp_bonus
         self.speed_bonus = subrace.speed_bonus
-        if isinstance(subrace, DragonColor):
-            self.color = subrace.subrace
+        if self.race == "dragonborn":
             self.race_info.append(f"Breath shape: {subrace.breath_shape}")
             self.race_info.append(f"Breath size: {subrace.breath_size}")
             self.race_info.append(f"Breath type: {subrace.breath_type}")
@@ -248,34 +247,13 @@ class Character:
         if class_data.prof_choice:
             print("Looks like you have some options for skill proficiencies to gain from your class.")
             gain_proficiency_choices(self, class_data.prof_choice[0], class_data.prof_choice[1])
-        self.class_info = class_data.class_abilities
-        self.inventory = class_data.starting_equipment # needs to be adjusted after this info is populated in each class
+        self.class_info = class_data.class_info
         if class_data.spell_casting_ability:
             self.spell_casting_ability = class_data.spell_casting_ability
         if class_data.spell_slots:
             for spell_type in class_data.spell_slots:
                 self.spell_slots[spell_type] = class_data.spell_slots[spell_type]
-        if class_data.spells_known:
-            self.spells_known = class_data.spells_known
-        if class_data.class_name == "barbarian":
-            self.class_info.append(f"Rage charges: {class_data.rage}")
-        if class_data.class_name == "bard":
-            self.class_info.append(f"{bardic_die}: {class_data.bardic_die}")
-        if class_data.class_name == "cleric":
-            self.class_info.append(f"Divine domain: {class_data.domain}")
-            self.class_info.append(f"Channel divinity charges: {class_data.channel_divinity_charges}")
-        if class_data.class_name == "fighter":
-            self.class_info.append(f"Fighting style: {class_data.fighting_style}")
-        if class_data.class_name == "monk":
-            self.class_info.append(f"Ki points: {class_data.ki_points}")
-        if class_data.class_name == "paladin":
-            self.class_info.append(f"Lay on hands charges: {class_data.lay_on_hands}")
-        if class_data.class_name == "rogue":
-            self.class_info.append(f"Sneak attack die: {class_data.sneak_attack}")
-        if class_data.class_name == "sorcerer":
-            self.class_info.append(f"Sorcerous origin: {class_data.origin}")
-        if class_data.class_name == "warlock":
-            self.class_info.append(f"Patron: {class_data.patron}")
+        self.class_abilities = class_data.class_abilities
 
 
     # spells and spell list methods

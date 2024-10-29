@@ -206,10 +206,39 @@ def test_apply_dragon_subrace():
     c.apply_subrace_bonus(subrace_obj)
     assert c.subrace == "black"
     assert c.damage_resistance["acid"] == True
-    assert 'Breath shape: line' in c.race_info
-    assert 'Breath size: (5, 30)' in c.race_info
-    assert 'Breath type: acid' in c.race_info
-    assert ', '.join(c.race_info) == "Breath shape: line, Breath size: (5, 30), Breath type: acid"
+    assert c.race_info[0] == "Breath shape: line"
 
 def test_get_spell_list():
     pass
+
+def test_race_info_initialized():
+    c = Character("testing")
+    assert c.race_info == []
+
+def test_apply_subrace_bonus_empty_list():
+    c = Character("testing")
+    c.race_info = []
+    dragon_obj = create_race_object(dragonborn)
+    c.apply_race_bonus(dragon_obj)
+    subrace_obj = create_dragoncolor_object("black")
+    c.apply_subrace_bonus(subrace_obj)
+    assert len(c.race_info) == 3
+    assert 'Breath shape: line' in c.race_info
+    assert 'Breath size: (5, 30)' in c.race_info
+    assert 'Breath type: acid' in c.race_info
+
+def test_apply_subrace_bonus_multiple_calls():
+    c = Character("testing")
+    dragon_obj = create_race_object(dragonborn)
+    c.apply_race_bonus(dragon_obj)
+    subrace_obj1 = create_dragoncolor_object("black")
+    subrace_obj2 = create_dragoncolor_object("white")
+    c.apply_subrace_bonus(subrace_obj1)
+    c.apply_subrace_bonus(subrace_obj2)
+    assert len(c.race_info) == 6
+    assert 'Breath shape: line' in c.race_info
+    assert 'Breath size: (5, 30)' in c.race_info
+    assert 'Breath type: acid' in c.race_info
+    assert 'Breath shape: cone' in c.race_info
+    assert 'Breath size: (15,)' in c.race_info
+    assert 'Breath type: cold' in c.race_info

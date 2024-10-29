@@ -2,7 +2,8 @@ class_name = "class name"  # <-- string
 hit_die = "hit_die"  # <-- integer
 proficiencies = "proficiencies "  # <-- list of strings
 prof_choices = "proficiency choice "  # <-- tuple containing a list of choices and an integer (the number of choices)
-class_abilities = "class abilities "  # <-- list of strings pointing to an as of yet unmade class ability database.
+class_abilities = "class abilities "  # <-- dictionaries of ability name -> relevant info
+class_info = "class info"  # <-- list of class info keywords mapped to an as of yet unmade database
 equipment = "starting equipment"  # <-- list of strings pointing to weapons and armor database.
 spell_casting_ability = "spell casting ability"  # <-- string (one of the six core stats)
 spell_slots = "spell slots"  # <-- dictionary with updated values for the character self.spell_slots dictionary
@@ -38,9 +39,9 @@ class_data = {
              "perception", 
              "survival"],
                2),
-        class_abilities: ["rage", "unarmored defense"], # need to create a database for class abilities
+        class_info: ["rage", "unarmored defense"], # need to create a database for class abilities
         equipment: ["testing", "testing", "one two three"],
-        rage_charges: 2
+        class_abilities: {"rage": 2},
         },
     "bard": {
         class_name: "bard",
@@ -73,7 +74,7 @@ class_data = {
              'performance', 
              'persuasion'], 
              3),
-        class_abilities: ["spell casting", "bardic inspiration"],
+        class_info: ["spell casting", "bardic inspiration"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "charisma",
         spell_slots: {
@@ -81,7 +82,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 4,
-        bardic_die: 6
+        class_abilities: {"bardic die": 6},
         },
     "cleric": {
         class_name: "cleric",
@@ -99,7 +100,7 @@ class_data = {
              "persuasion", 
              "religion"],
             2),
-        class_abilities: ["spell casting", "divine domain"],
+        class_info: ["spell casting", "divine domain"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "wisdom",
         spell_slots: {
@@ -107,7 +108,7 @@ class_data = {
             "level 1": 2
             },
         domain: ["list of domains"],
-        channel_divinity_charges: 0
+        class_abilities: {"channel divinity": 0},
         },
     "druid": {
         class_name: "druid",
@@ -138,13 +139,14 @@ class_data = {
              "survival"], 
              2
              ),
-        class_abilities: ["spell casting", "druidic"],
+        class_info: ["spell casting", "druidic"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 2,
             "level 1": 2
             },
+        class_abilities: None,
         },
     "fighter": {
         class_name: "fighter",
@@ -169,9 +171,12 @@ class_data = {
                 "survival"
             ], 2
         ),
-        class_abilities: ["fighting style", "second wind"],
+        class_info: ["fighting style", "second wind"],
         equipment: ["testing", "testing", "one two three"],
-        fighting_style: ["list of fighting styles"]
+        class_abilities: {
+            "second wind": 0,
+            "fighting style": None
+            },
         },
     "monk": {
         class_name: "monk",
@@ -188,9 +193,9 @@ class_data = {
              "religion", 
              "stealth"],
                2),
-        class_abilities: ["unarmored defense", "martial arts"],
+        class_info: ["unarmored defense", "martial arts"],
         equipment: ["testing", "testing", "one two three"],
-        ki_points: 0
+        class_abilities: {"ki points": 0},
         },
     "paladin": {
         class_name: "paladin",
@@ -215,11 +220,11 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_abilities: ["spell casting", "divine sense", "lay on hands"],
+        class_info: ["spell casting", "divine sense", "lay on hands"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "charisma",
         spell_slots: {},
-        lay_on_hands: "level x 5"
+        class_abilities: {"lay on hands": "level x 5"},
         },
     "ranger": {
         class_name: "ranger",
@@ -246,8 +251,9 @@ class_data = {
                 "survival"
             ], 3
         ),
-        class_abilities: ["favored enemy", "natural explorer"],
+        class_info: ["favored enemy", "natural explorer"],
         equipment: ["testing", "testing", "one two three"],
+        class_abilities: None,
         },
     "rogue": {
         class_name: "rogue",
@@ -277,14 +283,14 @@ class_data = {
                 "stealth"
             ], 4
         ),
-        class_abilities: ["expertise", "sneak attack", "thieves' cant"],
+        class_info: ["expertise", "sneak attack", "thieves' cant"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 4,
             "level 1": 2
             },
-        sneak_attack: 6
+        class_abilities: {"sneak attack die": 6},
         },
     "sorcerer": {
         class_name: "sorcerer",
@@ -307,7 +313,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_abilities: ["spell casting", "sorcerous origin"],
+        class_info: ["spell casting", "sorcerous origin"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "charisma",
         spell_slots: {
@@ -315,7 +321,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 2,
-        origin: ["draconic", "wild magic"]
+        class_abilities: {"sorcerous origin": None},
         },
     "warlock": {
         class_name: "warlock",
@@ -337,7 +343,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_abilities: ["otherworldy patron", "pact magic"],
+        class_info: ["otherworldy patron", "pact magic"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "charisma",
         spell_slots: {
@@ -345,7 +351,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 2,
-        patron: ["list of patrons"]
+        class_abilities: {"pact magic": None},
         },
     "wizard": {
         class_name: "wizard",
@@ -368,32 +374,33 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_abilities: ["spell casting", "arcane recovery"],
+        class_info: ["spell casting", "arcane recovery"],
         equipment: ["testing", "testing", "one two three"],
         spell_casting_ability: "intelligence",
         spell_slots: {
             "cantrips": 3,
             "level 1": 2
             },
+        class_abilities: {"arcane recovery": None},
         }
     }
 
 class Class:
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
         self.class_name = class_name
         self.hit_die = hit_die
         self.proficiencies = proficiencies
         self.prof_choice = prof_choice_list
-        self.class_abilities = class_abilities
+        self.class_info = class_info
         self.starting_equipment = starting_equipment
+        self.class_abilities = class_abilities
         self.spell_casting_ability = None
         self.spell_slots = None
         self.spells_known = None
 
 class Barbarian(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, rage_charges):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
-        self.rage = rage_charges
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
 
 def create_barbarian(data):
     return Barbarian(
@@ -401,18 +408,17 @@ def create_barbarian(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
-        data[rage_charges]
+        data[class_abilities]
     )
 
 class Bard(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, bardic_die):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, spells_known, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
-        self.bardic_die = bardic_die
 
 def create_bard(data):
     return Bard(
@@ -420,21 +426,19 @@ def create_bard(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
         data[spell_slots],
         data[spells_known],
-        data[bardic_die]
+        data[class_abilities]
     )
 
 class Cleric(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, domain, channel_divinity_slots):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, domain, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
-        self.domain = domain
-        self.channel = channel_divinity_slots
 
 def create_cleric(data):
     return Cleric(
@@ -442,17 +446,16 @@ def create_cleric(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
         data[spell_slots],
-        data[domain],
-        data[channel_divinity_charges]
+        data[class_abilities]
     )
 
 class Druid(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
 
@@ -462,16 +465,16 @@ def create_druid(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
-        data[spell_slots]
+        data[spell_slots],
+        data[class_abilities]
     )
 
 class Fighter(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, fighting_style):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
-        self.fighting_style = fighting_style
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
 
 def create_fighter(data):
     return Fighter(
@@ -479,15 +482,14 @@ def create_fighter(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
-        data[fighting_style]
+        data[class_abilities]
     )
 
 class Monk(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, ki_points):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
-        self.ki = ki_points
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
 
 def create_monk(data):
     return Monk(
@@ -495,17 +497,16 @@ def create_monk(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
-        data[ki_points]
+        data[class_abilities]
     )
 
 class Paladin(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, lay_on_hands):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
-        self.lay_on_hands = lay_on_hands
 
 def create_paladin(data):
     return Paladin(
@@ -513,16 +514,16 @@ def create_paladin(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
         data[spell_slots],
-        data[lay_on_hands]
+        data[class_abilities]
     )
 
 class Ranger(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
 
 def create_ranger(data):
     return Ranger(
@@ -530,14 +531,14 @@ def create_ranger(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
-        data[equipment]
+        data[class_info],
+        data[equipment],
+        data[class_abilities]
     )
 
 class Rogue(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment,sneak_attack_die):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
-        self.sneak_attack_die = sneak_attack_die
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
 
 def create_rogue(data):
     return Rogue(
@@ -545,18 +546,17 @@ def create_rogue(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
-        data[sneak_attack]
+        data[class_abilities]
     )
 
 class Sorcerer(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, origin):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, spells_known, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
-        self.origin = origin
 
 def create_sorcerer(data):
     return Sorcerer(
@@ -564,21 +564,20 @@ def create_sorcerer(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
         data[spell_slots],
         data[spells_known],
-        data[origin]
+        data[class_abilities]
     )
 
 class Warlock(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots, spells_known, patron):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, spells_known, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
-        self.patron = patron
 
 def create_warlock(data):
     return Warlock(
@@ -586,17 +585,17 @@ def create_warlock(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
         data[spell_slots],
         data[spells_known],
-        data[patron]
+        data[class_abilities]
     )
 
 class Wizard(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment, spell_casting_ability, spell_slots,):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_abilities, starting_equipment)
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
+        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
 
@@ -606,10 +605,11 @@ def create_wizard(data):
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
-        data[class_abilities],
+        data[class_info],
         data[equipment],
         data[spell_casting_ability],
-        data[spell_slots]
+        data[spell_slots],
+        data[class_abilities]
     )
 
 class_create_map = {

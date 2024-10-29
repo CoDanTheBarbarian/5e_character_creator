@@ -21,8 +21,10 @@ def main():
         sub_race_choice = choose_subrace(race_obj.subraces)
         if race_obj.race == "dragonborn":
             sub_race_obj = create_dragoncolor_object(sub_race_choice)
+            c.subrace = sub_race_obj.subrace
         else:
             sub_race_obj = create_subrace_object(sub_race_choice)
+            c.subrace = sub_race_obj.subrace
     print("Choose your class:")
     class_name = choose_class()
     class_obj = create_class_object(class_name)
@@ -40,6 +42,7 @@ def main():
     c.apply_class(class_obj)
     c.apply_background(background)
     print("Creating character sheet...")
+    print(', '.join(c.race_info))
     c_data = parse_character_sheet_data(c)
     fillpdfs.write_fillable_pdf(template_path, output_path + c.name + ".pdf", c_data)
     print(f"Character sheet created! Your character sheet is located in {output_path}.")

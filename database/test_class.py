@@ -21,9 +21,9 @@ def test_get_class_data():
                                          "perception", 
                                          "survival"],
                                         2)
-    assert data[class_abilities] == ["rage", "unarmored defense"]
+    assert data[class_info] == ["rage", "unarmored defense"]
     assert data[equipment] == ["testing", "testing", "one two three"]
-    assert data[rage_charges] == 2
+    assert data[class_abilities] == {"rage": 2}
 
 def test_get_class_createor():
     class_input = "barbarian"
@@ -94,9 +94,9 @@ def test_create_class_handler():
                                          "perception", 
                                          "survival"],
                                         2)
-    assert barb.class_abilities == ["rage", "unarmored defense"]
+    assert barb.class_info == ["rage", "unarmored defense"]
     assert barb.starting_equipment == ["testing", "testing", "one two three"]
-    assert barb.rage == 2
+    assert barb.class_abilities == {"rage": 2}
 
 def test_create_barb():
     barb = create_barbarian(class_data["barbarian"])
@@ -117,8 +117,8 @@ def test_create_barb():
                                          "perception", 
                                          "survival"],
                                         2)
-    assert barb.class_abilities == ["rage", "unarmored defense"]
+    assert barb.class_info == ["rage", "unarmored defense"]
     assert barb.starting_equipment == ["testing", "testing", "one two three"]
-    assert barb.rage == 2
+    assert barb.class_abilities == {"rage": 2}
 
 

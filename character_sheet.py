@@ -1031,12 +1031,12 @@ def parse_character_sheet_data(c):
     data['text_48wwut'] = c.get_skill_bonus("sleight of hand") 
     data['text_49ztsd'] = c.get_skill_bonus("stealth") 
     data['text_50fkah'] = c.get_skill_bonus("survival")
-    data['textarea_237vdig'] = ', '.join(c.class_info)
-    data['textarea_238rkrv'] = None # class features box 2
-    data['textarea_239zoqi'] = ', '.join(c.race_info)
+    data['textarea_237vdig'] = None # class features box 1 c.class_abilities
+    data['textarea_238rkrv'] = ', '.join(c.class_info) # this is working
+    data['textarea_239zoqi'] = ', '.join(c.race_info) # this is not working
     data['textarea_240ngth'] = None # feats
     data['textarea_245bjob'] = None # tool proficiencies
-    data['textarea_246zssm'] = ', '.join(c.get_weapon_proficiencies())
+    data['textarea_246zssm'] = ', '.join(c.get_weapon_proficiencies()) # this is working
     data['text_247iukc'] = c.get_saving_throw("constitution")
     data['text_248bhjr'] = c.get_saving_throw("charisma") 
     data['text_249radr'] = c.get_saving_throw("wisdom") 
