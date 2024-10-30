@@ -2,10 +2,136 @@ import pytest
 from character import Character
 from database.race_subrace import *
 from database.equipment.weapon_and_armor_objects import *
+from database.c_class import create_class_object
 
 def test_create_character():
     c = Character("test")
     assert c.name == "test"
+    assert c.race == None
+    assert c.race_info == []
+    assert c.subrace == None
+    assert c.c_class == None
+    assert c.subclass == None
+    assert c.class_info == []
+    assert c.class_abilities == {}
+    assert c.background == None
+    assert c.speed == 0
+    assert c.hp == 0
+    assert c.hit_die == 0
+    assert c.proficiency_bonus == 2
+    assert c.level == 1
+    assert c.xp == 0
+    assert c.strength == 8
+    assert c.dexterity == 8
+    assert c.constitution == 8
+    assert c.intelligence == 8
+    assert c.wisdom == 8
+    assert c.charisma == 8
+    assert c.ac == 10
+    assert c.proficiencies == {
+    'strength': False, 
+    'dexterity': False, 
+    'constitution': False, 
+    'intelligence': False, 
+    'wisdom': False, 
+    'charisma': False,
+    'athletics': False, 
+    'acrobatics': False, 
+    'sleight of hand': False, 
+    'stealth': False, 
+    'arcana': False, 
+    'history': False, 
+    'investigation': False, 
+    'nature': False, 
+    'religion': False, 
+    'animal handling': False, 
+    'insight': False, 
+    'medicine': False, 
+    'perception': False, 
+    'survival': False, 
+    'deception': False, 
+    'intimidation': False, 
+    'performance': False, 
+    'persuasion': False, 
+    'light armor': False, 
+    'medium armor': False, 
+    'heavy armor': False, 
+    'shield': False,
+    'simple weapons': False,
+    "martial weapons": False, 
+    'club': False, 
+    'dagger': False, 
+    'greatclub': False, 
+    'handaxe': False, 
+    'javelin': False, 
+    'light hammer': False, 
+    'mace': False, 
+    'quarterstaff': False, 
+    'sickle': False, 
+    'spear': False, 
+    'unarmed strike': False, 
+    'light crossbow': False, 
+    'dart': False, 
+    'short bow': False, 
+    'sling': False, 
+    'battle axe': False, 
+    'flail': False, 
+    'glaive': False, 
+    'great axe': False, 
+    'great sword': False, 
+    'halberd': False, 
+    'lance': False, 
+    'long sword': False, 
+    'maul': False, 
+    'morning star': False, 
+    'pike': False, 
+    'rapier': False, 
+    'scimitar': False, 
+    'short sword': False, 
+    'trident': False, 
+    'war pick': False, 
+    'warhammer': False, 
+    'whip': False, 
+    'blow gun': False, 
+    'hand crossbow': False, 
+    'heavy crossbow': False, 
+    'long bow': False, 
+    'net': False
+    }
+    assert c.damage_resistance == {
+    'acid': False, 
+    'bludgeoning': False, 
+    'cold': False, 
+    'fire': False, 
+    'force': False, 
+    'lightning': False, 
+    'necrotic': False, 
+    'piercing': False, 
+    'poison': False, 
+    'psychic': False, 
+    'radiant': False, 
+    'slashing': False, 
+    'thunder': False
+    }
+    assert c.inventory == []
+    assert c.weapon == None
+    assert c.armor == None
+    assert c.shield == None
+    assert c.equipped_items == []
+    assert c.spell_casting_ability == None
+    assert c.spell_slots == {
+    "cantrips": 0,
+    "level 1": 0,
+    "level 2": 0,
+    "level 3": 0,
+    "level 4": 0,
+    "level 5": 0,
+    "level 6": 0,
+    "level 7": 0,
+    "level 8": 0,
+    "level 9": 0,
+}
+    assert c.spell_list == []
 
 def test_assign_stat():
     c = Character("testing")
@@ -286,9 +412,22 @@ def test_apply_dragon_subrace():
     assert c.race_info[0] == "Breath shape: line"
 
 def test_apply_class():
-    pass
+    c = Character("testing")
+    assert c.c_class == None
+    assert c.hit_die == 0
+    assert c.proficiencies["light armor"] == False
+    assert c.class_info == []
+    assert c.class_abilities == {}
+    barb = create_class_object("Barbarian")
+    c.apply_class(barb)
+    assert c.c_class == "Barbarian"
+    assert c.hit_die == 12
+    assert c.proficiencies["light armor"] == True
+    assert c.class_info == ["rage", "unarmored defense"]
+    assert c.class_abilities == {"rage": 2}
 
-def test_get_spell_list():
+# I haven't written a database for spell lists yet.
+def test_populate_spell_list():
     pass
 
 def test_race_info_initialized():

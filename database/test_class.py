@@ -28,7 +28,7 @@ def test_get_class_data():
         }
     assert data[class_abilities] == {"rage": 2}
 
-def test_get_class_createor():
+def test_get_class_creator():
     class_input = "Barbarian"
     func = class_create_map[class_input]
     assert func == create_barbarian

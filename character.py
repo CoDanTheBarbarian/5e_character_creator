@@ -235,9 +235,6 @@ class Character:
         if race.resistances:
             for resistance in race.resistances:
                 self.gain_damage_resistance(resistance)
-        if race.prof_choices:
-            print("Looks like you have some options for skill proficiencies to gain from your race.")
-            gain_proficiency_choices(self, race.prof_choices[0], race.prof_choices[1])
     
     def apply_subrace_bonus(self, subrace):
         self.subrace = subrace.subrace
@@ -263,9 +260,6 @@ class Character:
         self.hit_die = class_data.hit_die
         if class_data.proficiencies:
             self.gain_proficiency(class_data.proficiencies)
-        if class_data.prof_choice:
-            print("Looks like you have some options for skill proficiencies to gain from your class.")
-            gain_proficiency_choices(self, class_data.prof_choice[0], class_data.prof_choice[1])
         self.class_info = class_data.class_info
         if class_data.spell_casting_ability:
             self.spell_casting_ability = class_data.spell_casting_ability
