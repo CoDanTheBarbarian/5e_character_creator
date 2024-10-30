@@ -285,6 +285,9 @@ def test_apply_dragon_subrace():
     assert c.damage_resistance["acid"] == True
     assert c.race_info[0] == "Breath shape: line"
 
+def test_apply_class():
+    pass
+
 def test_get_spell_list():
     pass
 
@@ -376,3 +379,21 @@ def test_get_equipped_weapon_prof_mod():
     c.gain_proficiency(["club"])
     assert c.get_prof_mod("club") == 2
     assert c.get_equipped_weapon_prof_mod() == 2
+
+def test_get_starting_hp():
+    c = Character("testing")
+    assert c.hp == 0
+    assert c.constitution == 8
+    assert c.hit_die == 0
+    assert c.get_starting_hp() == 0
+    c.hit_die = 6
+    assert c.hit_die == 6
+    assert c.get_starting_hp() == 6
+    c.assign_stat("constitution", 14)
+    assert c.constitution == 14
+    assert c.get_starting_hp() == 8
+    c.assign_stat("constitution", 20)
+    assert c.constitution == 20
+    assert c.get_starting_hp() == 11
+    c.hit_die = 12
+    assert c.get_starting_hp() == 17

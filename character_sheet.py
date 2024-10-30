@@ -1034,7 +1034,7 @@ def parse_character_sheet_data(c):
     data['text_213vjaj'] = c.weapon.name
     data['text_219ameb'] = f"{c.get_equipped_weapon_damage_mod() + c.get_equipped_weapon_prof_mod()}" 
     data['text_225fptj'] = f"d{c.weapon.damage_die[0]}{'+ d' if len(c.weapon.damage_die) > 1 else ''}{c.weapon.damage_die[1] if len(c.weapon.damage_die) > 1 else ''} + {c.get_equipped_weapon_damage_mod()}: {c.weapon.damage_type}"
-    data['text_231piki'] = c.weapon.properties # Need to test this, may not be working. If not, write a weapon method to print weapon.properties.
+    data['text_231piki'] = ', '.join(c.weapon.properties) #c.weapon.properties # Need to test this, may not be working. If not, write a weapon method to print weapon.properties.
     data['textarea_237vdig'] = None # class features box 1 c.class_abilities
     data['textarea_238rkrv'] = ', '.join(c.class_info) # If you adjust the structure of class info, you need to write a method to format it into a string
     data['textarea_239zoqi'] = ', '.join(c.race_info) # If you adjust the structure of race info, you need to write a method to format it into a string

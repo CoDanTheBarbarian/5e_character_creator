@@ -313,3 +313,9 @@ class Character:
             text += item.name
             text += "\n"
         return text
+    
+    def get_starting_hp(self):
+        if self.get_ability_mod("constitution") > 0:
+            return self.hit_die + self.get_ability_mod("constitution")
+        else:
+            return self.hit_die
