@@ -140,6 +140,15 @@ def test_armor_init():
     assert a.stealth_penalty == True
     assert a.strength_min == None
 
+    s = Armor("shield", "shield", 2, False, None, False, None)
+    assert s.name == "shield"
+    assert s.armor_type == "shield"
+    assert s.ac == 2
+    assert s.dex_mod == False
+    assert s.dex_max == None
+    assert s.stealth_penalty == False
+    assert s.strength_min == None
+
 def test_create_armor():
     a = create_armor("padded")
     assert a.name == "padded"
@@ -149,3 +158,21 @@ def test_create_armor():
     assert a.dex_max == None
     assert a.stealth_penalty == True
     assert a.strength_min == None
+
+    a2 = create_armor("leather")
+    assert a2.name == "leather"
+    assert a2.armor_type == "light"
+    assert a2.ac == 11
+    assert a2.dex_mod == True
+    assert a2.dex_max == None
+    assert a2.stealth_penalty == False
+    assert a2.strength_min == None
+
+    s = create_armor("shield")
+    assert s.name == "shield"
+    assert s.armor_type == "shield"
+    assert s.ac == 2
+    assert s.dex_mod == False
+    assert s.dex_max == None
+    assert s.stealth_penalty == False
+    assert s.strength_min == None

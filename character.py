@@ -178,31 +178,44 @@ class Character:
         self.inventory.remove(object)
 
     def equip_armor(self, armor):
-        if armor.strenth_min:
+        if armor.strength_min:
             if self.get_ability_mod("strength") < armor.strength_min:
                 raise Exception("Strength too low to equip")
-        self.inventory.remove(armor)
+        if self.armor != None:
+            self.equipped_items.remove(self.armor)
         self.equipped_items.append(armor)
-        self.ac = armor.ac
-        if armor.dex_mod:
-            if armor.dex_max == None:
-                self.ac += self.dexterity
-            else:
-                if self.dex > armor.dex_max:
-                    self.ac += armor.dex_max
-                self.ac += self.dexterity
+        self.armor = armor
+        self.get_armored_ac()
+
+    def get_armored_ac(self):
+        if self.armor != None:
+            self.ac = self.armor.ac
+        if self.armor.dex_mod:
+            dex_mod = self.get_ability_mod("dexterity")
+            if dex_mod > 0:
+                if self.armor.dex_max is not None:
+                    if dex_mod > self.armor.dex_max:
+                        self.ac += self.armor.dex_max
+                    else:
+                        self.ac += dex_mod
+                else:
+                    self.ac += dex_mod
 
     def equip_shield(self, shield):
         if self.weapon:
             if "two handed" in self.weapon.properties and "versatile" not in self.weapons.properties:
                 raise Exception("Can not equip shield while wielding a two handed weapon.")
+        if self.shield != None:
+            self.equipped_items.remove(self.shield)
+        self.equipped_items.append(shield)
+        self.ac += shield.ac
         self.shield = shield
 
     def equip_weapon(self, weapon):
-        if self.weapon:
-            unequipped_weapon = self.weapon.pop()
-            self.inventory.append(unequipped_weapon)
-        self.weapon.append(weapon)
+        if self.weapon != None:
+            self.equipped_items.remove(self.weapon)
+        self.equipped_items.append(weapon)
+        self.weapon = weapon
 
     # Methods for applying race and subrace stats
 

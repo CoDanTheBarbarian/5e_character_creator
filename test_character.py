@@ -155,11 +155,71 @@ def test_add_remove_from_inventory():
     c.remove_from_inventory(w)
     assert c.inventory == []
 
-# def test_equip_armor():
+def test_equip_armor():
+    c = Character("test")
+    assert c.ac == 10
+    assert c.armor == None
+    assert c.inventory == []
+    assert c.equipped_items == []
+    a = create_armor("leather")
+    c.add_to_inventory(a)
+    assert c.inventory == [a]
+    c.equip_armor(a)
+    assert c.armor == a
+    assert c.equipped_items == [a]
+    assert c.ac == 11
 
-# def test_equip_shield():
+def test_equip_armor_error():
+    c = Character("test")
+    assert c.armor == None
+    a = create_armor("splint")
+    c.add_to_inventory(a)
+    with pytest.raises(Exception):
+        c.equip_armor(a)
 
-# def test_equip_weapons():
+def test_equip_shield():
+    c = Character("test")
+    assert c.shield == None
+    assert c.ac == 10
+    assert c.inventory == []
+    assert c.equipped_items == []
+    s = create_armor("shield")
+    c.add_to_inventory(s)
+    assert c.inventory == [s]
+    c.equip_shield(s)
+    assert c.equipped_items == [s]
+    assert c.shield == s
+    assert c.ac == 12
+
+def test_shield_error():
+    c = Character("test")
+    assert c.shield == None
+    s = create_armor("shield")
+    w = create_weapon("glaive")
+    c.weapon = w
+    with pytest.raises(Exception):
+        c.equip_shield(s)
+
+def test_equip_weapons():
+    c = Character("test")
+    assert c.weapon == None
+    assert c.inventory == []
+    assert c.equipped_items == []
+    w = create_weapon("club")
+    c.add_to_inventory(w)
+    assert c.inventory == [w]
+    assert c.equipped_items == []
+    c.equip_weapon(w)
+    assert c.weapon == w
+    assert c.equipped_items == [w]
+    assert c.inventory == [w]
+    w2 = create_weapon("light crossbow")
+    c.add_to_inventory(w2)
+    assert c.inventory == [w, w2]
+    c.equip_weapon(w2)
+    assert c.weapon == w2
+    assert c.inventory == [w, w2]
+    assert c.equipped_items == [w2]
 
 def test_apply_race_bonus():
     c = Character("test")
