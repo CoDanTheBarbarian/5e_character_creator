@@ -38,6 +38,7 @@ def main():
     print("Let's choose a background for your character.")
     background = choose_background()
     c.apply_background(background)
+    c.unarmored_ac()
     print("Creating character sheet...")
     c_data = parse_character_sheet_data(c)
     fillpdfs.write_fillable_pdf(template_path, output_path + c.name + ".pdf", c_data)

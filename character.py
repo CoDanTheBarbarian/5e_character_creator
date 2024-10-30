@@ -172,6 +172,11 @@ class Character:
             else:
                 self.proficiencies[prof] = True
 
+    def get_prof_mod(self, prof):
+        if self.proficiencies[prof] == True:
+            return self.proficiency_bonus
+        return 0
+
     # Methods dealing with inventory and equipping an item
     
     def add_to_inventory(self, object):
@@ -295,6 +300,12 @@ class Character:
                     if ability_mod > mod:
                         mod = ability_mod
         return mod
+    
+    def get_equipped_weapon_prof_mod(self):
+        if self.weapon == None:
+            return 0
+        else:
+            return self.get_prof_mod(self.weapon.name)
     
     def print_inventory(self):
         text = ""

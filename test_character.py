@@ -355,3 +355,24 @@ def test_print_inventory():
     c.add_to_inventory(a)
     assert len(c.inventory) == 3
     assert c.print_inventory() == "short sword\nlong sword\nchain mail\n"
+
+def test_get_prof_mod():
+    c = Character("testing")
+    assert c.proficiencies["club"] == False
+    assert c.get_prof_mod("club") == 0
+    assert c.proficiency_bonus == 2
+    c.gain_proficiency(["club"])
+    assert c.get_prof_mod("club") == 2
+
+def test_get_equipped_weapon_prof_mod():
+    c = Character("testing")
+    assert c.weapon == None
+    assert c.get_equipped_weapon_prof_mod() == 0
+    assert c.proficiency_bonus == 2
+    assert c.proficiencies["club"] == False
+    w = create_weapon("club")
+    c.add_to_inventory(w)
+    c.equip_weapon(w)
+    c.gain_proficiency(["club"])
+    assert c.get_prof_mod("club") == 2
+    assert c.get_equipped_weapon_prof_mod() == 2

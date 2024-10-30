@@ -27,8 +27,8 @@ def confirm_choice(choice_description, callback):
 def choose_race():
     for i, race in enumerate(races.keys()):
         print(f"{i + 1}: {race}")
-    num = input("Choose a race: ")
     try:
+        num = input("Choose a race: ")
         num = int(num)
         if 1 <= num <= len(races):
             race = list(races.keys())[num - 1]
@@ -103,7 +103,7 @@ def assign_stats(c, stats):
             print("Invalid input. Please enter a number.")
 
 def gain_proficiency_choices(c, list, num_choices):
-    options_left = list[:]  # create a copy of the list
+    options_left = list[:]
     choices = []
     choices_left = num_choices
 
@@ -236,6 +236,7 @@ def add_starting_equipment_to_inventory(c, dict):
                 return choose_weapon()
         except ValueError:
             print("Invalid input. Please enter a number.")
+            return choose_weapon()
     choose_weapon()
 
     for armor in dict["armor"]:
