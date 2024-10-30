@@ -43,10 +43,6 @@ def main():
     fillpdfs.write_fillable_pdf(template_path, output_path + c.name + ".pdf", c_data)
     print(f"Character sheet created! Your character sheet is located in {output_path}.")
     print("Thanks for using my character creator!")
-    print("Character Object:")
-    print(c)
-
-    
 
 if __name__ == "__main__":
     main()

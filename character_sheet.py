@@ -1032,16 +1032,8 @@ def parse_character_sheet_data(c):
     data['text_49ztsd'] = c.get_skill_bonus("stealth") 
     data['text_50fkah'] = c.get_skill_bonus("survival")
     data['text_213vjaj'] = c.weapon.name
-    weapon_mod = ""
-    for ability in c.weapon.get_damage_mod():
-        if c.get_ability_mod(ability) > 0:
-            if weapon_mod == "":
-                weapon_mod = ability
-            else:
-                if c.get_ability_mod(ability) > c.get_ability_mod(weapon_mod):
-                    weapon_mod = ability
-    data['text_219ameb'] = c.get_ability_mod(weapon_mod)
-    data['text_225fptj'] = f"d{c.weapon.damage_die[0]}{'+' if len(c.weapon.damage_die) > 1 else ''}d{c.weapon.damage_die[1] if len(c.weapon.damage_die) > 1 else ''} Damage type: {c.weapon.damage_type}"
+    data['text_219ameb'] = c.get_equipped_weapon_damage_mod()
+    data['text_225fptj'] = f"d{c.weapon.damage_die[0]}{'+' if len(c.weapon.damage_die) > 1 else ''}d{c.weapon.damage_die[1] if len(c.weapon.damage_die) > 1 else ''}: {c.weapon.damage_type}"
     data['text_231piki'] = c.weapon.properties
     data['textarea_237vdig'] = None # class features box 1 c.class_abilities
     data['textarea_238rkrv'] = ', '.join(c.class_info)
@@ -1115,15 +1107,17 @@ def parse_character_sheet_data(c):
         data['text_51soru'] = c.get_ability_mod(c.spell_casting_ability)
         data['text_52xzcj'] = c.spell_save_dc()
         data['text_53trsa'] = c.spell_attack_bonus()
-    data['textarea_244f'] = None # c.inventory # <-- need to write a function to cat this from the c.inventory list
+    data['textarea_244f'] = c.print_inventory()
 
     return data
 
-# fillpdfs.write_fillable_pdfs(template_path, output_path + character_name + ".pdf", character_data)
 
 '''
 # mapping logic to enumerate the text fields
 # use this function to map fields of a form fillable pdf
+# the print result will show you the key:value pair for each field, and will output the pdf using that mapping
+# then you can create a new dictionary that maps the field names to the the value outputs in the pdf
+# getting checkbox yes values is a little trickier, I did it by running this function and viewing the option error message from fillpdf in the terminal by replacing the None value with "Yes"
 field_map = {}
 fields = list(fillpdfs.get_form_fields(template_path).keys())
 for i, field in enumerate(fields):

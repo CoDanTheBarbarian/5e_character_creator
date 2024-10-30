@@ -186,7 +186,7 @@ class_data = {
         class_info: ["fighting style", "second wind"],
         equipment: {
             "weapons": ["great axe", "long bow", "light crossbow", "long sword"],
-            "armor": ["chain mail", "shield",],
+            "armor": ["leather", "shield",],
         },
         class_abilities: {
             "second wind": 0,
@@ -241,7 +241,7 @@ class_data = {
         class_info: ["spell casting", "divine sense", "lay on hands"],
         equipment: {
             "weapons": ["long sword", "short bow"],
-            "armor": ["chain mail", "shield"],
+            "armor": ["ring mail", "shield"],
         },
         spell_casting_ability: "charisma",
         spell_slots: {},
@@ -275,7 +275,7 @@ class_data = {
         class_info: ["favored enemy", "natural explorer"],
         equipment: {
             "weapons": ["short sword", "short sword", "long bow"],
-            "armor": ["chain mail"],
+            "armor": ["ring mail"],
         },
         class_abilities: None,
         },
