@@ -1,38 +1,110 @@
-import unittest
-from weapon_and_armor_objects import MeleeWeapon, VersatileMeleeWeapon
+import pytest
+from weapon_and_armor_objects import *
 
-class TestMeleeWeapon(unittest.TestCase):
-    def test_init(self):
-        weapon = MeleeWeapon("Longsword", "martial", (8,), "slashing", "strength", ["versatile"])
-        self.assertEqual(weapon.name, "Longsword")
-        self.assertEqual(weapon.weapon_type, "martial")
-        self.assertEqual(weapon.damage_die, (8,))
-        self.assertEqual(weapon.damage_type, "slashing")
-        self.assertEqual(weapon.bonus_attribute, "strength")
-        self.assertEqual(weapon.properties, ["versatile"])
+def test_init_melee_weapons():
+    w = MeleeWeapon("club", "simple", (4,), 'bludgeoning', ("strength",), ["light"])
+    assert w.name == "club"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (4,)
+    assert w.damage_type == "bludgeoning"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["light"]
+    assert w.get_damage_mod() == ("strength",)
 
-    def test_get_weapon_damage_mod(self):
-        weapon = MeleeWeapon("Longsword", "martial", (8,), "slashing", "strength", ["versatile"])
-        self.assertEqual(weapon.get_weapon_damage_mod(), "strength")
+def test_create_melee_weapons():
+    w = create_melee_weapon("club")
+    assert w.name == "club"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (4,)
+    assert w.damage_type == "bludgeoning"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["light"]
+    assert w.get_damage_mod() == ("strength",)
 
-    def test_repr(self):
-        weapon = MeleeWeapon("Longsword", "martial", (8,), "slashing", "strength", ["versatile"])
-        self.assertEqual(repr(weapon), "Longsword")
+def test_init_versatile_melee_weapons():
+    w = VersatileMeleeWeapon("quarterstaff", "simple", (6,), 'bludgeoning', ("strength",), ["versatile"], (8,))
+    assert w.name == "quarterstaff"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (6,)
+    assert w.damage_type == "bludgeoning"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["versatile"]
+    assert w.versatile_die == (8,)
+    assert w.get_damage_mod() == ("strength",)
 
-class TestVersatileMeleeWeapon(unittest.TestCase):
-    def test_init(self):
-        weapon = VersatileMeleeWeapon("Longsword", "martial", (8,), "slashing", "strength", ["versatile"], (10,))
-        self.assertEqual(weapon.name, "Longsword")
-        self.assertEqual(weapon.weapon_type, "martial")
-        self.assertEqual(weapon.damage_die, (8,))
-        self.assertEqual(weapon.damage_type, "slashing")
-        self.assertEqual(weapon.bonus_attribute, "strength")
-        self.assertEqual(weapon.properties, ["versatile"])
-        self.assertEqual(weapon.two_handed_damage_die, (10,))
+def test_create_versatile_melee_weapons():
+    w = create_versatile_melee_weapon("quarterstaff")
+    assert w.name == "quarterstaff"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (6,)
+    assert w.damage_type == "bludgeoning"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["versatile"]
+    assert w.versatile_die == (8,)
+    assert w.get_damage_mod() == ("strength",)
 
-    def test_repr(self):
-        weapon = VersatileMeleeWeapon("Longsword", "martial", (8,), "slashing", "strength", ["versatile"], (10,))
-        self.assertEqual(repr(weapon), "Longsword")
+def test_init_ranged_weapon():
+    w = RangedWeapon('light crossbow', 'simple', (8,), 'piercing', ("dexterity",), ["ammunition", "ranged", "loading", "two handed"], (80, 320))
+    assert w.name == "light crossbow"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (8,)
+    assert w.damage_type == "piercing"
+    assert w.bonus_attribute == ("dexterity",)
+    assert w.properties == ["ammunition", "ranged", "loading", "two handed"]
+    assert w.range == (80, 320)
+    assert w.get_damage_mod() == ("dexterity",)
 
-if __name__ == "__main__":
-    unittest.main()
+def test_create_ranged_weapon():
+    w = create_ranged_weapon('light crossbow')
+    assert w.name == "light crossbow"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (8,)
+    assert w.damage_type == "piercing"
+    assert w.bonus_attribute == ("dexterity",)
+    assert w.properties == ["ammunition", "ranged", "loading", "two handed"]
+    assert w.range == (80, 320)
+    assert w.get_damage_mod() == ("dexterity",)
+
+def test_versatile_ranged_weapon_init():
+    w = VersatileRangedWeapon("trident", "martial", (6,), "piercing", ("strength",), ["thrown", "versatile"], (20, 60), (8,))
+    assert w.name == "trident"
+    assert w.weapon_type == "martial"
+    assert w.damage_die == (6,)
+    assert w.damage_type == "piercing"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["thrown", "versatile"]
+    assert w.versatile_die == (8,)
+    assert w.range == (20, 60)
+    assert w.get_damage_mod() == ("strength",)
+
+def test_create_versatile_ranged_weapon():
+    w = create_versatile_ranged_weapon("trident")
+    assert w.name == "trident"
+    assert w.weapon_type == "martial"
+    assert w.damage_die == (6,)
+    assert w.damage_type == "piercing"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["thrown", "versatile"]
+    assert w.versatile_die == (8,)
+    assert w.range == (20, 60)
+    assert w.get_damage_mod() == ("strength",)
+
+def test_armor_init():
+    a = Armor("padded", "light", 11, True, None, True, None)
+    assert a.name == "padded"
+    assert a.armor_type == "light"
+    assert a.ac == 11
+    assert a.dex_mod == True
+    assert a.dex_max == None
+    assert a.stealth_penalty == True
+    assert a.strength_min == None
+
+def test_create_armor():
+    a = create_armor("padded")
+    assert a.name == "padded"
+    assert a.armor_type == "light"
+    assert a.ac == 11
+    assert a.dex_mod == True
+    assert a.dex_max == None
+    assert a.stealth_penalty == True
+    assert a.strength_min == None
