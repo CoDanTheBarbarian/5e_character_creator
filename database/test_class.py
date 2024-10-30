@@ -22,7 +22,10 @@ def test_get_class_data():
                                          "survival"],
                                         2)
     assert data[class_info] == ["rage", "unarmored defense"]
-    assert data[equipment] == ["testing", "testing", "one two three"]
+    assert data[equipment] == {
+            "weapons": ["great axe", "halberd", "javelin"],
+            "armor": [],
+        }
     assert data[class_abilities] == {"rage": 2}
 
 def test_get_class_createor():
@@ -95,7 +98,10 @@ def test_create_class_handler():
                                          "survival"],
                                         2)
     assert barb.class_info == ["rage", "unarmored defense"]
-    assert barb.starting_equipment == ["testing", "testing", "one two three"]
+    assert barb.starting_equipment == {
+            "weapons": ["great axe", "halberd", "javelin"],
+            "armor": [],
+        }
     assert barb.class_abilities == {"rage": 2}
 
 def test_create_barb():
@@ -118,7 +124,10 @@ def test_create_barb():
                                          "survival"],
                                         2)
     assert barb.class_info == ["rage", "unarmored defense"]
-    assert barb.starting_equipment == ["testing", "testing", "one two three"]
+    assert barb.starting_equipment == {
+            "weapons": ["great axe", "halberd", "javelin"],
+            "armor": [],
+        }
     assert barb.class_abilities == {"rage": 2}
 
 

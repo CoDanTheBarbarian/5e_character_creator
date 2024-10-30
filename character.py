@@ -194,10 +194,7 @@ class Character:
             dex_mod = self.get_ability_mod("dexterity")
             if dex_mod > 0:
                 if self.armor.dex_max is not None:
-                    if dex_mod > self.armor.dex_max:
-                        self.ac += self.armor.dex_max
-                    else:
-                        self.ac += dex_mod
+                    self.ac += min(dex_mod, self.armor.dex_max)
                 else:
                     self.ac += dex_mod
 

@@ -4,7 +4,7 @@ proficiencies = "proficiencies "  # <-- list of strings
 prof_choices = "proficiency choice "  # <-- tuple containing a list of choices and an integer (the number of choices)
 class_abilities = "class abilities "  # <-- dictionaries of ability name -> relevant info
 class_info = "class info"  # <-- list of class info keywords mapped to an as of yet unmade database
-equipment = "starting equipment"  # <-- list of strings pointing to weapons and armor database.
+equipment = "starting equipment"  # <-- dictionary of item_type -> strings pointing to weapons and armor database.
 spell_casting_ability = "spell casting ability"  # <-- string (one of the six core stats)
 spell_slots = "spell slots"  # <-- dictionary with updated values for the character self.spell_slots dictionary
 spells_known = "spells known"  # <-- integer, the number of spells to choose from the spell list
@@ -40,7 +40,10 @@ class_data = {
              "survival"],
                2),
         class_info: ["rage", "unarmored defense"], # need to create a database for class abilities
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["great axe", "halberd", "javelin"],
+            "armor": [],
+        },
         class_abilities: {"rage": 2},
         },
     "Bard": {
@@ -75,7 +78,10 @@ class_data = {
              'persuasion'], 
              3),
         class_info: ["spell casting", "bardic inspiration"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["rapier", "dagger"],
+            "armor": ["leather"],
+        },
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 4,
@@ -101,7 +107,10 @@ class_data = {
              "religion"],
             2),
         class_info: ["spell casting", "divine domain"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["mace", "light crossbow"],
+            "armor": ["scale", "shield"],
+        },
         spell_casting_ability: "wisdom",
         spell_slots: {
             "cantrips": 3,
@@ -140,7 +149,10 @@ class_data = {
              2
              ),
         class_info: ["spell casting", "druidic"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["scimitar"],
+            "armor": ["leather", "shield"],
+        },
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 2,
@@ -172,7 +184,10 @@ class_data = {
             ], 2
         ),
         class_info: ["fighting style", "second wind"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["great axe", "long bow", "light crossbow", "long sword"],
+            "armor": ["chain mail", "shield",],
+        },
         class_abilities: {
             "second wind": 0,
             "fighting style": None
@@ -194,7 +209,10 @@ class_data = {
              "stealth"],
                2),
         class_info: ["unarmored defense", "martial arts"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["short sword", "dart"],
+            "armor": [],
+        },
         class_abilities: {"ki points": 0},
         },
     "Paladin": {
@@ -221,7 +239,10 @@ class_data = {
             ], 2
         ),
         class_info: ["spell casting", "divine sense", "lay on hands"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["long sword", "short bow"],
+            "armor": ["chain mail", "shield"],
+        },
         spell_casting_ability: "charisma",
         spell_slots: {},
         class_abilities: {"lay on hands": "level x 5"},
@@ -252,7 +273,10 @@ class_data = {
             ], 3
         ),
         class_info: ["favored enemy", "natural explorer"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["short sword", "short sword", "long bow"],
+            "armor": ["chain mail"],
+        },
         class_abilities: None,
         },
     "Rogue": {
@@ -284,7 +308,10 @@ class_data = {
             ], 4
         ),
         class_info: ["expertise", "sneak attack", "thieves' cant"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["short sword", "shortbow", "dagger", "dagger"],
+            "armor": ["leather"],
+        },
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 4,
@@ -314,7 +341,10 @@ class_data = {
             ], 2
         ),
         class_info: ["spell casting", "sorcerous origin"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["quarterstaff", "light crossbow", "dagger", "dagger"],
+            "armor": [],
+        },
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 4,
@@ -344,7 +374,10 @@ class_data = {
             ], 2
         ),
         class_info: ["otherworldy patron", "pact magic"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["light crossbow", "hand axe", "dagger", "dagger"],
+            "armor": ["leather"],
+        },
         spell_casting_ability: "charisma",
         spell_slots: {
             "cantrips": 2,
@@ -375,7 +408,10 @@ class_data = {
             ], 2
         ),
         class_info: ["spell casting", "arcane recovery"],
-        equipment: ["testing", "testing", "one two three"],
+        equipment: {
+            "weapons": ["quarterstaff"],
+            "armor": [],
+        },
         spell_casting_ability: "intelligence",
         spell_slots: {
             "cantrips": 3,
