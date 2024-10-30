@@ -199,3 +199,22 @@ def point_buy(c, base_stats):
             c.assign_stat(stat, stats[stat])
     else:
         return point_buy(c, base_stats)
+
+def get_stats(c, base_stats):
+    print("How would you like to assign your stats?")
+    print("1. Roll random stats")
+    print("2. Point Buy")
+    try:
+        choice = int(input("Choose an option: "))
+        if choice == 1:
+            stats = choose_stats()
+            print("Let's assign these stats to your character, one by one.")
+            assign_stats(c, stats)
+        elif choice == 2:
+            point_buy(c, base_stats)
+        else:
+            print("Invalid choice. Please enter a number from the list.")
+            return get_stats()
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return get_stats()
