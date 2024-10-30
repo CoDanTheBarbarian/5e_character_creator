@@ -1,6 +1,7 @@
 import pytest
 from character import Character
 from database.race_subrace import *
+from database.equipment.weapon_and_armor_objects import create_weapon, create_armor
 
 def test_create_character():
     c = Character("test")
@@ -136,7 +137,23 @@ def test_gain_proficiency():
     assert c.proficiencies["perception"] == True
     assert c.proficiencies["wisdom"] == True
 
-# def test_add_remove_from_inventory():
+def test_add_remove_from_inventory():
+    c = Character("test")
+    assert c.inventory == []
+    c.add_to_inventory("test")
+    assert c.inventory == ["test"]
+    c.remove_from_inventory("test")
+    assert c.inventory == []
+    w = create_weapon("club")
+    c.add_to_inventory(w)
+    assert c.inventory == [w]
+    w2 = create_weapon("light crossbow")
+    c.add_to_inventory(w2)
+    assert c.inventory == [w, w2]
+    c.remove_from_inventory(w2)
+    assert c.inventory == [w]
+    c.remove_from_inventory(w)
+    assert c.inventory == []
 
 # def test_equip_armor():
 

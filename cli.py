@@ -151,3 +151,51 @@ def choose_background():
     except ValueError:
         print("Invalid input. Please enter a number.")
     return choose_background
+
+pt_buy_zero_stats = {
+        "strength": 8,
+        "dexterity": 8,
+        "constitution": 8,
+        "intelligence": 8,
+        "wisdom": 8,
+        "charisma": 8
+    }
+def point_buy(c, base_stats):
+    points = 27
+    cost = {
+        9: 1,
+        10: 1,
+        11: 1,
+        12: 1,
+        13: 1,
+        14: 2,
+        15: 2,
+    }
+    stats = base_stats.copy()
+    while points > 0:
+        print(f"You have {points} points to spend.")
+        print("Your stats are:")
+        for i, stat in enumerate(stats.keys()):
+            print(f"{i + 1}: {stat}: {stats[stat]}")
+        try:
+            stat_num_index = int(input("Choose a stat to increase: "))
+            if stat_num_index < 1 or stat_num_index > len(stats):
+                print("Invalid choice. Please enter a number from the list.")
+            else:
+                ability = list(stats.keys())[stat_num_index - 1]
+                if stats[ability] == 15:
+                    print("You can't increase this stat any further.")
+                    continue
+                if cost[stats[ability] + 1] > points:
+                    print("You don't have enough points to increase this stat.")
+                    continue
+                if confirm_choice(f"Increasing {ability} to {stats[ability] + 1} will cost {cost[stats[ability] + 1]} points.", lambda: None):
+                    points -= cost[stats[ability] + 1]
+                    stats[ability] += 1
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+    if confirm_choice("Your stats are:\n" + "\n".join([f"{stat}: {stats[stat]}" for stat in stats.keys()]), point_buy):
+        for stat in stats.keys():
+            c.assign_stat(stat, stats[stat])
+    else:
+        return point_buy(c, base_stats)
