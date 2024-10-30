@@ -117,3 +117,13 @@ def create_armor(armor_name):
             armor_data[strength_min]
                              )
     return armor_object
+
+def create_weapon(name):
+    if name in melee_weapon_stats.keys():
+        return create_melee_weapon(name)
+    elif name in versatile_melee_weapon_stats.keys():
+        return create_versatile_melee_weapon(name)
+    elif name in ranged_weapon_stats.keys():
+        return create_ranged_weapon(name)
+    elif name in veratile_ranged_weapon_stats.keys():
+        return create_versatile_ranged_weapon(name)

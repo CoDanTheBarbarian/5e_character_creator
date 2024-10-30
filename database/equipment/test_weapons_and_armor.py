@@ -89,6 +89,47 @@ def test_create_versatile_ranged_weapon():
     assert w.range == (20, 60)
     assert w.get_damage_mod() == ("strength",)
 
+def test_create_weapon():
+    w = create_weapon("club")
+    assert w.name == "club"
+    assert w.weapon_type == "simple"
+    assert w.damage_die == (4,)
+    assert w.damage_type == "bludgeoning"
+    assert w.bonus_attribute == ("strength",)
+    assert w.properties == ["light"]
+    assert w.get_damage_mod() == ("strength",)
+
+    w2 = create_weapon("quarterstaff")
+    assert w2.name == "quarterstaff"
+    assert w2.weapon_type == "simple"
+    assert w2.damage_die == (6,)
+    assert w2.damage_type == "bludgeoning"
+    assert w2.bonus_attribute == ("strength",)
+    assert w2.properties == ["versatile"]
+    assert w2.versatile_die == (8,)
+    assert w2.get_damage_mod() == ("strength",)
+
+    w3 = create_weapon("light crossbow")
+    assert w3.name == "light crossbow"
+    assert w3.weapon_type == "simple"
+    assert w3.damage_die == (8,)
+    assert w3.damage_type == "piercing"
+    assert w3.bonus_attribute == ("dexterity",)
+    assert w3.properties == ["ammunition", "ranged", "loading", "two handed"]
+    assert w3.range == (80, 320)
+    assert w3.get_damage_mod() == ("dexterity",)
+
+    w4 = create_weapon("trident")
+    assert w4.name == "trident"
+    assert w4.weapon_type == "martial"
+    assert w4.damage_die == (6,)
+    assert w4.damage_type == "piercing"
+    assert w4.bonus_attribute == ("strength",)
+    assert w4.properties == ["thrown", "versatile"]
+    assert w4.versatile_die == (8,)
+    assert w4.range == (20, 60)
+    assert w4.get_damage_mod() == ("strength",)
+
 def test_armor_init():
     a = Armor("padded", "light", 11, True, None, True, None)
     assert a.name == "padded"
