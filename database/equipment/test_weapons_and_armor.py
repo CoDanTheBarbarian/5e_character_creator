@@ -1,5 +1,5 @@
 import pytest
-from weapon_and_armor_objects import *
+from .weapon_and_armor_objects import *
 
 def test_init_melee_weapons():
     w = MeleeWeapon("club", "simple", (4,), 'bludgeoning', ("strength",), ["light"])

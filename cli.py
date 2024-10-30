@@ -2,6 +2,7 @@ from random_stats import *
 from database.race_subrace import *
 from database.c_class import *
 from database.stat_database import *
+from database.equipment.weapon_and_armor_objects import create_weapon, create_armor
 
 def parse_name(name):
     response = input("Character name: " + name + "\nConfirm? (y/n) ")
@@ -218,3 +219,29 @@ def get_stats(c, base_stats):
     except ValueError:
         print("Invalid input. Please enter a number.")
         return get_stats()
+    
+def add_starting_equipment_to_inventory(c, dict):
+    for weapon in dict["weapons"]:
+        w = create_weapon(weapon)
+        c.add_to_inventory(w)
+    for i, weapon in enumerate(c.inventory):
+        print(f"{i + 1}: {weapon}")
+    def choose_weapon():
+        try:
+            num = int(input("Choose a weapon to equip: "))
+            if num >= 1 and num <= len(dict["weapons"]):
+                c.equip_weapon(c.inventory[num - 1])
+            else:
+                print("Invalid weapon choice. Please enter a valid number.")
+                return choose_weapon()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+    choose_weapon()
+
+    for armor in dict["armor"]:
+        a = create_armor(armor)
+        c.add_to_inventory(a)
+        if a.name == "shield":
+            c.equip_shield(a)
+        else:
+            c.equip_armor(a)

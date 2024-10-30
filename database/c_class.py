@@ -109,7 +109,7 @@ class_data = {
         class_info: ["spell casting", "divine domain"],
         equipment: {
             "weapons": ["mace", "light crossbow"],
-            "armor": ["scale", "shield"],
+            "armor": ["scale mail", "shield"],
         },
         spell_casting_ability: "wisdom",
         spell_slots: {
@@ -471,7 +471,7 @@ def create_bard(data):
     )
 
 class Cleric(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, domain, class_abilities):
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
         super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots

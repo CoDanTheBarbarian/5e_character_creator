@@ -1,7 +1,7 @@
 import pytest
 from character import Character
 from database.race_subrace import *
-from database.equipment.weapon_and_armor_objects import create_weapon, create_armor
+from database.equipment.weapon_and_armor_objects import *
 
 def test_create_character():
     c = Character("test")
@@ -319,3 +319,39 @@ def test_apply_subrace_bonus_multiple_calls():
     assert 'Breath shape: cone' in c.race_info
     assert 'Breath size: (15,)' in c.race_info
     assert 'Breath type: cold' in c.race_info
+
+def test_get_equipped_weapon_mod():
+    c = Character("testing")
+    assert c.weapon == None
+    assert c.strength == 8
+    assert c.dexterity == 8
+    c.assign_stat("strength", 14)
+    c.assign_stat("dexterity", 12)
+    assert c.strength == 14
+    assert c.dexterity == 12
+    w = create_weapon("short sword")
+    c.add_to_inventory(w)
+    c.equip_weapon(w)
+    assert c.weapon == w
+    mod = c.get_equipped_weapon_damage_mod()
+    assert mod == 2
+    c.assign_stat("dexterity", 20)
+    assert c.dexterity == 20
+    mod = c.get_equipped_weapon_damage_mod()
+    assert mod == 5
+
+def test_print_inventory():
+    c = Character("testing")
+    assert c.inventory == []
+    w = create_weapon("short sword")
+    c.add_to_inventory(w)
+    assert len(c.inventory) == 1
+    assert c.print_inventory() == "short sword\n"
+    w2 = create_weapon("long sword")
+    c.add_to_inventory(w2)
+    assert len(c.inventory) == 2
+    assert c.print_inventory() == "short sword\nlong sword\n"
+    a = create_armor("chain mail")
+    c.add_to_inventory(a)
+    assert len(c.inventory) == 3
+    assert c.print_inventory() == "short sword\nlong sword\nchain mail\n"

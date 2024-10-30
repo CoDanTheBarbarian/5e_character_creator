@@ -43,8 +43,7 @@ class Character:
         self.spell_list = []
 
     def __repr__(self) -> str:
-        return self.name
-    
+        return self.name    
     def assign_stat(self, stat, stat_num):
         if stat == "strength":
             self.strength = stat_num
@@ -64,6 +63,10 @@ class Character:
         elif stat == "charisma":
             self.charisma = stat_num
             print(f"{stat} set to {stat_num}")
+
+    def unarmored_ac(self):
+        if self.armor == None:
+            self.ac += self.get_ability_mod("dexterity")
 
     # Universal attribute getter
 
@@ -278,3 +281,24 @@ class Character:
     def spell_save_dc(self):
         return 8 + self.spell_attack_bonus()
     
+    # Methods for formatting output for character sheet data
+
+    def get_equipped_weapon_damage_mod(self):
+        mod = 0
+        if self.weapon:
+            tuple = self.weapon.get_damage_mod()
+            for i in tuple:
+                ability_mod = self.get_ability_mod(i)
+                if ability_mod > 0 and mod == 0:
+                    mod = ability_mod
+                elif ability_mod > 0 and mod != 0:
+                    if ability_mod > mod:
+                        mod = ability_mod
+        return mod
+    
+    def print_inventory(self):
+        text = ""
+        for item in self.inventory:
+            text += item.name
+            text += "\n"
+        return text

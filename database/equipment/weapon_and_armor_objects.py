@@ -1,4 +1,4 @@
-from weapon_and_armor_database import *
+from .weapon_and_armor_database import *
 
 class MeleeWeapon:
     def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties):

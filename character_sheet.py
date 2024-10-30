@@ -65,12 +65,12 @@ fields_key = {
           'text_222odvz': "weapon 4 attack bonus/dc", 
           'text_223adiy': "weapon 5 attack bonus/dc", 
           'text_224rbdd': "weapon 6 attack bonus/dc", 
-          'text_225fptj': "weapon 1 damage type", 
-          'text_226ujth': "weapon 2 damage type", 
-          'text_227tuqa': "weapon 3 damage type", 
-          'text_228dnel': "weapon 4 damage type", 
-          'text_229ftkg': "weapon 5 damage type", 
-          'text_230jtwi': "weapon 6 damage type", 
+          'text_225fptj': "weapon 1 damage & type", 
+          'text_226ujth': "weapon 2 damage & type", 
+          'text_227tuqa': "weapon 3 damage & type", 
+          'text_228dnel': "weapon 4 damage & type", 
+          'text_229ftkg': "weapon 5 damage & type", 
+          'text_230jtwi': "weapon 6 damage & type", 
           'text_231piki': "weapon 1 notes", 
           'text_232qdk': "weapon 2 notes", 
           'text_233pfmo': "weapon 3 notes", 
@@ -1031,12 +1031,24 @@ def parse_character_sheet_data(c):
     data['text_48wwut'] = c.get_skill_bonus("sleight of hand") 
     data['text_49ztsd'] = c.get_skill_bonus("stealth") 
     data['text_50fkah'] = c.get_skill_bonus("survival")
+    data['text_213vjaj'] = c.weapon.name
+    weapon_mod = ""
+    for ability in c.weapon.get_damage_mod():
+        if c.get_ability_mod(ability) > 0:
+            if weapon_mod == "":
+                weapon_mod = ability
+            else:
+                if c.get_ability_mod(ability) > c.get_ability_mod(weapon_mod):
+                    weapon_mod = ability
+    data['text_219ameb'] = c.get_ability_mod(weapon_mod)
+    data['text_225fptj'] = f"d{c.weapon.damage_die[0]}{'+' if len(c.weapon.damage_die) > 1 else ''}d{c.weapon.damage_die[1] if len(c.weapon.damage_die) > 1 else ''} Damage type: {c.weapon.damage_type}"
+    data['text_231piki'] = c.weapon.properties
     data['textarea_237vdig'] = None # class features box 1 c.class_abilities
-    data['textarea_238rkrv'] = ', '.join(c.class_info) # this is working
-    data['textarea_239zoqi'] = ', '.join(c.race_info) # this is not working
+    data['textarea_238rkrv'] = ', '.join(c.class_info)
+    data['textarea_239zoqi'] = ', '.join(c.race_info)
     data['textarea_240ngth'] = None # feats
     data['textarea_245bjob'] = None # tool proficiencies
-    data['textarea_246zssm'] = ', '.join(c.get_weapon_proficiencies()) # this is working
+    data['textarea_246zssm'] = ', '.join(c.get_weapon_proficiencies())
     data['text_247iukc'] = c.get_saving_throw("constitution")
     data['text_248bhjr'] = c.get_saving_throw("charisma") 
     data['text_249radr'] = c.get_saving_throw("wisdom") 
