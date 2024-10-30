@@ -1,12 +1,12 @@
-dwarf = "dwarf"
-elf = "elf"
-halfling = "halfling"
-human = "human"
-dragonborn = "dragonborn"
-gnome = "gnome"
-half_elf = "half elf"
-half_orc = "half orc"
-tiefling = "tiefling"
+dwarf = "Dwarf"
+elf = "Elf"
+halfling = "Halfling"
+human = "Human"
+dragonborn = "Dragonborn"
+gnome = "Gnome"
+half_elf = "Half Elf"
+half_orc = "Half Orc"
+tiefling = "Tiefling"
 
 races = {
     dwarf: 

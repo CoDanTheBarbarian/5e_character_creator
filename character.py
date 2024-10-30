@@ -233,7 +233,7 @@ class Character:
                 self.gain_damage_resistance(resistance)
         self.hp_bonus = subrace.hp_bonus
         self.speed_bonus = subrace.speed_bonus
-        if self.race == "dragonborn":
+        if self.race == dragonborn:
             self.race_info.append(f"Breath shape: {subrace.breath_shape}")
             self.race_info.append(f"Breath size: {subrace.breath_size}")
             self.race_info.append(f"Breath type: {subrace.breath_type}")

@@ -20,8 +20,8 @@ origin = "sorcerous origin"
 patron = "patron"
 
 class_data = {
-    "barbarian": {
-        class_name: "barbarian",
+    "Barbarian": {
+        class_name: "Barbarian",
         hit_die: 12,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -43,8 +43,8 @@ class_data = {
         equipment: ["testing", "testing", "one two three"],
         class_abilities: {"rage": 2},
         },
-    "bard": {
-        class_name: "bard",
+    "Bard": {
+        class_name: "Bard",
         hit_die: 8,
         proficiencies: ["light armor", 
                           "simple weapons", 
@@ -84,8 +84,8 @@ class_data = {
         spells_known: 4,
         class_abilities: {"bardic die": 6},
         },
-    "cleric": {
-        class_name: "cleric",
+    "Cleric": {
+        class_name: "Cleric",
         hit_die: 8,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -110,8 +110,8 @@ class_data = {
         domain: ["list of domains"],
         class_abilities: {"channel divinity": 0},
         },
-    "druid": {
-        class_name: "druid",
+    "Druid": {
+        class_name: "Druid",
         hit_die: 8,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -148,8 +148,8 @@ class_data = {
             },
         class_abilities: None,
         },
-    "fighter": {
-        class_name: "fighter",
+    "Fighter": {
+        class_name: "Fighter",
         hit_die: 10,
         proficiencies: ["light armor", 
                           "medium armor", 
@@ -178,8 +178,8 @@ class_data = {
             "fighting style": None
             },
         },
-    "monk": {
-        class_name: "monk",
+    "Monk": {
+        class_name: "Monk",
         hit_die: 8,
         proficiencies: ["simple weapons", 
                           "short sword", 
@@ -197,8 +197,8 @@ class_data = {
         equipment: ["testing", "testing", "one two three"],
         class_abilities: {"ki points": 0},
         },
-    "paladin": {
-        class_name: "paladin",
+    "Paladin": {
+        class_name: "Paladin",
         hit_die: 10,
         proficiencies: [
             "light armor", 
@@ -226,8 +226,8 @@ class_data = {
         spell_slots: {},
         class_abilities: {"lay on hands": "level x 5"},
         },
-    "ranger": {
-        class_name: "ranger",
+    "Ranger": {
+        class_name: "Ranger",
         hit_die: 10,
         proficiencies: [
             "light armor", 
@@ -255,8 +255,8 @@ class_data = {
         equipment: ["testing", "testing", "one two three"],
         class_abilities: None,
         },
-    "rogue": {
-        class_name: "rogue",
+    "Rogue": {
+        class_name: "Rogue",
         hit_die: 8,
         proficiencies: [
             "light armor", 
@@ -292,8 +292,8 @@ class_data = {
             },
         class_abilities: {"sneak attack die": 6},
         },
-    "sorcerer": {
-        class_name: "sorcerer",
+    "Sorcerer": {
+        class_name: "Sorcerer",
         hit_die: 6,
         proficiencies: [
             'dagger', 
@@ -323,8 +323,8 @@ class_data = {
         spells_known: 2,
         class_abilities: {"sorcerous origin": None},
         },
-    "warlock": {
-        class_name: "warlock",
+    "Warlock": {
+        class_name: "Warlock",
         hit_die: 8,
         proficiencies: [
             'light_armor', 
@@ -353,8 +353,8 @@ class_data = {
         spells_known: 2,
         class_abilities: {"pact magic": None},
         },
-    "wizard": {
-        class_name: "wizard",
+    "Wizard": {
+        class_name: "Wizard",
         hit_die: 6,
         proficiencies: [
             'dagger', 
@@ -613,18 +613,18 @@ def create_wizard(data):
     )
 
 class_create_map = {
-    "barbarian": create_barbarian,
-    "bard": create_bard,
-    "cleric": create_cleric,
-    "druid": create_druid,
-    "fighter": create_fighter,
-    "monk": create_monk,
-    "paladin": create_paladin,
-    "ranger": create_ranger,
-    "rogue": create_rogue,
-    "sorcerer": create_sorcerer,
-    "warlock": create_warlock,
-    "wizard": create_wizard
+    "Barbarian": create_barbarian,
+    "Bard": create_bard,
+    "Cleric": create_cleric,
+    "Druid": create_druid,
+    "Fighter": create_fighter,
+    "Monk": create_monk,
+    "Paladin": create_paladin,
+    "Ranger": create_ranger,
+    "Rogue": create_rogue,
+    "Sorcerer": create_sorcerer,
+    "Warlock": create_warlock,
+    "Wizard": create_wizard
 }
 
 def create_class_object(class_name):
