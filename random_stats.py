@@ -27,13 +27,8 @@ def roll_stat():
     return sum(result)
 
 def get_random_stats():
-    stat_1 = roll_stat()
-    stat_2 = roll_stat()
-    stat_3 = roll_stat()
-    stat_4 = roll_stat()
-    stat_5 = roll_stat()
-    stat_6 = roll_stat()
-    return [stat_1, stat_2, stat_3, stat_4, stat_5, stat_6]
+    stats = [roll_stat() for _ in range(6)]
+    return sorted(stats, reverse=True)
 
 # numbers is a list of die numbers to handle cases where we roll more than one dice for a single result (i.e. multiple d6 for sneak attack damage)
 def roll_d(numbers):
