@@ -3,6 +3,9 @@
 
 Do you love rolling up new characters, but hate doing math? Let this CLI tool do it for you! Each choice you can make for your character has been serialized. Any choice you can make is numbered so choosing is as simple as entering a valid number. After entering your choices for your character this program will populate a form fillable pdf template with all your stats calculated and automatically entered for you and save it in the project directory.
 
+## Preface
+
+This is a supplementary product for Dungeons & Dragons and will not provide you with information in the Player's Handbook. For each choice you make it is assumed you understand what that choice means.
 
 ## Installation
 
