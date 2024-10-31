@@ -5,7 +5,7 @@ Do you love rolling up new characters, but hate doing math? Let this CLI tool do
 
 ## Preface
 
-This is a supplementary product for Dungeons & Dragons and will not provide you with information in the Player's Handbook. For each choice you make it is assumed you understand what that choice means.
+This is a supplementary product for Dungeons & Dragons and will not provide you with information in the Player's Handbook. For each choice you make it is assumed you understand what that choice means. Current functionality is limited to level one characters.
 
 ## Installation
 
@@ -20,6 +20,19 @@ This is a supplementary product for Dungeons & Dragons and will not provide you 
   pip install fillpdf
 ```
 
+## Usage
+
+Upon program start you will be prompted to enter your charcter name. This will also be the title of the output character sheet.
+Each subsequent prompt expects a number response corresponding to one of the listed choices.
+
+## Demo
+
+https://github.com/user-attachments/assets/8552103f-4dfb-400c-8487-396251df5f88
+
+Demo character sheet result:
+![Karlach Demo PDF](https://github.com/user-attachments/assets/1ec3fe9d-6a51-43a4-8007-7ee24d51fbc9)
+
+![Karlach Demo Sheet (2)](https://github.com/user-attachments/assets/7122dd30-a669-4c20-96e1-47f568e31e38)
 
 ## Roadmap
 
@@ -32,12 +45,3 @@ This is a supplementary product for Dungeons & Dragons and will not provide you 
 - Add implementation for level up
 
 - Refactor into a Go web app with support for users to login and save and retrieve character sheets from a database
-
-## Demo
-
-https://github.com/user-attachments/assets/8552103f-4dfb-400c-8487-396251df5f88
-
-Demo character sheet result:
-![Karlach Demo PDF](https://github.com/user-attachments/assets/1ec3fe9d-6a51-43a4-8007-7ee24d51fbc9)
-
-![Karlach Demo Sheet (2)](https://github.com/user-attachments/assets/7122dd30-a669-4c20-96e1-47f568e31e38)

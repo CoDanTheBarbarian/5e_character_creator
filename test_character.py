@@ -390,9 +390,9 @@ def test_apply_subrace():
     assert c.proficiencies["light hammer"] == True
     assert c.proficiencies["warhammer"] == True
     assert c.damage_resistance["poison"] == True
-    subrace_obj = create_subrace_object("mountain dwarf")
+    subrace_obj = create_subrace_object("Mountain Dwarf")
     c.apply_subrace_bonus(subrace_obj)
-    assert c.subrace == "mountain dwarf"
+    assert c.subrace == "Mountain Dwarf"
     assert c.strength == 10
     assert c.proficiencies["light armor"] == True
     assert c.proficiencies["medium armor"] == True
@@ -405,9 +405,9 @@ def test_apply_dragon_subrace():
     assert c.speed == 30
     assert c.strength == 10
     assert c.charisma == 9
-    subrace_obj = create_dragoncolor_object("black")
+    subrace_obj = create_dragoncolor_object("Black")
     c.apply_subrace_bonus(subrace_obj)
-    assert c.subrace == "black"
+    assert c.subrace == "Black"
     assert c.damage_resistance["acid"] == True
     assert c.race_info[0] == "Breath shape: line"
 
@@ -439,7 +439,7 @@ def test_apply_subrace_bonus_empty_list():
     c.race_info = []
     dragon_obj = create_race_object(dragonborn)
     c.apply_race_bonus(dragon_obj)
-    subrace_obj = create_dragoncolor_object("black")
+    subrace_obj = create_dragoncolor_object("Black")
     c.apply_subrace_bonus(subrace_obj)
     assert len(c.race_info) == 3
     assert 'Breath shape: line' in c.race_info
@@ -450,8 +450,8 @@ def test_apply_subrace_bonus_multiple_calls():
     c = Character("testing")
     dragon_obj = create_race_object(dragonborn)
     c.apply_race_bonus(dragon_obj)
-    subrace_obj1 = create_dragoncolor_object("black")
-    subrace_obj2 = create_dragoncolor_object("white")
+    subrace_obj1 = create_dragoncolor_object("Black")
+    subrace_obj2 = create_dragoncolor_object("White")
     c.apply_subrace_bonus(subrace_obj1)
     c.apply_subrace_bonus(subrace_obj2)
     assert len(c.race_info) == 6

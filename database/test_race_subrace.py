@@ -32,7 +32,7 @@ def test_get_race_stats():
     assert stats[proficiencies] == ['battle axe', 'handaxe', "light hammer", "warhammer"]
     assert stats[resistances] == ["poison"]
     assert stats[prof_choices] == []
-    assert stats[sub_races] == ["hill dwarf", "mountain dwarf"]
+    assert stats[sub_races] == ["Hill Dwarf", "Mountain Dwarf"]
 
 def test_create_race_object():
     race_obj = create_race_object(half_orc)
@@ -65,7 +65,7 @@ def test_create_race_object():
     assert race_obj.proficiencies == ['battle axe', 'handaxe', "light hammer", "warhammer"]
     assert race_obj.resistances == ["poison"]
     assert race_obj.prof_choices == []
-    assert race_obj.subraces == ["hill dwarf", "mountain dwarf"]
+    assert race_obj.subraces == ["Hill Dwarf", "Mountain Dwarf"]
 
 def test_other_races():
     assert dwarf in race_stats.keys()
@@ -79,7 +79,7 @@ def test_other_races():
     assert tiefling in race_stats.keys()
 
 def test_get_subrace_stats():
-    subrace = "lightfoot halfling"
+    subrace = "Lightfoot Halfling"
     stats = sub_race_stats[subrace]
     assert stats[sub_race] == subrace
     assert stats[ability_bonus] == [("charisma", 1)]
@@ -89,7 +89,7 @@ def test_get_subrace_stats():
     assert stats[speed_bonus] == None
 
 def test_create_subrace_object():
-    subrace = "lightfoot halfling"
+    subrace = "Lightfoot Halfling"
     subrace_obj = create_subrace_object(subrace)
     assert subrace_obj.subrace == subrace
     assert subrace_obj.stat_bonus == [("charisma", 1)]
@@ -99,7 +99,7 @@ def test_create_subrace_object():
     assert subrace_obj.speed_bonus == None
 
 def get_dragon_color_stats():
-    color = "black"
+    color = "Black"
     stats = dragon_color_stats[color]
     assert stats[sub_race] == color
     assert stats[ability_bonus] == []
@@ -112,7 +112,7 @@ def get_dragon_color_stats():
     assert stats[breath_type] == "acid"
 
 def test_create_dragoncolor_object():
-    color = "black"
+    color = "Black"
     color_obj = create_dragoncolor_object(color)
     assert color_obj.subrace == color
     assert color_obj.stat_bonus == []
