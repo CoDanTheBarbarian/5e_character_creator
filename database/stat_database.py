@@ -97,19 +97,19 @@ proficiency_status = {
 # The dictionary of possible background choices
 
 backgrounds = {
-    "acolyte": ["insight", "religion"],
-    "charlatan": ["deception", "sleight of hand"],
-    "criminal": ["deception", "stealth"],
-    "entertainer": ["acrobatics", "performance"],
-    "folk hero": ["animal handling", "survival"],
-    "guild artisan": ["insight", "persuasion"],
-    "hermit": ["medicine", "religion"],
-    "noble": ["history", "persuasion"],
-    "outlander": ["athletics", "survival"],
-    "sage": ["arcana", "history"],
-    "sailor": ["athletics", "perception"],
-    "soldier": ["athletics", "intimidation"],
-    "urchin": ["sleight of hand", "stealth"]
+    "Acolyte": ["insight", "religion"],
+    "Charlatan": ["deception", "sleight of hand"],
+    "Criminal": ["deception", "stealth"],
+    "Entertainer": ["acrobatics", "performance"],
+    "Folk hero": ["animal handling", "survival"],
+    "Guild artisan": ["insight", "persuasion"],
+    "Hermit": ["medicine", "religion"],
+    "Noble": ["history", "persuasion"],
+    "Outlander": ["athletics", "survival"],
+    "Sage": ["arcana", "history"],
+    "Sailor": ["athletics", "perception"],
+    "Soldier": ["athletics", "intimidation"],
+    "Urchin": ["sleight of hand", "stealth"]
 }
 
 # The dictionary of possible damage types

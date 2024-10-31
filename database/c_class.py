@@ -375,7 +375,7 @@ class_data = {
         ),
         class_info: ["otherworldy patron", "pact magic"],
         equipment: {
-            "weapons": ["light crossbow", "hand axe", "dagger", "dagger"],
+            "weapons": ["light crossbow", "handaxe", "dagger", "dagger"],
             "armor": ["leather"],
         },
         spell_casting_ability: "charisma",

@@ -231,15 +231,15 @@ def test_get_weapon_profs():
 def test_apply_background():
     c = Character("testing")
     assert c.background == None
-    c.apply_background("noble")
-    assert c.background == "noble"
+    c.apply_background("Noble")
+    assert c.background == "Noble"
     assert c.proficiencies["history"] == True
     assert c.proficiencies["persuasion"] == True
 
     c2 = Character("testing")
     assert c2.background == None
-    c2.apply_background("acolyte")
-    assert c2.background == "acolyte"
+    c2.apply_background("Acolyte")
+    assert c2.background == "Acolyte"
     assert c2.proficiencies["insight"] == True
     assert c2.proficiencies["religion"] == True
     
