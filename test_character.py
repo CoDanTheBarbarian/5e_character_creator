@@ -8,7 +8,7 @@ def test_create_character():
     c = Character("test")
     assert c.name == "test"
     assert c.race == None
-    assert c.race_info == []
+    assert c.race_info == None
     assert c.subrace == None
     assert c.c_class == None
     assert c.subclass == None
@@ -132,6 +132,7 @@ def test_create_character():
     "level 9": 0,
 }
     assert c.spell_list == []
+    assert c.breath_weapon == None
 
 def test_assign_stat():
     c = Character("testing")
@@ -363,6 +364,8 @@ def test_apply_race_bonus():
     assert c2.proficiencies["handaxe"] == False
     assert c2.proficiencies["light hammer"] == False
     assert c2.proficiencies["warhammer"] == False
+    assert c2.damage_resistance["poison"] == False
+    assert c2.race_info == None
     dwarf_obj = create_race_object(dwarf)
     c2.apply_race_bonus(dwarf_obj)
     assert c2.speed == 25
@@ -372,6 +375,11 @@ def test_apply_race_bonus():
     assert c2.proficiencies["light hammer"] == True
     assert c2.proficiencies["warhammer"] == True
     assert c2.damage_resistance["poison"] == True
+    assert c2.race_info == {
+        "Darkvision": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+        "Dwarven Resilience": "You have advantage on saving throws against poison, and resistance against poison damage.",
+        "Stonecunning": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check.",
+    }
 
 def test_apply_subrace():
     c = Character("testing")
@@ -381,6 +389,8 @@ def test_apply_subrace():
     assert c.proficiencies["handaxe"] == False
     assert c.proficiencies["light hammer"] == False
     assert c.proficiencies["warhammer"] == False
+    assert c.damage_resistance["poison"] == False
+    assert c.race_info == None
     dwarf_obj = create_race_object(dwarf)
     c.apply_race_bonus(dwarf_obj)
     assert c.speed == 25
@@ -390,6 +400,13 @@ def test_apply_subrace():
     assert c.proficiencies["light hammer"] == True
     assert c.proficiencies["warhammer"] == True
     assert c.damage_resistance["poison"] == True
+    assert c.race_info == {
+        "Darkvision": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+        "Dwarven Resilience": "You have advantage on saving throws against poison, and resistance against poison damage.",
+        "Stonecunning": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check.",
+    }
+    assert c.proficiencies["light armor"] == False
+    assert c.proficiencies["medium armor"] == False
     subrace_obj = create_subrace_object("Mountain Dwarf")
     c.apply_subrace_bonus(subrace_obj)
     assert c.subrace == "Mountain Dwarf"
@@ -407,9 +424,11 @@ def test_apply_dragon_subrace():
     assert c.charisma == 9
     subrace_obj = create_dragoncolor_object("Black")
     c.apply_subrace_bonus(subrace_obj)
-    assert c.subrace == "Black"
-    assert c.damage_resistance["acid"] == True
-    assert c.race_info[0] == "Breath shape: line"
+    assert c.breath_weapon == {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Acid"
+            }
 
 def test_apply_class():
     c = Character("testing")
@@ -432,35 +451,7 @@ def test_populate_spell_list():
 
 def test_race_info_initialized():
     c = Character("testing")
-    assert c.race_info == []
-
-def test_apply_subrace_bonus_empty_list():
-    c = Character("testing")
-    c.race_info = []
-    dragon_obj = create_race_object(dragonborn)
-    c.apply_race_bonus(dragon_obj)
-    subrace_obj = create_dragoncolor_object("Black")
-    c.apply_subrace_bonus(subrace_obj)
-    assert len(c.race_info) == 3
-    assert 'Breath shape: line' in c.race_info
-    assert 'Breath size: (5, 30)' in c.race_info
-    assert 'Breath type: acid' in c.race_info
-
-def test_apply_subrace_bonus_multiple_calls():
-    c = Character("testing")
-    dragon_obj = create_race_object(dragonborn)
-    c.apply_race_bonus(dragon_obj)
-    subrace_obj1 = create_dragoncolor_object("Black")
-    subrace_obj2 = create_dragoncolor_object("White")
-    c.apply_subrace_bonus(subrace_obj1)
-    c.apply_subrace_bonus(subrace_obj2)
-    assert len(c.race_info) == 6
-    assert 'Breath shape: line' in c.race_info
-    assert 'Breath size: (5, 30)' in c.race_info
-    assert 'Breath type: acid' in c.race_info
-    assert 'Breath shape: cone' in c.race_info
-    assert 'Breath size: (15,)' in c.race_info
-    assert 'Breath type: cold' in c.race_info
+    assert c.race_info == None
 
 def test_get_equipped_weapon_mod():
     c = Character("testing")

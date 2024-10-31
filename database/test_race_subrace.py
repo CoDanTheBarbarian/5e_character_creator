@@ -107,9 +107,11 @@ def get_dragon_color_stats():
     assert stats[resistances] == ["acid"]
     assert stats[hp_bonus] == None
     assert stats[speed_bonus] == None
-    assert stats[breath_shape] == "line"
-    assert stats[breath_size] == (5, 30)
-    assert stats[breath_type] == "acid"
+    assert stats[breath_weapon] == {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Acid"
+            }
 
 def test_create_dragoncolor_object():
     color = "Black"
@@ -120,6 +122,8 @@ def test_create_dragoncolor_object():
     assert color_obj.resistances == ["acid"]
     assert color_obj.hp_bonus == None
     assert color_obj.speed_bonus == None
-    assert color_obj.breath_shape == "line"
-    assert color_obj.breath_size == (5, 30)
-    assert color_obj.breath_type == "acid"
+    assert color_obj.breath_weapon == {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Acid"
+            }

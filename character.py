@@ -11,7 +11,7 @@ class Character:
     def __init__(self, name, strength=8, dexterity=8, constitution=8, intelligence=8, wisdom=8, charisma=8, ac=10, level=1, xp=0,):
         self.name = name
         self.race = None
-        self.race_info = []
+        self.race_info = None
         self.subrace = None
         self.c_class = None
         self.subclass = None
@@ -41,6 +41,7 @@ class Character:
         self.spell_casting_ability = None
         self.spell_slots = spell_slots_dict.copy()
         self.spell_list = []
+        self.breath_weapon = None
 
     def __repr__(self) -> str:
         return self.name    
@@ -235,6 +236,7 @@ class Character:
         if race.resistances:
             for resistance in race.resistances:
                 self.gain_damage_resistance(resistance)
+        self.race_info = race.race_traits
     
     def apply_subrace_bonus(self, subrace):
         self.subrace = subrace.subrace
@@ -249,9 +251,7 @@ class Character:
         self.hp_bonus = subrace.hp_bonus
         self.speed_bonus = subrace.speed_bonus
         if self.race == dragonborn:
-            self.race_info.append(f"Breath shape: {subrace.breath_shape}")
-            self.race_info.append(f"Breath size: {subrace.breath_size}")
-            self.race_info.append(f"Breath type: {subrace.breath_type}")
+            self.breath_weapon = subrace.breath_weapon
 
     # Methods for applying class stats
 
@@ -314,3 +314,12 @@ class Character:
             return self.hit_die + self.get_ability_mod("constitution")
         else:
             return self.hit_die
+        
+    def print_race_info(self):
+        text = ""
+        if self.race_info != None:
+            for ability, description in self.race_info.items():
+                text += f"{ability}: {description}\n"
+        if self.breath_weapon != None:
+            text += f"Breath Weapon:\nShape: {self.breath_weapon[breath_shape]}\nSize: {self.breath_weapon[breath_size]}\nType: {self.breath_weapon[breath_type]}\n"
+        return text

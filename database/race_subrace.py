@@ -86,7 +86,8 @@ race_stats = {
         proficiencies: ['battle axe', 'handaxe', "light hammer", "warhammer"],
         resistances: ["poison"],
         prof_choices: [],
-        sub_races: races[dwarf]
+        sub_races: races[dwarf],
+        race_traits: race_info[dwarf]
         },
     elf: {
         race: elf,
@@ -95,7 +96,8 @@ race_stats = {
         proficiencies: ["perception"],
         resistances: [],
         prof_choices: [],
-        sub_races: races[elf]
+        sub_races: races[elf],
+        race_traits: race_info[elf]
         }, 
     halfling: {
         race: halfling,
@@ -104,7 +106,8 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races[halfling]
+        sub_races: races[halfling],
+        race_traits: race_info[halfling]
         },
     human: {
         race: human,
@@ -118,7 +121,8 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races[human]
+        sub_races: races[human],
+        race_traits: race_info[human]
         },
     dragonborn: {
         race: dragonborn,
@@ -127,7 +131,9 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races[dragonborn]},
+        sub_races: races[dragonborn],
+        race_traits: race_info[dragonborn]
+        },
     gnome: {
         race: gnome,
         speed: 25, 
@@ -135,7 +141,8 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races[halfling]
+        sub_races: races[halfling],
+        race_traits: race_info[halfling]
         },
     half_elf: {
         race: half_elf,
@@ -163,7 +170,8 @@ race_stats = {
             'intimidation', 
             'performance', 
             'persausion'], 2),
-        sub_races: races[half_elf]
+        sub_races: races[half_elf],
+        race_traits: race_info[half_elf]
         },
     half_orc: {
         race: half_orc,
@@ -172,7 +180,8 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races[half_orc]
+        sub_races: races[half_orc],
+        race_traits: race_info[half_orc]
         },
     tiefling: {
         race: tiefling,
@@ -181,12 +190,14 @@ race_stats = {
         proficiencies: [],
         resistances: ["fire"],
         prof_choices: [],
-        sub_races: races[tiefling]
+        sub_races: races[tiefling],
+        race_traits: race_info[tiefling]
         }
 }
 
 hp_bonus = "hp bonus"
 speed_bonus = "speed bonus"
+breath_weapon = "breath weapon"
 breath_shape = "breath shape"
 breath_size = "breath size"
 breath_type = "damage type"
@@ -275,9 +286,11 @@ dragon_color_stats = {
         resistances: ["acid"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "line",
-        breath_size: (5, 30),
-        breath_type: "acid"
+        breath_weapon: {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Acid"
+            }
         },
     "Blue": {
         sub_race: "Blue",
@@ -286,9 +299,11 @@ dragon_color_stats = {
         resistances: ["lightning"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "line",
-        breath_size: (5, 30),
-        breath_type: "lightning"
+        breath_weapon: {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Lightning"
+            }
         },
     "Brass": {
         sub_race: "Brass",
@@ -297,9 +312,11 @@ dragon_color_stats = {
         resistances: ["fire"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "line",
-        breath_size: (5, 30),
-        breath_type: "fire"
+        breath_weapon: {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Fire"
+            }
         },
     "Bronze": {
         sub_race: "Bronze",
@@ -308,9 +325,11 @@ dragon_color_stats = {
         resistances: ["lightning"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "line",
-        breath_size: (5, 30),
-        breath_type: "lightning"
+        breath_weapon: {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Lightning"
+            }
         },
     "Copper": {
         sub_race: "Copper",
@@ -319,9 +338,11 @@ dragon_color_stats = {
         resistances: ["acid"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "line",
-        breath_size: (5, 30),
-        breath_type: "acid"
+        breath_weapon: {
+            breath_shape: "Line",
+            breath_size: (5, 30),
+            breath_type: "Acid"
+            }
         },
     "Gold": {
         sub_race: "Gold",
@@ -330,9 +351,11 @@ dragon_color_stats = {
         resistances: ["fire"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "cone",
-        breath_size: (15,),
-        breath_type: "fire"
+        breath_weapon: {
+            breath_shape: "Cone",
+            breath_size: (15,),
+            breath_type: "Fire"
+            }
         },
     "Green": {
         sub_race: "Green",
@@ -341,9 +364,11 @@ dragon_color_stats = {
         resistances: ["poison"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "cone",
-        breath_size: (15,),
-        breath_type: "poison"
+        breath_weapon: {
+            breath_shape: "Cone",
+            breath_size: (15,),
+            breath_type: "Poison"
+            }
         },
     "Red": {
         sub_race: "Red",
@@ -352,9 +377,11 @@ dragon_color_stats = {
         resistances: ["fire"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "cone",
-        breath_size: (15,),
-        breath_type: "fire"
+        breath_weapon: {
+            breath_shape: "Cone",
+            breath_size: (15,),
+            breath_type: "Fire"
+            }
         },
     "Silver": {
         sub_race: "Silver",
@@ -363,9 +390,11 @@ dragon_color_stats = {
         resistances: ["cold"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "cone",
-        breath_size: (15,),
-        breath_type: "cold"
+        breath_weapon: {
+            breath_shape: "Cone",
+            breath_size: (15,),
+            breath_type: "Cold"
+            }
         },
     "White": {
         sub_race: "White",
@@ -374,13 +403,15 @@ dragon_color_stats = {
         resistances: ["cold"],
         hp_bonus: None,
         speed_bonus: None,
-        breath_shape: "cone",
-        breath_size: (15,),
-        breath_type: "cold"
+        breath_weapon: {
+            breath_shape: "Cone",
+            breath_size: (15,),
+            breath_type: "Cold"
+            }
         },
 }
 class Race:
-    def __init__(self, race, speed, stat_bonus, proficiencies, resistances, prof_choices, subraces):
+    def __init__(self, race, speed, stat_bonus, proficiencies, resistances, prof_choices, subraces, race_traits):
         self.race = race
         self.speed = speed
         self.stat_bonus = stat_bonus
@@ -388,6 +419,7 @@ class Race:
         self.resistances = resistances
         self.prof_choices = prof_choices
         self.subraces = subraces
+        self.race_traits = race_traits
 
 class SubRace:
     def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus):
@@ -399,11 +431,9 @@ class SubRace:
         self.speed_bonus = speed_bonus
 
 class DragonColor(SubRace):
-    def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus, breath_shape, breath_size, breath_type):
+    def __init__(self, subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus, breath_weapon):
         super().__init__(subrace, stat_bonus, proficiencies, resistances, hp_bonus, speed_bonus)
-        self.breath_shape = breath_shape
-        self.breath_size = breath_size
-        self.breath_type = breath_type
+        self.breath_weapon = breath_weapon
 
 def create_race_object(input):
     stats = race_stats[input]
@@ -414,7 +444,8 @@ def create_race_object(input):
         stats[proficiencies], 
         stats[resistances], 
         stats[prof_choices], 
-        stats[sub_races])
+        stats[sub_races], 
+        stats[race_traits])
 
 
 
@@ -437,6 +468,4 @@ def create_dragoncolor_object(input):
         stats[resistances],  
         stats[hp_bonus], 
         stats[speed_bonus],
-        stats[breath_shape],
-        stats[breath_size],
-        stats[breath_type])
+        stats[breath_weapon])
