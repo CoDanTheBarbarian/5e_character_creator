@@ -70,6 +70,29 @@ def choose_class():
         print("Invalid input. Please enter a number.")
     return choose_class()
 
+def get_stats(c, base_stats):
+    print("How would you like to assign your stats?")
+    print("1. Roll random stats")
+    print("2. Point Buy")
+    try:
+        choice = int(input("Choose an option: "))
+        if choice not in [1, 2]:
+            print("Invalid choice. Please enter a number from the list.")
+            return get_stats(c, base_stats)
+        if confirm_choice(f"You chose option {choice}, is that correct?", get_stats):
+            if choice == 1:
+                print("Let's assign these stats to your character, one by one.")
+                stats = choose_stats()
+                assign_stats(c, stats)
+            elif choice == 2:
+                point_buy(c, base_stats)
+        else:
+            return get_stats(c, base_stats)
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return get_stats(c, base_stats)
+    
+
 def choose_stats():
     while True:
         stats = get_random_stats()
@@ -102,57 +125,6 @@ def assign_stats(c, stats):
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-def gain_proficiency_choices(c, list, num_choices):
-    options_left = list[:]
-    choices = []
-    choices_left = num_choices
-
-    while choices_left > 0:
-        for i, option in enumerate(options_left):
-            print(f"{i + 1}: {option}")
-        print(f"You have {choices_left} choices left.")
-        try:
-            choice_num = int(input("Choose a skill: "))
-            if choice_num < 1 or choice_num > len(options_left):
-                print("Invalid choice. Please enter a number from the list.")
-            else:
-                print(f"Chosen skill: {options_left[choice_num - 1]}")
-                choices.append(options_left[choice_num - 1])
-                options_left.pop(choice_num - 1)  # remove chosen option from list
-                choices_left -= 1
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-
-    while choices_left == 0:
-        print(f"You have chosen: {', '.join(choices)}")
-        try:
-            confirm = input("Confirm? (y/n) ")
-            if confirm.lower() == "y":
-                c.gain_proficiency(choices)
-                break
-            elif confirm.lower() == "n":
-                gain_proficiency_choices(c, list, num_choices)
-            else:
-                print("Please enter 'y' or 'n'.")
-        except ValueError:
-            print("Invalid input. Please enter a 'y' or 'n'.")
-
-def choose_background():
-    for i, background in enumerate(backgrounds.keys()):
-        print(f"{i + 1}: {background}. Proficiencies: {backgrounds[background]}")
-    try:
-        num = input("Choose a background: ")
-        if num.isdigit() and 1 <= int(num) <= len(backgrounds):
-            b = list(backgrounds.keys())[int(num) - 1]
-            if confirm_choice(f"Chosen background: {b}", choose_background):
-                return b
-        else:
-            print("Invalid background choice. Please enter a valid number.")
-            return choose_background()
-    except ValueError:
-        print("Invalid input. Please enter a number.")
-    return choose_background
-
 pt_buy_zero_stats = {
         "strength": 8,
         "dexterity": 8,
@@ -161,6 +133,7 @@ pt_buy_zero_stats = {
         "wisdom": 8,
         "charisma": 8
     }
+
 def point_buy(c, base_stats):
     points = 27
     cost = {
@@ -201,24 +174,57 @@ def point_buy(c, base_stats):
     else:
         return point_buy(c, base_stats)
 
-def get_stats(c, base_stats):
-    print("How would you like to assign your stats?")
-    print("1. Roll random stats")
-    print("2. Point Buy")
-    try:
-        choice = int(input("Choose an option: "))
-        if choice == 1:
-            stats = choose_stats()
-            print("Let's assign these stats to your character, one by one.")
-            assign_stats(c, stats)
-        elif choice == 2:
-            point_buy(c, base_stats)
-        else:
-            print("Invalid choice. Please enter a number from the list.")
-            return get_stats()
-    except ValueError:
-        print("Invalid input. Please enter a number.")
-        return get_stats()
+def gain_proficiency_choices(c, list, num_choices):
+    options_left = list[:]
+    choices = []
+    choices_left = num_choices
+
+    while choices_left > 0:
+        for i, option in enumerate(options_left):
+            print(f"{i + 1}: {option}")
+        print(f"You have {choices_left} choices left.")
+        try:
+            choice_num = int(input("Choose a skill: "))
+            if choice_num < 1 or choice_num > len(options_left):
+                print("Invalid choice. Please enter a number from the list.")
+            else:
+                print(f"Chosen skill: {options_left[choice_num - 1]}")
+                choices.append(options_left[choice_num - 1])
+                options_left.pop(choice_num - 1)  # remove chosen option from list
+                choices_left -= 1
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+    print(f"You have chosen: {', '.join(choices)}")
+    while True:
+        try:
+            confirm = input("Confirm? (y/n) ")
+            if confirm.lower() == "y":
+                c.gain_proficiency(choices)
+                return 
+            elif confirm.lower() == "n":
+                choices = []
+                choices_left = num_choices
+                gain_proficiency_choices(c, list, num_choices)
+                return
+            else:
+                print("Please enter 'y' or 'n'.")
+        except ValueError:
+            print("Invalid input. Please enter a 'y' or 'n'.")
+
+def choose_background():
+    while True:
+        for i, background in enumerate(backgrounds.keys()):
+            print(f"{i + 1}: {background}. Proficiencies: {backgrounds[background]}")
+        try:
+            num = input("Choose a background: ")
+            if num.isdigit() and 1 <= int(num) <= len(backgrounds):
+                b = list(backgrounds.keys())[int(num) - 1]
+                if confirm_choice(f"Chosen background: {b}", choose_background):
+                    return b
+            else:
+                print("Invalid background choice. Please enter a valid number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
     
 def add_starting_equipment_to_inventory(c, dict):
     for weapon in dict["weapons"]:

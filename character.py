@@ -303,9 +303,10 @@ class Character:
     
     def print_inventory(self):
         text = ""
-        for item in self.inventory:
-            text += item.name
-            text += "\n"
+        if self.inventory != None:
+            for item in self.inventory:
+                text += item.name
+                text += "\n"
         return text
     
     def get_starting_hp(self):

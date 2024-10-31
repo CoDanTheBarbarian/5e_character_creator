@@ -45,6 +45,7 @@ def main():
     background = choose_background()
     c.apply_background(background)
     c.unarmored_ac()
+    c.hp =c.get_starting_hp()
     print("Creating character sheet...")
     c_data = parse_character_sheet_data(c)
     fillpdfs.write_fillable_pdf(template_path, output_path + c.name + ".pdf", c_data)
