@@ -94,6 +94,9 @@ class_data = {
             "armor": [],
         },
         class_abilities: {rage_charges: 2},
+        spell_casting_ability: None,
+        spell_slots: None,
+        spells_known: None
         },
     "Bard": {
         class_name: "Bard",
@@ -207,6 +210,7 @@ class_data = {
             "cantrips": 2,
             "level 1": 2
             },
+        spells_known: None,
         class_abilities: None,
         },
     "Fighter": {
@@ -240,6 +244,9 @@ class_data = {
         class_abilities: {
             fighting_style: None
             },
+        spell_casting_ability: None,
+        spell_slots: None,
+        spells_known: None
         },
     "Monk": {
         class_name: "Monk",
@@ -262,6 +269,9 @@ class_data = {
             "armor": [],
         },
         class_abilities: {ki_points: 0},
+        spell_casting_ability: None,
+        spell_slots: None,
+        spells_known: None
         },
     "Paladin": {
         class_name: "Paladin",
@@ -292,7 +302,8 @@ class_data = {
             "armor": ["ring mail", "shield"],
         },
         spell_casting_ability: "charisma",
-        spell_slots: {},
+        spell_slots: None,
+        spells_known: None,
         class_abilities: {lay_on_hands: 5},
         },
     "Ranger": {
@@ -329,6 +340,9 @@ class_data = {
             favored_terrain: None,
             favored_enemy: None
         },
+        spell_casting_ability: None,
+        spell_slots: None,
+        spells_known: None
         },
     "Rogue": {
         class_name: "Rogue",
@@ -368,6 +382,7 @@ class_data = {
             "cantrips": 4,
             "level 1": 2
             },
+        spells_known: None,
         class_abilities: {sneak_attack: 6},
         },
     "Sorcerer": {
@@ -468,6 +483,7 @@ class_data = {
             "cantrips": 3,
             "level 1": 2
             },
+        spells_known: None,
         class_abilities: {arcane_recovery: None},
         }
     }
@@ -488,7 +504,7 @@ subclass_data = {
 }
 
 class Class:
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
+    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities, spell_casting_ability=None, spell_slots=None, spells_known=None):
         self.class_name = class_name
         self.hit_die = hit_die
         self.proficiencies = proficiencies
@@ -496,255 +512,22 @@ class Class:
         self.class_info = class_info
         self.starting_equipment = starting_equipment
         self.class_abilities = class_abilities
-        self.spell_casting_ability = None
-        self.spell_slots = None
-        self.spells_known = None
-
-class Barbarian(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-
-def create_barbarian(data):
-    return Barbarian(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[class_abilities]
-    )
-
-class Bard(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, spells_known, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
+        self.subclass = None
 
-def create_bard(data):
-    return Bard(
+def create_class_object(name):
+    data = class_data[name]
+    return Class(
         data[class_name],
         data[hit_die],
         data[proficiencies],
         data[prof_choices],
         data[class_info],
         data[equipment],
+        data[class_abilities],
         data[spell_casting_ability],
         data[spell_slots],
-        data[spells_known],
-        data[class_abilities]
-    )
-
-class Cleric(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
-
-    def choose_domain(self):
-        pass
-
-def create_cleric(data):
-    return Cleric(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[spell_casting_ability],
-        data[spell_slots],
-        data[class_abilities]
-    )
-
-class Druid(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
-
-def create_druid(data):
-    return Druid(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[spell_casting_ability],
-        data[spell_slots],
-        data[class_abilities]
-    )
-
-class Fighter(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-
-def create_fighter(data):
-    return Fighter(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[class_abilities]
-    )
-
-class Monk(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-
-def create_monk(data):
-    return Monk(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[class_abilities]
-    )
-
-class Paladin(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
-
-def create_paladin(data):
-    return Paladin(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[spell_casting_ability],
-        data[spell_slots],
-        data[class_abilities]
-    )
-
-class Ranger(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-
-    def choose_favored_enemy(self):
-        pass
-
-    def choose_favored_terrain(self):
-        pass
-
-def create_ranger(data):
-    return Ranger(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[class_abilities]
-    )
-
-class Rogue(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-
-def create_rogue(data):
-    return Rogue(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[class_abilities]
-    )
-
-class Sorcerer(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, spells_known, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
-        self.spells_known = spells_known
-
-    def choose_origin(self):
-        pass
-
-def create_sorcerer(data):
-    return Sorcerer(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[spell_casting_ability],
-        data[spell_slots],
-        data[spells_known],
-        data[class_abilities]
-    )
-
-class Warlock(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, spells_known, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
-        self.spells_known = spells_known
-
-    def choose_patron(self):
-        pass
-
-def create_warlock(data):
-    return Warlock(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[spell_casting_ability],
-        data[spell_slots],
-        data[spells_known],
-        data[class_abilities]
-    )
-
-class Wizard(Class):
-    def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, spell_casting_ability, spell_slots, class_abilities):
-        super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
-        self.spell_casting_ability = spell_casting_ability
-        self.spell_slots = spell_slots
-
-def create_wizard(data):
-    return Wizard(
-        data[class_name],
-        data[hit_die],
-        data[proficiencies],
-        data[prof_choices],
-        data[class_info],
-        data[equipment],
-        data[spell_casting_ability],
-        data[spell_slots],
-        data[class_abilities]
-    )
-
-class_create_map = {
-    "Barbarian": create_barbarian,
-    "Bard": create_bard,
-    "Cleric": create_cleric,
-    "Druid": create_druid,
-    "Fighter": create_fighter,
-    "Monk": create_monk,
-    "Paladin": create_paladin,
-    "Ranger": create_ranger,
-    "Rogue": create_rogue,
-    "Sorcerer": create_sorcerer,
-    "Warlock": create_warlock,
-    "Wizard": create_wizard
-}
-
-def create_class_object(class_name):
-    data = class_data[class_name]
-    function = class_create_map[class_name]
-    return function(data)
+        data[spells_known]
+        )

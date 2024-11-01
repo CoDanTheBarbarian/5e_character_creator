@@ -31,55 +31,6 @@ def test_get_class_data():
         }
     assert data[class_abilities] == {"Rage Charges": 2}
 
-def test_get_class_creator():
-    class_input = "Barbarian"
-    func = class_create_map[class_input]
-    assert func == create_barbarian
-
-    class_input = "Bard"
-    func = class_create_map[class_input]
-    assert func == create_bard
-
-    class_input = "Cleric"
-    func = class_create_map[class_input]
-    assert func == create_cleric
-
-    class_input = "Druid"
-    func = class_create_map[class_input]
-    assert func == create_druid
-
-    class_input = "Fighter"
-    func = class_create_map[class_input]
-    assert func == create_fighter
-
-    class_input = "Monk"
-    func = class_create_map[class_input]
-    assert func == create_monk
-
-    class_input = "Paladin"
-    func = class_create_map[class_input]
-    assert func == create_paladin
-
-    class_input = "Ranger"
-    func = class_create_map[class_input]
-    assert func == create_ranger
-
-    class_input = "Rogue"
-    func = class_create_map[class_input]
-    assert func == create_rogue
-
-    class_input = "Sorcerer"
-    func = class_create_map[class_input]
-    assert func == create_sorcerer
-
-    class_input = "Warlock"
-    func = class_create_map[class_input]
-    assert func == create_warlock
-
-    class_input = "Wizard"
-    func = class_create_map[class_input]
-    assert func == create_wizard
-
 def test_create_class_handler():
     class_input = "Barbarian"
     barb = create_class_object(class_input)
@@ -111,7 +62,7 @@ def test_create_class_handler():
     assert barb.class_abilities == {"Rage Charges": 2}
 
 def test_create_barb():
-    barb = create_barbarian(class_data["Barbarian"])
+    barb = create_class_object("Barbarian")
     assert barb.class_name == "Barbarian"
     assert barb.hit_die == 12
     assert barb.proficiencies == ["light armor", 

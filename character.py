@@ -40,6 +40,7 @@ class Character:
         self.equipped_items = []
         self.spell_casting_ability = None
         self.spell_slots = spell_slots_dict.copy()
+        self.spells_known = None
         self.spell_list = []
         self.breath_weapon = None
 
@@ -271,6 +272,8 @@ class Character:
         if class_data.spell_slots:
             for spell_type in class_data.spell_slots:
                 self.spell_slots[spell_type] = class_data.spell_slots[spell_type]
+        if class_data.spells_known:
+            self.spells_known = class_data.spells_known
         self.class_abilities = class_data.class_abilities
 
 
