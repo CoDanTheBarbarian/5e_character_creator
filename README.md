@@ -28,16 +28,15 @@ Each subsequent prompt expects a number response corresponding to one of the lis
 ## Demo
 
 
-
-https://github.com/user-attachments/assets/cd4ea4d7-41ff-4db2-b796-8c3136edc3cb
+https://github.com/user-attachments/assets/308f75b9-ba16-4d5a-8977-f54f6f7f6e64
 
 
 
 Demo character sheet result:
 
-![Gimli Page 1](https://github.com/user-attachments/assets/21e1fc09-2eca-4646-8557-300d4a426aab)
+![Frodo Page 1](https://github.com/user-attachments/assets/3a416213-fe21-4d22-8549-74503a7e9a95)
 
-![Gimli Page 2](https://github.com/user-attachments/assets/f52e84a9-822f-42ea-aa15-8842424a843d)
+![Frodo Page 2](https://github.com/user-attachments/assets/a8a2de5d-8b3c-418d-bf1e-031b3f53f6d3)
 
 
 ## Roadmap
