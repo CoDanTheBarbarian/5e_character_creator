@@ -21,7 +21,10 @@ def test_get_class_data():
                                          "perception", 
                                          "survival"],
                                         2)
-    assert data[class_info] == ["rage", "unarmored defense"]
+    assert data[class_info] == {
+        "Unarmored Defense": "While you are not wearing any armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.",
+        "Rage": "During your turn in combat, you can rage as a bonus action. While raging you gain the following benefits:\n - You have advantage of Stregth checks and saving throws\n - When you make a strength based weapon attack add 2 to your attack roll\n - You have resistance to bludgeoning, piercing, and slashing damage\nYou can't cast spells while raging. Your rage lasts for 1 minute and ends if you are knocked unconscious or you haven't attacked a hostile creature since your last turn."
+    }
     assert data[equipment] == {
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
@@ -97,7 +100,10 @@ def test_create_class_handler():
                                          "perception", 
                                          "survival"],
                                         2)
-    assert barb.class_info == ["rage", "unarmored defense"]
+    assert barb.class_info == {
+        "Unarmored Defense": "While you are not wearing any armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.",
+        "Rage": "During your turn in combat, you can rage as a bonus action. While raging you gain the following benefits:\n - You have advantage of Stregth checks and saving throws\n - When you make a strength based weapon attack add 2 to your attack roll\n - You have resistance to bludgeoning, piercing, and slashing damage\nYou can't cast spells while raging. Your rage lasts for 1 minute and ends if you are knocked unconscious or you haven't attacked a hostile creature since your last turn."
+    }
     assert barb.starting_equipment == {
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
@@ -123,7 +129,10 @@ def test_create_barb():
                                          "perception", 
                                          "survival"],
                                         2)
-    assert barb.class_info == ["rage", "unarmored defense"]
+    assert barb.class_info == {
+        "Unarmored Defense": "While you are not wearing any armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.",
+        "Rage": "During your turn in combat, you can rage as a bonus action. While raging you gain the following benefits:\n - You have advantage of Stregth checks and saving throws\n - When you make a strength based weapon attack add 2 to your attack roll\n - You have resistance to bludgeoning, piercing, and slashing damage\nYou can't cast spells while raging. Your rage lasts for 1 minute and ends if you are knocked unconscious or you haven't attacked a hostile creature since your last turn."
+    }
     assert barb.starting_equipment == {
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],

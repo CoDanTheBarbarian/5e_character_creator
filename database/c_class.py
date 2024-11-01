@@ -8,16 +8,61 @@ equipment = "starting equipment"  # <-- dictionary of item_type -> strings point
 spell_casting_ability = "spell casting ability"  # <-- string (one of the six core stats)
 spell_slots = "spell slots"  # <-- dictionary with updated values for the character self.spell_slots dictionary
 spells_known = "spells known"  # <-- integer, the number of spells to choose from the spell list
-rage_charges = "rage charges"
-bardic_die = "bardic die"
-domain = "domain"
-channel_divinity_charges = "channel divinity charges"
-fighting_style = "fighting style"
-ki_points = "ki points"
-lay_on_hands = "lay on hands"
-sneak_attack = "sneak attack die"
-origin = "sorcerous origin"
-patron = "patron"
+rage_charges = "Rage Charges"
+bardic_die = "Bardic Die"
+domain = "Divine Domain"
+channel_divinity_charges = "Channel Divinity Charges"
+fighting_style = "Fighting Style"
+ki_points = "Ki Points"
+lay_on_hands = "Lay on Hands"
+sneak_attack = "Sneak Attack Die"
+origin = "Sorcerous Origin"
+patron = "Patron"
+
+class_abil_desc = {
+    "Barbarian": {
+        "Unarmored Defense": "While you are not wearing any armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.",
+        "Rage": "During your turn in combat, you can rage as a bonus action. While raging you gain the following benefits:\n - You have advantage of Stregth checks and saving throws\n - When you make a strength based weapon attack add 2 to your attack roll\n - You have resistance to bludgeoning, piercing, and slashing damage\nYou can't cast spells while raging. Your rage lasts for 1 minute and ends if you are knocked unconscious or you haven't attacked a hostile creature since your last turn."
+    },
+    "Bard": {
+        "Spellcasting": "You've learned to cast spells using your music.",
+        "Bardic Inspiration": "You can use a bonus action to give one creature other than yourself a Bardic Inspiration die to add to their next ability check, attack roll or saving throw in the next 10 minutes. The target can wait until after they roll to use the Bardic die, but must decide before the DM declares success or failure."
+    },
+    "Cleric": {
+        "Spellcasting": "You can cast spells granted to you by your Divine Domain."
+    },
+    "Druid": {
+        "Spellcasting": "You can cast spells drawn from the divine essence of nature itself."
+    },
+    "Fighter": {
+        "Fighting Style": "You have a preferred fighting style.",
+        "Second Wind": "On your turn you can use a bonus action to regain hit points eqaul to 1s10 + your fighter level. Once you use this feature you can't use it again until you finish a short or long rest."
+    },
+    "Monk": {
+        "Martial Arts": "You gain benefits while you aren't wearing armor or using and a shield and while you are unarmed or using only monk weapons. Monk weapons are unarmed strikes and simple melee weapons that do don't have the 'two handed' or 'heavy' property."
+    },
+    "Paladin": {
+        "Divine Sense": "On your turn as an action you invoke your divine sense. Until the end of your next turn, you know the location of any celestial, fiend or undead within 60 feet of you that is not behind total cover. You know the type of creature sensed, but not it's identity. Regain all uses on a long rest.",
+    },
+    "Ranger": {
+        "Favored Enemy": "You have advantage on Survival checks to track your favored enemy and on Intelligence checks to recall information about them.",
+        "Natural Explorer": "While in your favored terrain, when you make Intelligence and Wisdom checks related to that terrain, your proficiency bonus is doubled if applicable.\nWhile traveling for an hour or more in your favored terrain you gain the following benefits:\n - Unaffected by difficult terrain\n - Can't get lost except by magical means\n - Move stealthily at a normal pace"
+    },
+    "Rogue": {
+        "Expertise": "Choose two proficiencies or one and thieves tools. Your proficiency bonus is doubled when using those proficiencies.",
+        "Sneak Attack": "Once per turn you can deal an extra 1d6 damage when you hit and have advantage on the attack roll or if the target has an enemy within 5 feet of it. The attack must use a finesse or a ranged weapon."
+    },
+    "Sorcerer": {
+        "Spellcasting": "You can cast spells from your sorcerous bloodline.",
+    },
+    "Warlock": {
+        "Pact Magic": "You can cast spells granted to you by your Patron."
+    },
+    "Wizard": {
+        "Spellcasting": "You can cast spells from your research into the arcane.",
+        "Arcane Recovery": "Once per day when you finish a short rest you can choose expended spell slots to recover. The spell slots can have a combined total of no more than half your wizard level (rounded up)."
+    }
+}
 
 class_data = {
     "Barbarian": {
@@ -39,7 +84,7 @@ class_data = {
              "perception", 
              "survival"],
                2),
-        class_info: ["rage", "unarmored defense"], # need to create a database for class abilities
+        class_info: class_abil_desc["Barbarian"],
         equipment: {
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
@@ -77,7 +122,7 @@ class_data = {
              'performance', 
              'persuasion'], 
              3),
-        class_info: ["spell casting", "bardic inspiration"],
+        class_info: class_abil_desc["Bard"],
         equipment: {
             "weapons": ["rapier", "dagger"],
             "armor": ["leather"],
@@ -106,7 +151,7 @@ class_data = {
              "persuasion", 
              "religion"],
             2),
-        class_info: ["spell casting", "divine domain"],
+        class_info: class_abil_desc["Cleric"],
         equipment: {
             "weapons": ["mace", "light crossbow"],
             "armor": ["scale mail", "shield"],
@@ -148,7 +193,7 @@ class_data = {
              "survival"], 
              2
              ),
-        class_info: ["spell casting", "druidic"],
+        class_info: class_abil_desc["Druid"],
         equipment: {
             "weapons": ["scimitar"],
             "armor": ["leather", "shield"],
@@ -183,7 +228,7 @@ class_data = {
                 "survival"
             ], 2
         ),
-        class_info: ["fighting style", "second wind"],
+        class_info: class_abil_desc["Fighter"],
         equipment: {
             "weapons": ["great axe", "long bow", "light crossbow", "long sword"],
             "armor": ["leather", "shield",],
@@ -208,7 +253,7 @@ class_data = {
              "religion", 
              "stealth"],
                2),
-        class_info: ["unarmored defense", "martial arts"],
+        class_info: class_abil_desc["Monk"],
         equipment: {
             "weapons": ["short sword", "dart"],
             "armor": [],
@@ -238,7 +283,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_info: ["spell casting", "divine sense", "lay on hands"],
+        class_info: class_abil_desc["Paladin"],
         equipment: {
             "weapons": ["long sword", "short bow"],
             "armor": ["ring mail", "shield"],
@@ -272,7 +317,7 @@ class_data = {
                 "survival"
             ], 3
         ),
-        class_info: ["favored enemy", "natural explorer"],
+        class_info: class_abil_desc["Ranger"],
         equipment: {
             "weapons": ["short sword", "short sword", "long bow"],
             "armor": ["ring mail"],
@@ -307,7 +352,7 @@ class_data = {
                 "stealth"
             ], 4
         ),
-        class_info: ["expertise", "sneak attack", "thieves' cant"],
+        class_info: class_abil_desc["Rogue"],
         equipment: {
             "weapons": ["short sword", "shortbow", "dagger", "dagger"],
             "armor": ["leather"],
@@ -340,7 +385,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_info: ["spell casting", "sorcerous origin"],
+        class_info: class_abil_desc["Sorcerer"],
         equipment: {
             "weapons": ["quarterstaff", "light crossbow", "dagger", "dagger"],
             "armor": [],
@@ -373,7 +418,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_info: ["otherworldy patron", "pact magic"],
+        class_info: class_abil_desc["Warlock"],
         equipment: {
             "weapons": ["light crossbow", "handaxe", "dagger", "dagger"],
             "armor": ["leather"],
@@ -407,7 +452,7 @@ class_data = {
                 "religion"
             ], 2
         ),
-        class_info: ["spell casting", "arcane recovery"],
+        class_info: class_abil_desc["Wizard"],
         equipment: {
             "weapons": ["quarterstaff"],
             "armor": [],
@@ -420,6 +465,21 @@ class_data = {
         class_abilities: {"arcane recovery": None},
         }
     }
+
+subclass_data = {
+    "Barbarian": {},
+    "Bard": {},
+    "Cleric": {},
+    "Druid": {},
+    "Fighter": {},
+    "Monk": {},
+    "Paladin": {},
+    "Ranger": {},
+    "Rogue": {},
+    "Sorcerer": {},
+    "Warlock": {},
+    "Wizard": {}
+}
 
 class Class:
     def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):

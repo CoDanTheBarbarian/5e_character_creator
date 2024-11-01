@@ -43,7 +43,7 @@ Demo character sheet result:
 
 - Implement a GUI that displays both the CLI process and a preview of the output PDF
 
-- Complete the database information for Races and Classes
+- Complete the database information for Classes
 
 - Add a database for spells
 

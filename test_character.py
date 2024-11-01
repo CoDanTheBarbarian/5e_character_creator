@@ -448,7 +448,10 @@ def test_apply_class():
     assert c.c_class == "Barbarian"
     assert c.hit_die == 12
     assert c.proficiencies["light armor"] == True
-    assert c.class_info == ["rage", "unarmored defense"]
+    assert c.class_info == {
+        "Unarmored Defense": "While you are not wearing any armor, your AC equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.",
+        "Rage": "During your turn in combat, you can rage as a bonus action. While raging you gain the following benefits:\n - You have advantage of Stregth checks and saving throws\n - When you make a strength based weapon attack add 2 to your attack roll\n - You have resistance to bludgeoning, piercing, and slashing damage\nYou can't cast spells while raging. Your rage lasts for 1 minute and ends if you are knocked unconscious or you haven't attacked a hostile creature since your last turn."
+    }
     assert c.class_abilities == {"rage": 2}
 
 # I haven't written a database for spell lists yet.
