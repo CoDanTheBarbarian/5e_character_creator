@@ -68,6 +68,10 @@ class Character:
     def unarmored_ac(self):
         if self.armor == None:
             self.ac += self.get_ability_mod("dexterity")
+        if self.shield != None:
+            self.ac += self.shield.ac
+        if self.c_class == "Barbarian":
+            self.ac += self.get_ability_mod("constitution")
 
     # Universal attribute getter
 
@@ -333,4 +337,17 @@ class Character:
         if self.class_info:
             for ability, description in self.class_info.items():
                 text += f"{ability}: {description}\n"
+        return text
+    
+    def print_class_abilities(self):
+        text = ""
+        if self.class_abilities:
+            for ability, description in self.class_abilities.items():
+                if self.c_class == "Bard":
+                    num = 1
+                    if self.get_ability_mod("charisma") > num:
+                        num = self.get_ability_mod("charisma")
+                    text += f"{ability}: {num} {description}\n"
+                else:
+                    text += f"{ability}: {description}\n"
         return text

@@ -29,7 +29,7 @@ class_abil_desc = {
     },
     "Bard": {
         "Spellcasting": "You've learned to cast spells using your music.",
-        "Bardic Inspiration": "You can use a bonus action to give one creature other than yourself a Bardic Inspiration die to add to their next ability check, attack roll or saving throw in the next 10 minutes. The target can wait until after they roll to use the Bardic die, but must decide before the DM declares success or failure."
+        "Bardic Inspiration": "You can use a bonus action to give one creature other than yourself a Bardic Inspiration die to add to their next ability check, attack roll or saving throw in the next 10 minutes. The target can wait until after they roll to use the Bardic die, but must decide before the DM declares success or failure. You regain any expended uses on a long rest."
     },
     "Cleric": {
         "Spellcasting": "You can cast spells granted to you by your Divine Domain."
@@ -46,6 +46,7 @@ class_abil_desc = {
     },
     "Paladin": {
         "Divine Sense": "On your turn as an action you invoke your divine sense. Until the end of your next turn, you know the location of any celestial, fiend or undead within 60 feet of you that is not behind total cover. You know the type of creature sensed, but not it's identity. Regain all uses on a long rest.",
+        "Lay on Hands": "As an action, you can can touch a creature and restore their hit points up to the amount in your pool, or expend 5 hit points from your pool to heal that creature of a disease or poison. Your pool is 5 times your paladin level and replenishes on a long rest."
     },
     "Ranger": {
         "Favored Enemy": "You have advantage on Survival checks to track your favored enemy and on Intelligence checks to recall information about them.",
@@ -136,7 +137,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 4,
-        class_abilities: {bardic_die: 6},
+        class_abilities: {bardic_die: "d6"},
         },
     "Cleric": {
         class_name: "Cleric",
@@ -541,6 +542,9 @@ class Cleric(Class):
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
 
+    def choose_domain(self):
+        pass
+
 def create_cleric(data):
     return Cleric(
         data[class_name],
@@ -626,6 +630,12 @@ class Ranger(Class):
     def __init__(self, class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities):
         super().__init__(class_name, hit_die, proficiencies, prof_choice_list, class_info, starting_equipment, class_abilities)
 
+    def choose_favored_enemy(self):
+        pass
+
+    def choose_favored_terrain(self):
+        pass
+
 def create_ranger(data):
     return Ranger(
         data[class_name],
@@ -659,6 +669,9 @@ class Sorcerer(Class):
         self.spell_slots = spell_slots
         self.spells_known = spells_known
 
+    def choose_origin(self):
+        pass
+
 def create_sorcerer(data):
     return Sorcerer(
         data[class_name],
@@ -679,6 +692,9 @@ class Warlock(Class):
         self.spell_casting_ability = spell_casting_ability
         self.spell_slots = spell_slots
         self.spells_known = spells_known
+
+    def choose_patron(self):
+        pass
 
 def create_warlock(data):
     return Warlock(

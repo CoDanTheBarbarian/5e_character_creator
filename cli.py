@@ -178,28 +178,20 @@ def point_buy(c, base_stats):
         return point_buy(c, base_stats)
     
 def manual_stats(c):
-    options = {
-        "strength": 0,
-        "dexterity": 0,
-        "constitution": 0,
-        "intelligence": 0,
-        "wisdom": 0,
-        "charisma": 0
-    }
+    options = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
     choice = {}
     while True:
         def choose_stats():
-            while any(value == 0 for value in options.values()):
+            while len(options) > 0:
                 print("Your unassigned stats are:")
-                for i, option in enumerate(options.keys()):
-                    if options[option] == 0:
-                        print(f"{i + 1}: {option}")
+                for i, option in enumerate(options):
+                    print(f"{i + 1}: {option}")
                 try:
                     stat_num_index = int(input("Choose a stat to assign: "))
                     if stat_num_index < 1 or stat_num_index > len(options):
                         print("Invalid choice. Please enter a number from the list.")
                     else:
-                        ability = list(options.keys())[stat_num_index - 1]
+                        ability = options[stat_num_index - 1]
                         stat = int(input(f"Assign {ability} to: "))
                         try:
                             if stat < 1 or stat > 18:
@@ -207,7 +199,7 @@ def manual_stats(c):
                             else:
                                 if confirm_choice(f"Assign {ability} to {stat}?", choose_stats):
                                     choice[ability] = stat
-                                    options[ability] = stat
+                                    options.remove(ability)
                         except ValueError:
                             print("Invalid input. Please enter a number.")
                 except ValueError:
@@ -219,8 +211,7 @@ def manual_stats(c):
                 c.assign_stat(ability, stat)
             return
         else:
-            for ability in options.keys():
-                options[ability] = 0
+            options = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
             choice = {}
             return manual_stats(c)
 
@@ -302,3 +293,32 @@ def add_starting_equipment_to_inventory(c, dict):
             c.equip_shield(a)
         else:
             c.equip_armor(a)
+
+def choose_fighting_style(self):
+        styles = {
+            "Archery": "You gain a +2 bonus to attack rolls you make with ranged weapons.",
+            "Defense": "While you are wearing armor, you gain a +1 bonus to AC.",
+            "Dueling": "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+            "Great Weapon Fighting": "When you roll a 1 or 2 on a damage die for an attack with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must be two-handed or versatile.",
+            "Protection": "When a creature you can see attacks a target other that you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.",
+            "Two-Weapon Fighting": "When you engage in two weapon fighting, you can add your ability modifier to the damage of the second attack."
+        }
+    
+        for i, style in enumerate(styles.keys(), start=1):
+            print(f"{i}. {style}: {styles[style]}")
+        try:
+            num = int(input("Select a fighting style: "))
+            if num > 0 and num <= len(styles):
+                if confirm_choice(f"Is {num} correct?", choose_fighting_style):
+                    style_name = list(styles.keys())[num - 1]
+                    self.class_info[fighting_style] = style_name
+                    self.class_abilities[style_name] = styles[style_name]
+                    return
+                else:
+                    choose_fighting_style()
+            else:
+                print("Invalid choice.")
+                choose_fighting_style()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            choose_fighting_style()
