@@ -27,12 +27,17 @@ Each subsequent prompt expects a number response corresponding to one of the lis
 
 ## Demo
 
-https://github.com/user-attachments/assets/8552103f-4dfb-400c-8487-396251df5f88
+
+
+https://github.com/user-attachments/assets/cd4ea4d7-41ff-4db2-b796-8c3136edc3cb
+
+
 
 Demo character sheet result:
-![Karlach Demo PDF](https://github.com/user-attachments/assets/1ec3fe9d-6a51-43a4-8007-7ee24d51fbc9)
 
-![Karlach Demo Sheet (2)](https://github.com/user-attachments/assets/7122dd30-a669-4c20-96e1-47f568e31e38)
+![Gimli Page 1](https://github.com/user-attachments/assets/103a2855-733e-4c78-90e6-caffa2695e35)
+
+![Gimli Page 2](https://github.com/user-attachments/assets/3db14e89-3ee4-499f-87f2-5b94ec2edc4c)
 
 ## Roadmap
 
