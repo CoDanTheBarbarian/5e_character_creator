@@ -212,21 +212,21 @@ def test_get_weapon_profs():
     assert c.proficiencies["simple weapons"] == False
     assert c.proficiencies["martial weapons"] == False
     c.gain_proficiency(["simple weapons", "light armor"])
-    assert c.get_weapon_proficiencies() == ['Simple weapons', 
+    assert c.get_weapon_proficiencies() == ['Simple Weapons', 
                   'Club', 
                   'Dagger', 
                   'Greatclub', 
                   'Handaxe', 
                   'Javelin', 
-                  'Light hammer', 
+                  'Light Hammer', 
                   'Mace', 
                   'Quarterstaff', 
                   'Sickle', 
                   'Spear', 
-                  'Unarmed strike', 
-                  'Light crossbow', 
+                  'Unarmed Strike', 
+                  'Light Crossbow', 
                   'Dart', 
-                  'Short bow', 
+                  'Short Bow', 
                   'Sling',]
 
 def test_apply_background():
@@ -323,9 +323,10 @@ def test_shield_error():
     assert c.shield == None
     s = create_armor("shield")
     w = create_weapon("glaive")
-    c.weapon = w
-    with pytest.raises(Exception):
-        c.equip_shield(s)
+    c.equip_weapon(w)
+    assert c.weapon == w
+    c.equip_shield(s)
+    assert c.shield == None
 
 def test_equip_weapons():
     c = Character("test")
@@ -484,15 +485,15 @@ def test_print_inventory():
     w = create_weapon("short sword")
     c.add_to_inventory(w)
     assert len(c.inventory) == 1
-    assert c.print_inventory() == "Short sword\n"
+    assert c.print_inventory() == "Short Sword\n"
     w2 = create_weapon("long sword")
     c.add_to_inventory(w2)
     assert len(c.inventory) == 2
-    assert c.print_inventory() == "Short sword\nLong sword\n"
+    assert c.print_inventory() == "Short Sword\nLong Sword\n"
     a = create_armor("chain mail")
     c.add_to_inventory(a)
     assert len(c.inventory) == 3
-    assert c.print_inventory() == "Short sword\nLong sword\nChain mail\n"
+    assert c.print_inventory() == "Short Sword\nLong Sword\nChain Mail\n"
 
 def test_get_prof_mod():
     c = Character("testing")

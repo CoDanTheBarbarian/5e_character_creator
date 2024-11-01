@@ -149,10 +149,10 @@ class Character:
         prof = []
         for sw in simple_weapons:
             if self.proficiencies[sw] == True:
-                prof.append(sw.capitalize())
+                prof.append(sw.title())
         for mw in martial_weapons:
             if self.proficiencies[mw] == True:
-                prof.append(mw.capitalize())
+                prof.append(mw.title())
         return prof
     def apply_background(self, background):
         self.background = background
@@ -306,7 +306,7 @@ class Character:
         text = ""
         if self.inventory != None:
             for item in self.inventory:
-                text += item.name.capitalize()
+                text += item.name.title()
                 text += "\n"
         return text
     
