@@ -35,9 +35,10 @@ https://github.com/user-attachments/assets/cd4ea4d7-41ff-4db2-b796-8c3136edc3cb
 
 Demo character sheet result:
 
-![Gimli Page 1](https://github.com/user-attachments/assets/103a2855-733e-4c78-90e6-caffa2695e35)
+![Gimli Page 1](https://github.com/user-attachments/assets/21e1fc09-2eca-4646-8557-300d4a426aab)
 
-![Gimli Page 2](https://github.com/user-attachments/assets/3db14e89-3ee4-499f-87f2-5b94ec2edc4c)
+![Gimli Page 2](https://github.com/user-attachments/assets/f52e84a9-822f-42ea-aa15-8842424a843d)
+
 
 ## Roadmap
 
