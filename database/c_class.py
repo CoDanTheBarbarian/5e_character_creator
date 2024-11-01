@@ -32,7 +32,7 @@ class_abil_desc = {
         "Bardic Inspiration": "You can use a bonus action to give one creature other than yourself a Bardic Inspiration die to add to their next ability check, attack roll or saving throw in the next 10 minutes. The target can wait until after they roll to use the Bardic die, but must decide before the DM declares success or failure. You regain any expended uses on a long rest."
     },
     "Cleric": {
-        "Spellcasting": "You can cast spells granted to you by your Divine Domain."
+        "Spellcasting": "You can cast spells granted to you by your Divine Domain. Your domain spells are always prepared and don't count against the number of spells you can have prepared."
     },
     "Druid": {
         "Spellcasting": "You can cast spells drawn from the divine essence of nature itself."
@@ -167,7 +167,7 @@ class_data = {
             "cantrips": 3,
             "level 1": 2
             },
-        domain: ["list of domains"],
+        spells_known: None,
         class_abilities: {channel_divinity_charges: 0},
         },
     "Druid": {
@@ -492,13 +492,40 @@ class_option_data = {
     "Bard": {},
     "Cleric": {
         domain: {
-            "Knowledge Domain": {},
-            "Life Domain": {},
-            "Light Domain": {},
-            "Nature Domain": {},
-            "Tempest Domain": {},
-            "Trickery Domain": {},
-            "War Domain": {}
+            "Knowledge Domain": {
+                "Knowledge Domain Spells": "Your domain spells are command and identify.",
+                "Blessings of Knowledge": "Your proficiency bonus of your chosen skills are doubled.",
+                prof_choices: (["arcana", "history", "nature", "religion"], 2),
+            },
+            "Life Domain": {
+                "Life Domain Spells": "Your domain spells are bless and cure wounds.",
+                "Disciple of Life": "Whenever you use a spell slot of 1st level or higher to restore hit points to a creature, the creature gains an additional hit points equal to 2 + the spell's level.",
+                proficiencies: ["heavy armor"]
+            },
+            "Light Domain": {
+                "Light Domain Spells": "Your domain spells are burning hands and faerie fire.",
+                "Bonus Cantrip": "You gain the light cantrip if you don't already know it.",
+                "Warding Flare": "When you are attacked by a creature you can see within 30 feet of you, you can use your reaction to impose disadvantage on the attack roll. An attacker that can't be blinded is immune to this feature. You can use this feature a number opf times equal to Wisdom modifier (minimum of 1) and regain uses on a long rest."
+            },
+            "Nature Domain": {
+                "Nature Domain Spells": "Your domain spells are animal freindship and speak with animals.",
+                proficiencies: ["heavy armor"],
+                prof_choices: (["animal handling", "nature", "survival"], 1),
+            },
+            "Tempest Domain": {
+                "Tempest Domain Spells": "Your domain spells are fog cloud and thunderwave.",
+                "Wrath of the Storm": "When a creature you can see within 5 feet of you hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes 2d8 thunder damage on a failed save, and half that on a successful save. You can use this feature a number of times equal to your Wisdom modifier (minimum of 1) and regain uses on a long rest.",
+                proficiencies: ["heavy armor", "martial weapons"]
+            },
+            "Trickery Domain": {
+                "Trickery Domain Spells": "Your domain spells are disguise self and charm person.",
+                "Blessing of the Trickster": "You can use your action to touch a willing creature other than yourself to give it advantage on Stealth checks. This blessing lasts for 1 hour or until you use this feature again."
+            },
+            "War Domain": {
+                "War Domain Spells": "Your domain spells are divine favor and shield of faith.",
+                "War Priest": "When you use the Attack action, you can make one weapon attack as a bonus action. You can use this feature a number of times equal to your Wisdom modifier (minimum of 1) and regain uses on a long rest.",
+                proficiencies: ["heavy armor", "martial weapons"]
+            }
         }
     },
     "Druid": {},

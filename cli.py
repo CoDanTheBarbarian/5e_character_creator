@@ -294,7 +294,7 @@ def add_starting_equipment_to_inventory(c, dict):
         else:
             c.equip_armor(a)
 
-def choose_fighting_style(self):
+def choose_fighting_style(c, self):
         styles = class_option_data[self.class_name][fighting_style]
         for i, style in enumerate(styles.keys(), start=1):
             print(f"{i}. {style}: {styles[style]}")
@@ -315,7 +315,7 @@ def choose_fighting_style(self):
             print("Invalid input. Please enter a number.")
             choose_fighting_style()
 
-def choose_favored_enemy(self):
+def choose_favored_enemy(c, self):
         enemies = class_option_data[self.class_name][favored_enemy]
         for i, enemy in enumerate(enemies):
             print(f"{i + 1}. {enemy}")
@@ -334,7 +334,7 @@ def choose_favored_enemy(self):
             print("Invalid input. Please enter a number.")
             choose_favored_enemy()
 
-def choose_favored_terrain(self):
+def choose_favored_terrain(c, self):
         terrains = class_option_data[self.class_name][favored_terrain]
         for i, terrain in enumerate(terrains):
             print(f"{i + 1}. {terrain}")
@@ -353,7 +353,7 @@ def choose_favored_terrain(self):
             print("Invalid input. Please enter a number.")
             choose_favored_terrain()
 
-def choose_sorcerous_origin(self):
+def choose_sorcerous_origin(c, self):
         origins = class_option_data[self.class_name][origin]
         for i, name in enumerate(origins.keys()):
             print(f"{i + 1}. {name}")
@@ -397,7 +397,7 @@ def choose_sorcerous_origin(self):
             print("Invalid input. Please enter a number.")
             choose_sorcerous_origin()
 
-def choose_patron(self):
+def choose_patron(c, self):
         patrons = class_option_data[self.class_name][patron]
         for i, name in enumerate(patrons):
             print(f"{i + 1}. {name}")
@@ -419,15 +419,42 @@ def choose_patron(self):
             print("Invalid input. Please enter a number.")
             choose_patron()
 
-def make_class_choices(self):
+def choose_domain(c, self):
+    domains = class_option_data[self.class_name][domain]
+    for i, name in enumerate(domains):
+        print(f"{i + 1}. {name}")
+    try:
+        num = int(input("Select a domain: "))
+        if num > 0 and num <= len(domains):
+            if confirm_choice(f"Is {num} correct?", choose_domain):
+                domain_name = list(domains.keys())[num - 1]
+                self.class_abilities[domain] = domain_name
+                for i, ability in enumerate(domains[domain_name]):
+                    if ability == proficiencies:
+                        c.gain_proficiency(domains[domain_name][ability])
+                    elif ability == prof_choices:
+                        gain_proficiency_choices(c, domains[domain_name][ability][0], domains[domain_name][ability][1])
+                    else:
+                        self.class_abilities[ability] = domains[domain_name][ability]
+                return
+            else:
+                choose_domain()
+        else:
+            print("Invalid choice.")
+            choose_domain()
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        choose_domain()
+
+def make_class_choices(c, self):
     if self.class_name == "Cleric":
-        pass
+        choose_domain(c, self)
     elif self.class_name == "Fighter":
-        choose_fighting_style(self)
+        choose_fighting_style(c, self)
     elif self.class_name == "Ranger":
-        choose_favored_terrain(self)
-        choose_favored_enemy(self)
+        choose_favored_terrain(c, self)
+        choose_favored_enemy(c, self)
     elif self.class_name == "Sorcerer":
-        choose_sorcerous_origin(self)
+        choose_sorcerous_origin(c, self)
     elif self.class_name == "Warlock":
-        choose_patron(self)
+        choose_patron(c, self)

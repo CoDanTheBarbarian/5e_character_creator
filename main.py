@@ -28,7 +28,7 @@ def main():
     print("Choose your class:")
     class_name = choose_class()
     class_obj = create_class_object(class_name)
-    make_class_choices(class_obj)
+    make_class_choices(c, class_obj)
     get_stats(c, pt_buy_zero_stats)
     print("Updating character sheet with your race and class choices.")
     c.apply_race_bonus(race_obj)
