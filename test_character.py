@@ -212,22 +212,22 @@ def test_get_weapon_profs():
     assert c.proficiencies["simple weapons"] == False
     assert c.proficiencies["martial weapons"] == False
     c.gain_proficiency(["simple weapons", "light armor"])
-    assert c.get_weapon_proficiencies() == ['simple weapons', 
-                  'club', 
-                  'dagger', 
-                  'greatclub', 
-                  'handaxe', 
-                  'javelin', 
-                  'light hammer', 
-                  'mace', 
-                  'quarterstaff', 
-                  'sickle', 
-                  'spear', 
-                  'unarmed strike', 
-                  'light crossbow', 
-                  'dart', 
-                  'short bow', 
-                  'sling',]
+    assert c.get_weapon_proficiencies() == ['Simple weapons', 
+                  'Club', 
+                  'Dagger', 
+                  'Greatclub', 
+                  'Handaxe', 
+                  'Javelin', 
+                  'Light hammer', 
+                  'Mace', 
+                  'Quarterstaff', 
+                  'Sickle', 
+                  'Spear', 
+                  'Unarmed strike', 
+                  'Light crossbow', 
+                  'Dart', 
+                  'Short bow', 
+                  'Sling',]
 
 def test_apply_background():
     c = Character("testing")
@@ -391,6 +391,7 @@ def test_apply_subrace():
     assert c.proficiencies["warhammer"] == False
     assert c.damage_resistance["poison"] == False
     assert c.race_info == None
+    assert c.subrace == None
     dwarf_obj = create_race_object(dwarf)
     c.apply_race_bonus(dwarf_obj)
     assert c.speed == 25
@@ -417,13 +418,17 @@ def test_apply_dragon_subrace():
     c = Character("testing")
     assert c.strength == 8
     assert c.charisma == 8
+    assert c.race == None
+    assert c.subrace == None
     dragon_obj = create_race_object(dragonborn)
     c.apply_race_bonus(dragon_obj)
+    assert c.race == "Dragonborn"
     assert c.speed == 30
     assert c.strength == 10
     assert c.charisma == 9
     subrace_obj = create_dragoncolor_object("Black")
     c.apply_subrace_bonus(subrace_obj)
+    assert c.subrace == "Black"
     assert c.breath_weapon == {
             breath_shape: "Line",
             breath_size: (5, 30),
@@ -479,15 +484,15 @@ def test_print_inventory():
     w = create_weapon("short sword")
     c.add_to_inventory(w)
     assert len(c.inventory) == 1
-    assert c.print_inventory() == "short sword\n"
+    assert c.print_inventory() == "Short sword\n"
     w2 = create_weapon("long sword")
     c.add_to_inventory(w2)
     assert len(c.inventory) == 2
-    assert c.print_inventory() == "short sword\nlong sword\n"
+    assert c.print_inventory() == "Short sword\nLong sword\n"
     a = create_armor("chain mail")
     c.add_to_inventory(a)
     assert len(c.inventory) == 3
-    assert c.print_inventory() == "short sword\nlong sword\nchain mail\n"
+    assert c.print_inventory() == "Short sword\nLong sword\nChain mail\n"
 
 def test_get_prof_mod():
     c = Character("testing")

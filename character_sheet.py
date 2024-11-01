@@ -1031,7 +1031,7 @@ def parse_character_sheet_data(c):
     data['text_48wwut'] = c.get_skill_bonus("sleight of hand") 
     data['text_49ztsd'] = c.get_skill_bonus("stealth") 
     data['text_50fkah'] = c.get_skill_bonus("survival")
-    data['text_213vjaj'] = c.weapon.name
+    data['text_213vjaj'] = c.weapon.name.capitalize()
     data['text_219ameb'] = f"{c.get_equipped_weapon_damage_mod() + c.get_equipped_weapon_prof_mod()}" 
     data['text_225fptj'] = f"d{c.weapon.damage_die[0]}{'+ d' if len(c.weapon.damage_die) > 1 else ''}{c.weapon.damage_die[1] if len(c.weapon.damage_die) > 1 else ''} + {c.get_equipped_weapon_damage_mod()}: {c.weapon.damage_type}"
     data['text_231piki'] = ', '.join(c.weapon.properties) #c.weapon.properties # Need to test this, may not be working. If not, write a weapon method to print weapon.properties.

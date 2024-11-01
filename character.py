@@ -149,10 +149,10 @@ class Character:
         prof = []
         for sw in simple_weapons:
             if self.proficiencies[sw] == True:
-                prof.append(sw)
+                prof.append(sw.capitalize())
         for mw in martial_weapons:
             if self.proficiencies[mw] == True:
-                prof.append(mw)
+                prof.append(mw.capitalize())
         return prof
     def apply_background(self, background):
         self.background = background
@@ -209,8 +209,9 @@ class Character:
 
     def equip_shield(self, shield):
         if self.weapon:
-            if "two handed" in self.weapon.properties and "versatile" not in self.weapons.properties:
-                raise Exception("Can not equip shield while wielding a two handed weapon.")
+            if "two handed" in self.weapon.properties and "versatile" not in self.weapon.properties:
+                print("Shield in inventory but can not equip while wielding a two handed weapon.")
+                return
         if self.shield != None:
             self.equipped_items.remove(self.shield)
         self.equipped_items.append(shield)
@@ -305,7 +306,7 @@ class Character:
         text = ""
         if self.inventory != None:
             for item in self.inventory:
-                text += item.name
+                text += item.name.capitalize()
                 text += "\n"
         return text
     
