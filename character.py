@@ -14,7 +14,7 @@ class Character:
         self.race_info = None
         self.subrace = None
         self.c_class = None
-        self.subclass = None
+        self.subclass = ""
         self.class_info = []
         self.class_abilities = {}
         self.background = None
@@ -306,8 +306,11 @@ class Character:
         text = ""
         if self.inventory != None:
             for item in self.inventory:
-                text += item.name.title()
-                text += "\n"
+                if self.weapon == item or self.armor == item or self.shield == item:
+                    text += f"{item.name.title()} - equipped\n"
+                else:
+                    text += item.name.title()
+                    text += "\n"
         return text
     
     def get_starting_hp(self):

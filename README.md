@@ -1,11 +1,11 @@
 
-# D&D 5e Character Creator
+# D&D 5e Character Sheet Generator
 
-Do you love rolling up new characters, but hate doing math? Let this CLI tool do it for you! Each choice you can make for your character has been serialized. Any choice you can make is numbered so choosing is as simple as entering a valid number. After entering your choices for your character this program will populate a form fillable pdf template with all your stats calculated and automatically entered for you and save it in the project directory. The resulting pdf remains unflattened so you can manually enter information like your appearance and backstory.
+Do you love rolling up new characters, but hate how long it takes? Let this CLI tool do the hard work for you! Simply make your choices and in minutes you have a complete editable character sheet. Take the manual calculations out of deriving your characters stat bonus' so you can enjoy the decision making of character creation and be table ready in mere moments.
 
 ## Preface
 
-This is a supplementary product for Dungeons & Dragons and will not provide you with information in the Player's Handbook. For each choice you make it is assumed you understand what that choice means. Current functionality is limited to level one characters.
+This is a supplementary product for Dungeons & Dragons and will not provide you with information in the Player's Handbook about how to play the game. For each choice you make it is assumed you understand what that choice means. Current functionality is limited to level one characters. Delivers an experience Rules as Written.
 
 ## Installation
 

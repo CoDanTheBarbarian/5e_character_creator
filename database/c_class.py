@@ -15,9 +15,12 @@ channel_divinity_charges = "Channel Divinity Charges"
 fighting_style = "Fighting Style"
 ki_points = "Ki Points"
 lay_on_hands = "Lay on Hands"
+favored_terrain = "Favored Terrain"
+favored_enemy = "Favored Enemy"
 sneak_attack = "Sneak Attack Die"
 origin = "Sorcerous Origin"
 patron = "Patron"
+arcane_recovery = "Arcane Recovery"
 
 class_abil_desc = {
     "Barbarian": {
@@ -89,7 +92,7 @@ class_data = {
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
         },
-        class_abilities: {"rage": 2},
+        class_abilities: {rage_charges: 2},
         },
     "Bard": {
         class_name: "Bard",
@@ -133,7 +136,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 4,
-        class_abilities: {"bardic die": 6},
+        class_abilities: {bardic_die: 6},
         },
     "Cleric": {
         class_name: "Cleric",
@@ -162,7 +165,7 @@ class_data = {
             "level 1": 2
             },
         domain: ["list of domains"],
-        class_abilities: {"channel divinity": 0},
+        class_abilities: {channel_divinity_charges: 0},
         },
     "Druid": {
         class_name: "Druid",
@@ -234,8 +237,7 @@ class_data = {
             "armor": ["leather", "shield",],
         },
         class_abilities: {
-            "second wind": 0,
-            "fighting style": None
+            fighting_style: None
             },
         },
     "Monk": {
@@ -258,7 +260,7 @@ class_data = {
             "weapons": ["short sword", "dart"],
             "armor": [],
         },
-        class_abilities: {"ki points": 0},
+        class_abilities: {ki_points: 0},
         },
     "Paladin": {
         class_name: "Paladin",
@@ -290,7 +292,7 @@ class_data = {
         },
         spell_casting_ability: "charisma",
         spell_slots: {},
-        class_abilities: {"lay on hands": "level x 5"},
+        class_abilities: {lay_on_hands: 5},
         },
     "Ranger": {
         class_name: "Ranger",
@@ -322,7 +324,10 @@ class_data = {
             "weapons": ["short sword", "short sword", "long bow"],
             "armor": ["ring mail"],
         },
-        class_abilities: None,
+        class_abilities: {
+            favored_terrain: None,
+            favored_enemy: None
+        },
         },
     "Rogue": {
         class_name: "Rogue",
@@ -362,7 +367,7 @@ class_data = {
             "cantrips": 4,
             "level 1": 2
             },
-        class_abilities: {"sneak attack die": 6},
+        class_abilities: {sneak_attack: 6},
         },
     "Sorcerer": {
         class_name: "Sorcerer",
@@ -396,7 +401,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 2,
-        class_abilities: {"sorcerous origin": None},
+        class_abilities: {origin: None},
         },
     "Warlock": {
         class_name: "Warlock",
@@ -429,7 +434,7 @@ class_data = {
             "level 1": 2
             },
         spells_known: 2,
-        class_abilities: {"pact magic": None},
+        class_abilities: {patron: None},
         },
     "Wizard": {
         class_name: "Wizard",
@@ -462,7 +467,7 @@ class_data = {
             "cantrips": 3,
             "level 1": 2
             },
-        class_abilities: {"arcane recovery": None},
+        class_abilities: {arcane_recovery: None},
         }
     }
 

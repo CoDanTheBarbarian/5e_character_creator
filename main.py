@@ -12,7 +12,7 @@ def main():
     name = input("First things first, what is your new character's name? ")
     parse_name(name)
     c = Character(name)
-    print("First things first, let's choose your race and class.")
+    print("Now let's choose your race and class.")
     print("Choose your race:")
     race_choice = choose_race()
     race_obj = create_race_object(race_choice)
@@ -29,7 +29,7 @@ def main():
     class_name = choose_class()
     class_obj = create_class_object(class_name)
     get_stats(c, pt_buy_zero_stats)
-    print("Let's update your character sheet with your race and class choices.")
+    print("Updating character sheet with your race and class choices.")
     c.apply_race_bonus(race_obj)
     if race_obj.prof_choices:
             print("Looks like you have some options for skill proficiencies to gain from your race.")
