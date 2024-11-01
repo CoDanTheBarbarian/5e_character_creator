@@ -318,9 +318,16 @@ class Character:
         
     def print_race_info(self):
         text = ""
-        if self.race_info != None:
+        if self.race_info:
             for ability, description in self.race_info.items():
                 text += f"{ability}: {description}\n"
-        if self.breath_weapon != None:
+        if self.breath_weapon:
             text += f"Breath Weapon:\nShape: {self.breath_weapon[breath_shape]}\nSize: {self.breath_weapon[breath_size]}\nType: {self.breath_weapon[breath_type]}\n"
+        return text
+    
+    def print_class_info(self):
+        text = ""
+        if self.class_info:
+            for ability, description in self.class_info.items():
+                text += f"{ability}: {description}\n"
         return text

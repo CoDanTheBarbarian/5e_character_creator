@@ -36,7 +36,7 @@ class_abil_desc = {
     },
     "Fighter": {
         "Fighting Style": "You have a preferred fighting style.",
-        "Second Wind": "On your turn you can use a bonus action to regain hit points eqaul to 1s10 + your fighter level. Once you use this feature you can't use it again until you finish a short or long rest."
+        "Second Wind": "On your turn you can use a bonus action to regain hit points eqaul to 1d10 + your fighter level. Once you use this feature you can't use it again until you finish a short or long rest."
     },
     "Monk": {
         "Martial Arts": "You gain benefits while you aren't wearing armor or using and a shield and while you are unarmed or using only monk weapons. Monk weapons are unarmed strikes and simple melee weapons that do don't have the 'two handed' or 'heavy' property."
