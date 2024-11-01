@@ -406,6 +406,7 @@ def choose_patron(c, self):
             if num > 0 and num <= len(patrons):
                 if confirm_choice(f"Is {num} correct?", choose_patron):
                     patron_name = list(patrons.keys())[num - 1]
+                    self.subclass = patron_name
                     self.class_abilities[patron] = patron_name
                     for i, ability in enumerate(patrons[patron_name]):
                         self.class_abilities[ability] = patrons[patron_name][ability]
@@ -428,6 +429,7 @@ def choose_domain(c, self):
         if num > 0 and num <= len(domains):
             if confirm_choice(f"Is {num} correct?", choose_domain):
                 domain_name = list(domains.keys())[num - 1]
+                self.subclass = domain_name
                 self.class_abilities[domain] = domain_name
                 for i, ability in enumerate(domains[domain_name]):
                     if ability == proficiencies:

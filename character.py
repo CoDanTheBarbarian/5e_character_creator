@@ -262,6 +262,8 @@ class Character:
     # Methods for applying class stats
 
     def apply_class(self, class_data):
+        if class_data.subclass != None:
+            self.subclass = class_data.subclass
         self.c_class = class_data.class_name
         self.hit_die = class_data.hit_die
         if class_data.proficiencies:
