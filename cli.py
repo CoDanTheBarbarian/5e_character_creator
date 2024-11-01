@@ -74,9 +74,10 @@ def get_stats(c, base_stats):
     print("How would you like to assign your stats?")
     print("1. Roll random stats")
     print("2. Point Buy")
+    print("3. Manual Assignment")
     try:
         choice = int(input("Choose an option: "))
-        if choice not in [1, 2]:
+        if choice not in [1, 2, 3]:
             print("Invalid choice. Please enter a number from the list.")
             return get_stats(c, base_stats)
         if confirm_choice(f"You chose option {choice}, is that correct?", get_stats):
@@ -86,6 +87,8 @@ def get_stats(c, base_stats):
                 assign_stats(c, stats)
             elif choice == 2:
                 point_buy(c, base_stats)
+            elif choice == 3:
+                manual_stats(c)
         else:
             return get_stats(c, base_stats)
     except ValueError:
@@ -173,6 +176,53 @@ def point_buy(c, base_stats):
             c.assign_stat(stat, stats[stat])
     else:
         return point_buy(c, base_stats)
+    
+def manual_stats(c):
+    options = {
+        "strength": 0,
+        "dexterity": 0,
+        "constitution": 0,
+        "intelligence": 0,
+        "wisdom": 0,
+        "charisma": 0
+    }
+    choice = {}
+    while True:
+        def choose_stats():
+            while any(value == 0 for value in options.values()):
+                print("Your unassigned stats are:")
+                for i, option in enumerate(options.keys()):
+                    if options[option] == 0:
+                        print(f"{i + 1}: {option}")
+                try:
+                    stat_num_index = int(input("Choose a stat to assign: "))
+                    if stat_num_index < 1 or stat_num_index > len(options):
+                        print("Invalid choice. Please enter a number from the list.")
+                    else:
+                        ability = list(options.keys())[stat_num_index - 1]
+                        stat = int(input(f"Assign {ability} to: "))
+                        try:
+                            if stat < 1 or stat > 18:
+                                print("Invalid choice. Stat must be between 1 and 18.")
+                            else:
+                                if confirm_choice(f"Assign {ability} to {stat}?", choose_stats):
+                                    choice[ability] = stat
+                                    options[ability] = stat
+                        except ValueError:
+                            print("Invalid input. Please enter a number.")
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+
+        choose_stats()
+        if confirm_choice("Your stats are:\n" + "\n".join([f"{stat}: {choice[stat]}" for stat in choice.keys()]), manual_stats):
+            for ability, stat in choice.items():
+                c.assign_stat(ability, stat)
+            return
+        else:
+            for ability in options.keys():
+                options[ability] = 0
+            choice = {}
+            return manual_stats(c)
 
 def gain_proficiency_choices(c, list, num_choices):
     options_left = list[:]
