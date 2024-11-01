@@ -90,4 +90,31 @@ def test_create_barb():
         }
     assert barb.class_abilities == {"Rage Charges": 2}
 
-
+def test_create_ranger():
+    data = class_data["Ranger"]
+    assert data[class_name] == "Ranger"
+    assert data[hit_die] == 10
+    assert data[proficiencies] == ["light armor",
+                                   "medium armor",
+                                   "heavy armor",
+                                   "shield",
+                                   "simple weapons",
+                                   "martial weapons",
+                                   "strength",
+                                   "dexterity"]
+    assert data[prof_choices] == (["animal handling", "athletics", "insight", "investigation", "nature", "perception", "stealth", "survival"], 3)
+    assert data[class_info] == {
+        "Favored Enemy": "You have advantage on Survival checks to track your favored enemy and on Intelligence checks to recall information about them.",
+        "Natural Explorer": "While in your favored terrain, when you make Intelligence and Wisdom checks related to that terrain, your proficiency bonus is doubled if applicable.\nWhile traveling for an hour or more in your favored terrain you gain the following benefits:\n - Unaffected by difficult terrain\n - Can't get lost except by magical means\n - Move stealthily at a normal pace"
+    }
+    assert data[equipment] == {
+            "weapons": ["short sword", "short sword", "long bow"],
+            "armor": ["ring mail"],
+        }
+    assert data[class_abilities] == {"Favored Terrain": None, "Favored Enemy": None}
+    assert data[spell_casting_ability] == None
+    assert data[spell_slots] == None
+    assert data[spells_known] == None
+    c = create_class_object("Ranger")
+    assert c.class_name == "Ranger"
+    assert c.hit_die == 10

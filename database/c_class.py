@@ -220,7 +220,7 @@ class_data = {
                           'heavy armor', 
                           'shield', 
                           'simple weapons', 
-                          'martial_weapons', 
+                          'martial weapons', 
                           'strength', 
                           'constitution'],
         prof_choices: (
@@ -281,7 +281,7 @@ class_data = {
             "heavy armor", 
             "shield", 
             "simple weapons", 
-            "martial_weapons", 
+            "martial weapons", 
             "wisdom", 
             "charisma"
         ],
@@ -313,8 +313,8 @@ class_data = {
             "medium armor", 
             "heavy armor", 
             "shield", 
-            'simple_weapons', 
-            'martial_weapons', 
+            'simple weapons', 
+            'martial weapons', 
             'strength', 
             'dexterity'
         ],
@@ -352,7 +352,7 @@ class_data = {
             "long sword", 
             "rapier", 
             "short sword", 
-            "simple_weapons", 
+            "simple weapons", 
             "dexterity", 
             "intelligence"
         ],
@@ -422,7 +422,7 @@ class_data = {
         class_name: "Warlock",
         hit_die: 8,
         proficiencies: [
-            'light_armor', 
+            'light armor', 
             'simple weapons', 
             'wisdom', 
             'charisma'
