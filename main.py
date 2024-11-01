@@ -40,8 +40,7 @@ def main():
     if class_obj.prof_choice:
         print("Looks like you have some options for skill proficiencies to gain from your class.")
         gain_proficiency_choices(c, class_obj.prof_choice[0], class_obj.prof_choice[1])
-    if class_obj.class_name == "Fighter":
-        choose_fighting_style(class_obj)
+    make_class_choices(class_obj)
     add_starting_equipment_to_inventory(c, class_obj.starting_equipment)
     print("Choose a background for your character.")
     background = choose_background()

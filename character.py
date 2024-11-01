@@ -20,6 +20,7 @@ class Character:
         self.background = None
         self.speed = 0
         self.hp = 0
+        self.hp_bonus = None
         self.hit_die = 0
         self.proficiency_bonus = 2
         self.level = level
@@ -321,10 +322,13 @@ class Character:
         return text
     
     def get_starting_hp(self):
+        hp_bonus = 0
+        if self.hp_bonus:
+            hp_bonus = 1
         if self.get_ability_mod("constitution") > 0:
-            return self.hit_die + self.get_ability_mod("constitution")
+                return self.hit_die + self.get_ability_mod("constitution") + hp_bonus
         else:
-            return self.hit_die
+            return self.hit_die + hp_bonus
         
     def print_race_info(self):
         text = ""

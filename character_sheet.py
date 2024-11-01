@@ -990,7 +990,13 @@ def parse_character_sheet_data(c):
     data['text_1lehv'] = c.name
     data['text_2doro'] = c.background
     data['text_3jvjj'] = c.c_class
-    data['text_4htxk'] = c.race
+    c_race = c.race
+    if c.subrace:
+        if c.race == "Dragonborn":
+            c_race = c.subrace + " " + c.race
+        else:
+            c_race = c.subrace
+    data['text_4htxk'] = c_race
     data['text_5fclu'] = c.subclass
     data['text_6mtop'] = c.level
     data['text_7bcgp'] = c.xp

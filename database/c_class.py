@@ -38,7 +38,6 @@ class_abil_desc = {
         "Spellcasting": "You can cast spells drawn from the divine essence of nature itself."
     },
     "Fighter": {
-        "Fighting Style": "You have a preferred fighting style.",
         "Second Wind": "On your turn you can use a bonus action to regain hit points eqaul to 1d10 + your fighter level. Once you use this feature you can't use it again until you finish a short or long rest."
     },
     "Monk": {
@@ -488,18 +487,65 @@ class_data = {
         }
     }
 
-subclass_data = {
+class_option_data = {
     "Barbarian": {},
     "Bard": {},
-    "Cleric": {},
+    "Cleric": {
+        domain: {
+            "Knowledge Domain": {},
+            "Life Domain": {},
+            "Light Domain": {},
+            "Nature Domain": {},
+            "Tempest Domain": {},
+            "Trickery Domain": {},
+            "War Domain": {}
+        }
+    },
     "Druid": {},
-    "Fighter": {},
+    "Fighter": {
+        fighting_style: {
+            "Archery": "You gain a +2 bonus to attack rolls you make with ranged weapons.",
+            "Defense": "While you are wearing armor, you gain a +1 bonus to AC.",
+            "Dueling": "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
+            "Great Weapon Fighting": "When you roll a 1 or 2 on a damage die for an attack with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must be two-handed or versatile.",
+            "Protection": "When a creature you can see attacks a target other that you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.",
+            "Two-Weapon Fighting": "When you engage in two weapon fighting, you can add your ability modifier to the damage of the second attack."
+        }
+    },
     "Monk": {},
     "Paladin": {},
-    "Ranger": {},
+    "Ranger": {
+        favored_enemy: ["Aberrations", "Beasts", "Celestials", "Constructs", "Dragons", "Elementals", "Fey", "Fiends", "Giants", "Monstrosities", "Oozes", "Plants", "Undead"],
+        favored_terrain: ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark",],
+    },
     "Rogue": {},
-    "Sorcerer": {},
-    "Warlock": {},
+    "Sorcerer": {
+        origin: {
+            "Draconic Bloodline": {
+                "Black": "Acid",
+                "Blue": "Lightning",
+                "Brass": "Fire",
+                "Bronze": "Lightning",
+                "Copper": "Acid",
+                "Gold": "Fire",
+                "Green": "Poison",
+                "Red": "Fire",
+                "Silver": "Cold",
+                "White": "Cold"
+            },
+            "Wild Magic": {
+                "Wild Magic Surge": "When you cast a level 1 or higher spell the DM may have you roll a d20. If you roll a 1, roll on the Wild Magic Surge Table.",
+                "Tides of Chaos": "Once per long rest, you may gain advantage on an attack roll, ability check or saving throw. The DM may have you roll on the Wild Magic Surge table to restore this ability (normal timing rules still apply)."
+            }
+        }
+    },
+    "Warlock": {
+        patron: {
+            "The Archfey": {},
+            "The Fiend": {},
+            "The Great Old One": {},
+        }
+    },
     "Wizard": {}
 }
 

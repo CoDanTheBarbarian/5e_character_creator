@@ -1,4 +1,4 @@
-from random_stats import *
+from random_stats import get_random_stats
 from database.race_subrace import *
 from database.c_class import *
 from database.stat_database import *
@@ -295,15 +295,7 @@ def add_starting_equipment_to_inventory(c, dict):
             c.equip_armor(a)
 
 def choose_fighting_style(self):
-        styles = {
-            "Archery": "You gain a +2 bonus to attack rolls you make with ranged weapons.",
-            "Defense": "While you are wearing armor, you gain a +1 bonus to AC.",
-            "Dueling": "When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.",
-            "Great Weapon Fighting": "When you roll a 1 or 2 on a damage die for an attack with a melee weapon that you are wielding with two hands, you can reroll the die and must use the new roll, even if the new roll is a 1 or a 2. The weapon must be two-handed or versatile.",
-            "Protection": "When a creature you can see attacks a target other that you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be wielding a shield.",
-            "Two-Weapon Fighting": "When you engage in two weapon fighting, you can add your ability modifier to the damage of the second attack."
-        }
-    
+        styles = class_option_data[self.class_name][fighting_style]
         for i, style in enumerate(styles.keys(), start=1):
             print(f"{i}. {style}: {styles[style]}")
         try:
@@ -322,3 +314,54 @@ def choose_fighting_style(self):
         except ValueError:
             print("Invalid input. Please enter a number.")
             choose_fighting_style()
+
+def choose_favored_enemy(self):
+        enemies = class_option_data[self.class_name][favored_enemy]
+        for i, enemy in enumerate(enemies):
+            print(f"{i + 1}. {enemy}")
+        try:
+            num = int(input("Select a favored enemy: "))
+            if num > 0 and num <= len(enemies):
+                if confirm_choice(f"Is {num} correct?", choose_favored_enemy):
+                    self.class_abilities[favored_enemy] = enemies[num - 1]
+                    return
+                else:
+                    choose_favored_enemy()
+            else:
+                print("Invalid choice.")
+                choose_favored_enemy()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            choose_favored_enemy()
+
+def choose_favored_terrain(self):
+        terrains = class_option_data[self.class_name][favored_terrain]
+        for i, terrain in enumerate(terrains):
+            print(f"{i + 1}. {terrain}")
+        try:
+            num = int(input("Select a favored terrain: "))
+            if num > 0 and num <= len(terrains):
+                if confirm_choice(f"Is {num} correct?", choose_favored_terrain):
+                    self.class_abilities[favored_terrain] = terrains[num - 1]
+                    return
+                else:
+                    choose_favored_terrain()
+            else:
+                print("Invalid choice.")
+                choose_favored_terrain()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            choose_favored_terrain()
+
+def make_class_choices(self):
+    if self.class_name == "Cleric":
+        pass
+    elif self.class_name == "Fighter":
+        choose_fighting_style(self)
+    elif self.class_name == "Ranger":
+        choose_favored_terrain(self)
+        choose_favored_enemy(self)
+    elif self.class_name == "Sorcerer":
+        pass
+    elif self.class_name == "Warlock":
+        pass
