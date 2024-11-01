@@ -541,9 +541,18 @@ class_option_data = {
     },
     "Warlock": {
         patron: {
-            "The Archfey": {},
-            "The Fiend": {},
-            "The Great Old One": {},
+            "The Archfey": {
+                "Extended Spell List": "When choosing spells to learn you have access to an expanded spell list. Level 1 spells now include faerie fire and sleep.",
+                "Fey Presence": "As an action, you can cause each creature in a 10-foot cube originating from you to make a Wisdom saving throw against your warlock spell save DC. The creatures that fail are all charmed or frightened by you (your choice) until the end of your next turn. This feature replenishes on a short/long rest."
+            },
+            "The Fiend": {
+                "Expanded Spell List": "When choosing spells to learn you have access to an expanded spell list. Level 1 spells now include burning hands and command.",
+                "Dark One's Blessing": "When you reduce a creature to 0 hit points, you gain temporary hit points equal to your Charisma modifier + your warlock level (minimimum of 1)."
+            },
+            "The Great Old One": {
+                "Extended Spell List": "When choosing spells to learn you have access to an expanded spell list. Level 1 spells now include dissonant whispers and Tashsa's hideous laughter.",
+                "Awakened Mind": "You can telepathically speak to any creature you can see within 30 feet of you. You don't need to share a language for that creature to understand you, but the creature must be able to understand at least one language."
+            },
         }
     },
     "Wizard": {}

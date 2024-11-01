@@ -397,6 +397,28 @@ def choose_sorcerous_origin(self):
             print("Invalid input. Please enter a number.")
             choose_sorcerous_origin()
 
+def choose_patron(self):
+        patrons = class_option_data[self.class_name][patron]
+        for i, name in enumerate(patrons):
+            print(f"{i + 1}. {name}")
+        try:
+            num = int(input("Select a patron: "))
+            if num > 0 and num <= len(patrons):
+                if confirm_choice(f"Is {num} correct?", choose_patron):
+                    patron_name = list(patrons.keys())[num - 1]
+                    self.class_abilities[patron] = patron_name
+                    for i, ability in enumerate(patrons[patron_name]):
+                        self.class_abilities[ability] = patrons[patron_name][ability]
+                    return
+                else:
+                    choose_patron()
+            else:
+                print("Invalid choice.")
+                choose_patron()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            choose_patron()
+
 def make_class_choices(self):
     if self.class_name == "Cleric":
         pass
@@ -408,4 +430,4 @@ def make_class_choices(self):
     elif self.class_name == "Sorcerer":
         choose_sorcerous_origin(self)
     elif self.class_name == "Warlock":
-        pass
+        choose_patron(self)
