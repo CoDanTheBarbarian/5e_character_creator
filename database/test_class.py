@@ -29,7 +29,7 @@ def test_get_class_data():
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
         }
-    assert data[class_abilities] == {"rage": 2}
+    assert data[class_abilities] == {"Rage Charges": 2}
 
 def test_get_class_creator():
     class_input = "Barbarian"
@@ -108,7 +108,7 @@ def test_create_class_handler():
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
         }
-    assert barb.class_abilities == {"rage": 2}
+    assert barb.class_abilities == {"Rage Charges": 2}
 
 def test_create_barb():
     barb = create_barbarian(class_data["Barbarian"])
@@ -137,6 +137,6 @@ def test_create_barb():
             "weapons": ["great axe", "halberd", "javelin"],
             "armor": [],
         }
-    assert barb.class_abilities == {"rage": 2}
+    assert barb.class_abilities == {"Rage Charges": 2}
 
 
