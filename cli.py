@@ -353,6 +353,50 @@ def choose_favored_terrain(self):
             print("Invalid input. Please enter a number.")
             choose_favored_terrain()
 
+def choose_sorcerous_origin(self):
+        origins = class_option_data[self.class_name][origin]
+        for i, name in enumerate(origins.keys()):
+            print(f"{i + 1}. {name}")
+        try:
+            num = int(input("Select a sorcerous origin: "))
+            if num > 0 and num <= len(origins):
+                if confirm_choice(f"Is {num} correct?", choose_sorcerous_origin):
+                    origin_name = list(origins.keys())[num - 1]
+                    if origin_name == "Wild Magic":
+                        self.class_abilities[origin] = origin_name
+                        for ability in origins[origin_name]:
+                            self.class_abilities[ability] = origins[origin_name][ability]
+                    elif origin_name == "Draconic Bloodline":
+                        for i, color in enumerate(origins[origin_name]):
+                            print(f"{i + 1}. {color} - Damage Resistance: {origins[origin_name][color]}")
+                        try:
+                            num = int(input("Select a draconic color: "))
+                            if num > 0 and num <= len(origins[origin_name]):
+                                if confirm_choice(f"Is {num} correct?", choose_sorcerous_origin):
+                                    color_name = list(origins[origin_name].keys())[num - 1]
+                                    damage_resist = origins[origin_name][color_name]
+                                    self.class_abilities[origin] = origin_name
+                                    self.class_abilities[origin_name] = color_name
+                                    self.class_abilities["Draconic Resistance"] = damage_resist
+                                    return
+                                else:
+                                    choose_sorcerous_origin()
+                            else:
+                                print("Invalid choice.")
+                                choose_sorcerous_origin()
+                        except ValueError:
+                            print("Invalid input. Please enter a number.")
+                            choose_sorcerous_origin()
+                    return
+                else:
+                    choose_sorcerous_origin()
+            else:
+                print("Invalid choice.")
+                choose_sorcerous_origin()
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            choose_sorcerous_origin()
+
 def make_class_choices(self):
     if self.class_name == "Cleric":
         pass
@@ -362,6 +406,6 @@ def make_class_choices(self):
         choose_favored_terrain(self)
         choose_favored_enemy(self)
     elif self.class_name == "Sorcerer":
-        pass
+        choose_sorcerous_origin(self)
     elif self.class_name == "Warlock":
         pass

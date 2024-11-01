@@ -141,8 +141,8 @@ race_stats = {
         proficiencies: [],
         resistances: [],
         prof_choices: [],
-        sub_races: races[halfling],
-        race_traits: race_info[halfling]
+        sub_races: races[gnome],
+        race_traits: race_info[gnome]
         },
     half_elf: {
         race: half_elf,

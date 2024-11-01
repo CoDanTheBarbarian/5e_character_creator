@@ -1044,7 +1044,7 @@ def parse_character_sheet_data(c):
     data['textarea_237vdig'] = c.print_class_info()
     data['textarea_238rkrv'] = c.print_class_abilities()
     data['textarea_239zoqi'] = c.print_race_info()
-    data['textarea_240ngth'] = "" # feats
+    data['textarea_240ngth'] = c.print_resistances()
     data['textarea_246zssm'] = ', '.join(c.get_weapon_proficiencies())
     data['text_247iukc'] = c.get_saving_throw("constitution")
     data['text_248bhjr'] = c.get_saving_throw("charisma") 
@@ -1120,9 +1120,9 @@ def parse_character_sheet_data(c):
 '''
 # mapping logic to enumerate the text fields
 # use this function to map fields of a form fillable pdf
-# the print result will show you the key:value pair for each field, and will output the pdf using that mapping
-# then you can create a new dictionary that maps the field names to the the value outputs in the pdf
-# getting checkbox yes values is a little trickier, I did it by running this function and viewing the option error message from fillpdf in the terminal by replacing the None value with "Yes"
+# the print result will show you the key:value pair for each field, and will output the pdf with the enumerations in each field
+# then you can create a new dictionary that maps the field names to the the value outputs in the pdf, purely for reference
+# getting checkbox yes values is a little trickier, I did it by running this function and viewing the option error message from fillpdf in the terminal by replacing the None value with "Yes", then seeing what options were available as a yes value during running fillpdf
 field_map = {}
 fields = list(fillpdfs.get_form_fields(template_path).keys())
 for i, field in enumerate(fields):

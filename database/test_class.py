@@ -118,3 +118,61 @@ def test_create_ranger():
     c = create_class_object("Ranger")
     assert c.class_name == "Ranger"
     assert c.hit_die == 10
+
+def test_draconic_resistance():
+    data = {
+        class_name: "Sorcerer",
+        hit_die: 6,
+        proficiencies: [
+            'dagger', 
+            'dart', 
+            'sling', 
+            'quarterstaff', 
+            'light crossbow', 
+            'constitution', 
+            'charisma'
+        ],
+        prof_choices: (
+            [
+                "deception", 
+                "insight", 
+                "intimidation", 
+                "persuasion", 
+                "religion"
+            ], 2
+        ),
+        class_info: class_abil_desc["Sorcerer"],
+        equipment: {
+            "weapons": ["quarterstaff", "light crossbow", "dagger", "dagger"],
+            "armor": [],
+        },
+        spell_casting_ability: "charisma",
+        spell_slots: {
+            "cantrips": 4,
+            "level 1": 2
+            },
+        spells_known: 2,
+        class_abilities: {
+            origin: "Draconic Bloodline",
+            "Draconic Bloodline": "Black"
+                          },
+        }
+    c = Class(
+        data[class_name],
+        data[hit_die],
+        data[proficiencies],
+        data[prof_choices],
+        data[class_info],
+        data[equipment],
+        data[class_abilities],
+        data[spell_casting_ability],
+        data[spell_slots],
+        data[spells_known]
+        )
+    
+    assert c.class_abilities[origin] == "Draconic Bloodline"
+    assert c.class_abilities["Draconic Bloodline"] == "Black"
+    color = c.class_abilities["Draconic Bloodline"]
+    assert color == "Black"
+    assert class_option_data["Sorcerer"]["Sorcerous Origin"]["Draconic Bloodline"][color] == "Acid"
+    assert class_option_data["Sorcerer"]["Sorcerous Origin"]["Draconic Bloodline"][color].lower() == "acid"

@@ -1,6 +1,7 @@
 from database.stat_database import *
 from database.race_subrace import *
 from cli import *
+from database.c_class import class_option_data
 
 
 def get_background_profs(background):
@@ -70,10 +71,8 @@ class Character:
     def unarmored_ac(self):
         if self.armor == None:
             self.ac += self.get_ability_mod("dexterity")
-        if self.shield != None:
-            self.ac += self.shield.ac
-        if self.c_class == "Barbarian":
-            self.ac += self.get_ability_mod("constitution")
+            if self.c_class == "Barbarian":
+                self.ac += self.get_ability_mod("constitution")
 
     # Universal attribute getter
 
@@ -276,7 +275,9 @@ class Character:
         if class_data.spells_known:
             self.spells_known = class_data.spells_known
         self.class_abilities = class_data.class_abilities
-
+        if class_data.class_name == "Sorcerer":
+            if class_data.class_abilities[origin] == "Draconic Bloodline":
+                self.gain_damage_resistance(class_data.class_abilities["Draconic Resistance"].lower())
 
     # spells and spell list methods
 
@@ -357,4 +358,11 @@ class Character:
                     text += f"{ability}: {num} {description}\n"
                 else:
                     text += f"{ability}: {description}\n"
+        return text
+    
+    def print_resistances(self):
+        text = ""
+        for resistance in self.damage_resistance.keys():
+            if self.damage_resistance[resistance] == True:
+                text += f"Resistant to {resistance.title()} damage.\n"
         return text

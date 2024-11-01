@@ -28,6 +28,7 @@ def main():
     print("Choose your class:")
     class_name = choose_class()
     class_obj = create_class_object(class_name)
+    make_class_choices(class_obj)
     get_stats(c, pt_buy_zero_stats)
     print("Updating character sheet with your race and class choices.")
     c.apply_race_bonus(race_obj)
@@ -36,11 +37,10 @@ def main():
         gain_proficiency_choices(c, race_obj.prof_choices[0], race_obj.prof_choices[1])
     if subrace_obj != None:
         c.apply_subrace_bonus(subrace_obj)
-    c.apply_class(class_obj)
     if class_obj.prof_choice:
         print("Looks like you have some options for skill proficiencies to gain from your class.")
         gain_proficiency_choices(c, class_obj.prof_choice[0], class_obj.prof_choice[1])
-    make_class_choices(class_obj)
+    c.apply_class(class_obj)
     add_starting_equipment_to_inventory(c, class_obj.starting_equipment)
     print("Choose a background for your character.")
     background = choose_background()
