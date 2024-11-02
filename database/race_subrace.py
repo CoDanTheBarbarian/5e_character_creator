@@ -28,6 +28,7 @@ races = {
     tiefling:
         []
 }
+
 race_info = {
     dwarf: {
         "Darkvision": "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
@@ -69,6 +70,7 @@ race_info = {
         "Infernal Legacy": "You know the thaumaturgy cantrip."
     }
 }
+
 race = "race"
 speed = "speed"
 ability_bonus = "ability bonus"

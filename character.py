@@ -255,7 +255,8 @@ class Character:
             for resistance in subrace.resistances:
                 self.gain_damage_resistance(resistance)
         self.hp_bonus = subrace.hp_bonus
-        self.speed_bonus = subrace.speed_bonus
+        if subrace.speed_bonus:
+            self.speed += subrace.speed_bonus
         if self.race == dragonborn:
             self.breath_weapon = subrace.breath_weapon
 
