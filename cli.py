@@ -303,7 +303,7 @@ def choose_fighting_style(c, self):
             if num > 0 and num <= len(styles):
                 if confirm_choice(f"Is {num} correct?", choose_fighting_style):
                     style_name = list(styles.keys())[num - 1]
-                    self.class_info[fighting_style] = style_name
+                    self.class_abilities[fighting_style] = style_name
                     self.class_abilities[style_name] = styles[style_name]
                     return
                 else:
