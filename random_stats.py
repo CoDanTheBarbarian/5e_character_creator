@@ -31,7 +31,7 @@ def get_random_stats():
     return sorted(stats, reverse=True)
 
 # numbers is a list of die numbers to handle cases where we roll more than one dice for a single result (i.e. multiple d6 for sneak attack damage)
-def roll_d(numbers):
+def roll_dice(numbers):
     result = 0
     for number in numbers:
         if number == 4:

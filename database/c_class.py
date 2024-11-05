@@ -373,7 +373,7 @@ class_data = {
         ),
         class_info: class_abil_desc["Rogue"],
         equipment: {
-            "weapons": ["short sword", "shortbow", "dagger", "dagger"],
+            "weapons": ["short sword", "short bow", "dagger", "dagger"],
             "armor": ["leather"],
         },
         spell_casting_ability: "charisma",
