@@ -51,7 +51,7 @@ def test_init_ranged_weapon():
     assert w.damage_type == "piercing"
     assert w.bonus_attribute == ("dexterity",)
     assert w.properties == ["ammunition", "ranged", "loading", "two handed"]
-    assert w.range == (80, 320)
+    assert w.weapon_range == (80, 320)
     assert w.get_damage_mod() == ("dexterity",)
 
 def test_create_ranged_weapon():
@@ -62,7 +62,7 @@ def test_create_ranged_weapon():
     assert w.damage_type == "piercing"
     assert w.bonus_attribute == ("dexterity",)
     assert w.properties == ["ammunition", "ranged", "loading", "two handed"]
-    assert w.range == (80, 320)
+    assert w.weapon_range == (80, 320)
     assert w.get_damage_mod() == ("dexterity",)
 
 def test_versatile_ranged_weapon_init():
@@ -74,7 +74,7 @@ def test_versatile_ranged_weapon_init():
     assert w.bonus_attribute == ("strength",)
     assert w.properties == ["thrown", "versatile"]
     assert w.versatile_die == (8,)
-    assert w.range == (20, 60)
+    assert w.weapon_range == (20, 60)
     assert w.get_damage_mod() == ("strength",)
 
 def test_create_versatile_ranged_weapon():
@@ -86,7 +86,7 @@ def test_create_versatile_ranged_weapon():
     assert w.bonus_attribute == ("strength",)
     assert w.properties == ["thrown", "versatile"]
     assert w.versatile_die == (8,)
-    assert w.range == (20, 60)
+    assert w.weapon_range == (20, 60)
     assert w.get_damage_mod() == ("strength",)
 
 def test_create_weapon():
@@ -116,7 +116,7 @@ def test_create_weapon():
     assert w3.damage_type == "piercing"
     assert w3.bonus_attribute == ("dexterity",)
     assert w3.properties == ["ammunition", "ranged", "loading", "two handed"]
-    assert w3.range == (80, 320)
+    assert w3.weapon_range == (80, 320)
     assert w3.get_damage_mod() == ("dexterity",)
 
     w4 = create_weapon("trident")
@@ -127,7 +127,7 @@ def test_create_weapon():
     assert w4.bonus_attribute == ("strength",)
     assert w4.properties == ["thrown", "versatile"]
     assert w4.versatile_die == (8,)
-    assert w4.range == (20, 60)
+    assert w4.weapon_range == (20, 60)
     assert w4.get_damage_mod() == ("strength",)
 
 def test_armor_init():

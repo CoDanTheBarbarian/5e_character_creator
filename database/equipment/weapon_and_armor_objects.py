@@ -50,9 +50,9 @@ def create_versatile_melee_weapon(weapon_name):
     
 
 class RangedWeapon(MeleeWeapon):
-    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range):
+    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, weapon_range):
         super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties)
-        self.range = range
+        self.weapon_range = weapon_range
 
     def __repr__(self) -> str:
         return self.name
@@ -66,13 +66,13 @@ def create_ranged_weapon(weapon_name):
             weapon_data[damage_type], 
             weapon_data[core_attribute], 
             weapon_data[weapon_properties],
-            weapon_data[range]
+            weapon_data[weapon_range]
             )
     return weapon_object
 
 class VersatileRangedWeapon(RangedWeapon):
-    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range, versatile_damage_die):
-        super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties, range)
+    def __init__(self, name, weapon_type, damage_die, damage_type, bonus_attribute, properties, weapon_range, versatile_damage_die):
+        super().__init__(name, weapon_type, damage_die, damage_type, bonus_attribute, properties, weapon_range)
         self.versatile_die = versatile_damage_die
 
     def __repr__(self) -> str:
@@ -87,7 +87,7 @@ def create_versatile_ranged_weapon(weapon_name):
             weapon_data[damage_type], 
             weapon_data[core_attribute], 
             weapon_data[weapon_properties],
-            weapon_data[range],
+            weapon_data[weapon_range],
             weapon_data[versatile_die]
             )
     return weapon_object

@@ -1,9 +1,3 @@
-import os
-
-base_dir = os.path.dirname(__file__)
-template_path = os.path.join(base_dir, "pdf", "Character_Sheet_Template.pdf")
-output_path = os.path.join(base_dir, "pdf", "character_pdfs/")
-
 fields_key = {
           'text_1lehv': "name", 
           'text_2doro': "background", 
@@ -415,7 +409,6 @@ fields_key = {
           'checkbox_413obqz': None, # "spell:30 ritual",
           'checkbox_414kfjp': None # "spell:30 material"
           }
-
 
 checkbox_yes_values = {
     'checkbox_253xxbz': 'Yes_sslz', 
